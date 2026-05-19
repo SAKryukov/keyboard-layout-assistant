@@ -28,11 +28,16 @@
    rect:hover { fill: lightcyan; }
    rect:active { fill: cyan; stroke-width: 2; }
    text { font-family: sans-serif; font-size: 90%; transform: translate(0.3em, 1em); }
-   text.linux, text.scancode, text.label { display: none; }
    text.linux { font-size: 70%; }
-   svg.scancode text.scancode { display: block; }
-   svg.linux text.linux { display: block; }
-   svg.label text.label { display: block; }
+   text.win { font-size: 65%; }
+   svg.scancode text.scancode,
+   text { display: none; }
+   svg.scancode text.scancode,
+   svg.linux text.linux,
+   svg.label text.label,
+   svg.win text.win,
+   svg.jskey text.jskey,
+   svg.jscode text.jscode { display: block; }
    rect.keyboard { fill: silver; stroke-width: 0; rx: 1.2em; ry: 1.2em; }
 </style>   
 
@@ -394,12 +399,12 @@
     <option value="label">Labels</option>
     <option value="scancode">Scan Codes</option>
     <option value="linux">Linux XKB Key Codes</option>
-    <option value="w">Windows Virtual Keys</option>
+    <option value="win">Windows Virtual Keys</option>
+    <option value="jskey">JavaScript key</option>
+    <option value="jscode">JavaScript code</option>
 </select>
-<textarea rows="5" cols="80"></textarea>
+<textarea rows="6" cols="80"></textarea>
 </section><main>
-
-<p><a href="https://kbdlayout.info/kbdusx/scancodes+names">Reference</a></p>
 
 </body>
 </html>

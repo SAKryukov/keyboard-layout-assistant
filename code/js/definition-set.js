@@ -3,6 +3,12 @@
 const createDefinitionSet = (() => {
 
     const twoCaseArray = lower => [lower, lower.toUpperCase()];
+    const abbreviation = String.fromCodePoint(0x2026); // horizontal ellipsis
+    const trimAppreviation = name =>
+        name.includes(abbreviation)
+        ? name.substring(0, name.indexOf(abbreviation)) + abbreviation
+        : name;
+
     const arrow = {
         up: String.fromCodePoint(0x2191),
         left: String.fromCodePoint(0x2190),
@@ -21,60 +27,76 @@ const createDefinitionSet = (() => {
     keys.set("3B", {
         linux: "FK01",
         label: "F1",
+        win: ["VK_F1", "70"],
     });
     keys.set("3C", {
         linux: "FK02",
         label: "F2",
+        win: ["VK_F2", "71"],
     });
     keys.set("3D", {
         linux: "FK03",
         label: "F3",
+        win: ["VK_F3", "72"],
     });
     keys.set("3E", {
         linux: "FK04",
         label: "F4",
+        win: ["VK_F4", "73"],
     });
     keys.set("3F", {
         linux: "FK05",
         label: "F5",
+        win: ["VK_F5", "74"],
     });
     keys.set("40", {
         linux: "FK06",
         label: "F6",
+        win: ["VK_F6", "75"],
     });
     keys.set("41", {
         linux: "FK07",
         label: "F7",
+        win: ["VK_F7", "76"],
     });
     keys.set("42", {
         linux: "FK08",
         label: "F8",
+        win: ["VK_F8", "77"],
     });
     keys.set("43", {
         linux: "FK09",
         label: "F9",
+        win: ["VK_F9", "78"],
     });
     keys.set("44", {
         linux: "FK10",
         label: "F10",
+        win: ["VK_F10", "79"],
     });
     keys.set("57", {
         linux: "FK11",
         label: "F11",
+        win: ["VK_F12", "7A"],
     });
     keys.set("58", {
         linux: "FK12",
         label: "F12",
+        win: ["VK_F12", "7B"],
     });
     //
     keys.set("29", {
         linux: "TLDE",
         label: ["`", "~"],
+        jskey: "`",
+        jscode: `Ba${abbreviation}ckquote`,
     });
     // row 1
     keys.set("02", {
         linux: "AE01",
         label: ["1", "!"],
+        jskey: ["1", "!"],
+        jscode: "Digit1",
     });
     keys.set("03", {
         linux: "AE02",
@@ -123,6 +145,7 @@ const createDefinitionSet = (() => {
     keys.set("0E", {
         linux: "BKSP",
         label: "Backspace",
+        win: ["VK_BACK", "08"],
     });
 
     // row 2:
@@ -228,6 +251,7 @@ const createDefinitionSet = (() => {
     keys.set("1C", {
         linux: "RTRN",
         label: "Enter",
+        win: ["VK_RETURN", "0D"],
     });
     //row 4:
     keys.set("2C", {
@@ -290,6 +314,7 @@ const createDefinitionSet = (() => {
     keys.set("39", {
         linux: "39",
         label: "",
+        win: ["VK_SPACE", "20"],
     });
     keys.set("E0 38", {
         linux: "RALT",
@@ -369,6 +394,8 @@ const createDefinitionSet = (() => {
     keys.set("45", {
         linux: "NMLK",
         label: ["Lock", "Num"],
+        jskey: `Nu${abbreviation}mLock`,
+        jscode: `Nu${abbreviation}mLock`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
@@ -381,6 +408,8 @@ const createDefinitionSet = (() => {
     keys.set("4A", {
         linux: "KPSU",
         label: "-",
+        jskey: "-",
+        jscode: `Nu${abbreviation}mpadSubtract`,
     });
     keys.set("47", {
         linux: "KP7",
@@ -429,19 +458,27 @@ const createDefinitionSet = (() => {
     keys.set("4E", {
         linux: "KPAD",
         label: "+",
+        jskey: "+",
+        jscode: `Nu${abbreviation}mpadAdd`,
     });
     keys.set("E0 1C", {
         linux: "KPEN",
         label: "Enter",
+        jskey: "Enter",
+        jscode: `Nu${abbreviation}mpadEnter`,
     });
     // remaining left:
     keys.set("0F", {
         linux: "TAB",
         label: "Tab",
+        win: ["VK_TAB", "09"],
+        jskey: "Tab",
+        jscode: "Tab",        
     });
     keys.set("3A", {
         linux: "CAPS",
         label: "Caps Lock",
+        win: ["VK_CAPITAL", "14"],
     });
     keys.set("2A", {
         linux: "LFSH",
@@ -486,6 +523,8 @@ const createDefinitionSet = (() => {
     const defaultShift = 0.25;
     const formats = {
         output: (data, style) => {
+            if (data.includes(abbreviation))
+                data = data.replace(abbreviation, "");
             let bra = "", ket = "";
             if (style == names.classes.linux) {
                 bra = "<"; ket = ">";
@@ -496,6 +535,6 @@ const createDefinitionSet = (() => {
         formatYShift: value => `${value + defaultShift}em`,
     }; //formats
 
-    return { keys, names, formats };
+    return { keys, names, formats, trimAppreviation };
 
 }); //createDefinitionSet

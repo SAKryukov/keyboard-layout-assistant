@@ -17,10 +17,13 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         const text = createSvgElement(definitionSet.names.elements.text);
         if (yShift)
             text.setAttribute(definitionSet.names.attributes.y, yShift);
-        text.textContent = textContent;
+        text[data] = textContent;
+        text.textContent = definitionSet.trimAppreviation(textContent);
         text.classList.add(className);
         parent.appendChild(text);
     } //addText
+
+    const data = Symbol();
 
     const groups = document.querySelectorAll(definitionSet.names.elements.g);
     const populate = groups => {
@@ -61,7 +64,7 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
             const textElements = event.currentTarget.querySelectorAll(definitionSet.names.getTextClass(style));
             if (textElements)
                 for (const element of textElements)
-                    output.value += definitionSet.formats.output(element.textContent, style);
+                    output.value += definitionSet.formats.output(element[data], style);
         } //group.onpointerup
     } //loop
 
