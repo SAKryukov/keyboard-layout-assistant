@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Test Keyboard</title>
+        <script src="./js/definition-set.js"></script>
+        <script src="./js/ui.js"></script>
+    </head>
+    <style>
+        * { font-family: sans-serif; }
+        select { margin-top: 1em; width: 100%; }
+        button { border: none; background: none; padding: 4px; }
+        button:hover { background-color: lightblue; }
+        button:active { background-color: blue; }
+    </style>
+<body>
+
+<button id="clipboard"></button>
+<button id="clear"></button>
+<input type="checkbox" checked="true">Ignore Alt, Shift, Ctrl, and arrows</input>
+<br/><select size="40"></select>
+
+<script>
+    const ignore = document.querySelector("input");
+    const output = document.querySelector("select");
+    const buttonCopy = document.querySelector("#clipboard");
+    const buttonClear = document.querySelector("#clear");
+    buttonCopy.innerHTML = `${String.fromCodePoint(0x1f4cb)}`;
+    buttonClear.innerHTML = `${String.fromCodePoint(0x274c)}`;
+    const write = text => {
+        const option = document.createElement("option");
+        option.textContent = text;
+        output.appendChild(option);
+        option.selected = true;
+    }; //write
+    buttonClear.onclick = () => {
+        while (output.lastChild)
+            output.removeChild(output.lastChild);
+    }; //buttonClear.onclick
+    buttonCopy.onclick = () => {
+        if (output.selectedIndex < 0) return;
+        const option = output.children[output.selectedIndex];
+        navigator.clipboard.writeText(option.textContent);
+    } //buttonCopy.onclick
+    window.onkeydown = event => {
+        if (ignore.checked &&
+            (event.key == "Alt" | event.key == "Ctrl" | event.key == "Shift" | event.key.startsWith("Arrow") ))
+                return;
+        write(`code: ${event.code}, key: ${event.key}`);
+    }; //window.onkeydown
+    output.focus();
+</script>
+
+</body>
+</html>
