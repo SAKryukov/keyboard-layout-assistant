@@ -12,8 +12,7 @@ partial class FormScanCodes {
     #region Windows Form Designer generated code
     private void InitializeComponent() {
         components = new System.ComponentModel.Container();
-        Text = "Test Scan Codes";
-    }
+    } //InitializeComponent
     #endregion Windows Form Designer generated code
     
 }
