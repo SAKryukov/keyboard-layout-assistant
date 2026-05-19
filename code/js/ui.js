@@ -8,6 +8,7 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         svg: document.querySelector(definitionSet.names.elements.svg),
         select: document.querySelector(definitionSet.names.elements.select),
         output: document.querySelector(definitionSet.names.elements.textarea),
+        notes: document.querySelectorAll(definitionSet.names.classes.note),
     }; //elementSet
     elementSet.select.size = elementSet.select.children.length;
 
@@ -53,6 +54,11 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     const selectHandler = select => {
         elementSet.svg.classList = [];
         elementSet.svg.classList.add(select.value);
+        for (const note of elementSet.notes)
+            note.classList = [];
+        const visibleNote = document.getElementById(select.value);
+        if (visibleNote)
+            visibleNote.className = definitionSet.names.classes.show;
     } //selectHandler
     elementSet.select.onchange = event => selectHandler(event.target);
     selectHandler(elementSet.select);

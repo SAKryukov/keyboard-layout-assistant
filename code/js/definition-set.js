@@ -7,7 +7,7 @@ const createDefinitionSet = (() => {
     const trimAppreviation = name =>
         name.includes(abbreviation)
         ? name.substring(0, name.indexOf(abbreviation)) + abbreviation
-        : name;
+            : name;
 
     const arrow = {
         up: String.fromCodePoint(0x2191),
@@ -19,7 +19,7 @@ const createDefinitionSet = (() => {
     }; //arrow
 
     const keys = new Map();
-    keys.set("01", {
+        keys.set("01", {
         linux: "ESC",
         label: "Esc",
         win: [`VK_ES${abbreviation}CAPE`, "1B"],
@@ -642,6 +642,8 @@ const createDefinitionSet = (() => {
         classes: { // special cases, should match two <select> <option> values:
             scancode: 0, // <g> id's are scancodes
             linux: 0, // to support <>, see formats output: (data, style)
+            show: 0,
+            note: "nav p",
         }, //classes
         attributes: {
             x: 0,

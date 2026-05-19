@@ -14,6 +14,11 @@
         option { padding-left: 1em; padding-right: 1em; }
         select, textarea { display: table-cell; vertical-align: top; }
         select { margin-right: 1em; }
+        nav, nav p { margin-top: 0; margin-bottom: 0; }
+        nav { margin-top: 0.2em; }
+        nav p { display: none; }
+        nav p.show { display: block; }
+        code { background-color: rgb(194, 232, 247); }
     </style>
 <body>
 
@@ -30,12 +35,12 @@
    text { font-family: sans-serif; font-size: 90%; transform: translate(0.3em, 1em); }
    text.linux { font-size: 70%; }
    text.win { font-size: 65%; }
-   svg.scancode text.scancode,
    text { display: none; }
    svg.scancode text.scancode,
    svg.linux text.linux,
    svg.label text.label,
    svg.win text.win,
+   svg.dotnet text.dotnet,
    svg.jskey text.jskey,
    svg.jscode text.jscode { display: block; }
    rect.keyboard { fill: silver; stroke-width: 0; rx: 1.2em; ry: 1.2em; }
@@ -394,17 +399,32 @@
 
 </svg>
 
+<nav>
+    <p id="label">Labels: provided for the orientation only, can be different on different keyboards</p>
+    <p id="scancode">Scan codes: hexadecial codes or code sequences separated by blank space</p>
+    <p id="linux">Linux XKB Key Codes;
+       click on the key to see the notation used in the XKB keyboard layouts, <code>/usr/share/X11/xkb/symbols</code></p>
+    <p id="win">Windows Virtual Keys: <code>VK_*</code> key names and hexadecimal values;
+       click on the key to see a full name if it is abbreviated</p>
+    <p id="dotnet">.NET: <code>System.Windows.Forms.Key</code> or <code>System.Windows.Input.Key</code>, <code>KeyCode</code> and decimal <code>KeyValue</code>;
+       click on the key to see a full name if it is abbreviated</p>
+    <p id="jskey">JavaScript <code>KeyboardEvent.key</code>: strings depending on the shift state and keyboard layout</code>;
+       click on the key to see a full name if it is abbreviated</p>
+    <p id="jscode">JavaScript <code>KeyboardEvent.code</code>: key names independent from the shift state and keyboard layout</code>;
+       click on the key to see a full name if it is abbreviated</p>
+</nav>
+
 <main><section>
 <select>
     <option value="label">Labels</option>
     <option value="scancode">Scan Codes</option>
     <option value="linux">Linux XKB Key Codes</option>
     <option value="win">Windows Virtual Keys</option>
+    <option value="dotnet">.NET</option>
     <option value="jskey">JavaScript key</option>
     <option value="jscode">JavaScript code</option>
 </select>
-<textarea rows="6" cols="80"></textarea>
+<textarea rows="7" cols="80"></textarea>
 </section><main>
-
 </body>
 </html>
