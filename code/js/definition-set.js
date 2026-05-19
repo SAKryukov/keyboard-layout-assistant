@@ -269,6 +269,7 @@ const createDefinitionSet = (() => {
     keys.set("2B", {
         linux: "BKSL",
         label: ["\\", "|"],
+        win: ["VK_OEM_5", "0xDC"],
     });
     //row 3:
     keys.set("1E", {
