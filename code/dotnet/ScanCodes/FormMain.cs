@@ -12,7 +12,10 @@ public partial class FormScanCodes : Form {
             // Optional: Handle extended keys (e.g., arrows, Numpad)
             // Bit 24 indicates if the key is an extended key
             int isExtended = (lParam >> 24) & 0x1;            
-            System.Windows.Forms.MessageBox.Show($"Scan Code: {scanCode} (0x{scanCode.ToString("X2")}), Extended: {isExtended}");
+            System.Windows.Forms.MessageBox.Show(
+               $"Virtual Key Code: {m.WParam.ToString("X2")}\n" +
+               $"Scan Code: {scanCode} (0x{scanCode.ToString("X2")}),\n" +
+               $"Extended: {isExtended}");
         } //if
     } //WndProc
 } //FormScanCodes
