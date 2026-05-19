@@ -169,12 +169,14 @@ const createDefinitionSet = (() => {
     keys.set("0C", {
         linux: "AE11",
         label: ["-", "_"],
+        win: [`VK_OE${abbreviation}M_MINUS`, "BD"],
         jskey: ["-", "_"],
         jscode: "Minus",
     });
     keys.set("0D", {
         linux: "AE12",
         label: ["=", "+"],
+        win: [`VK_OE${abbreviation}M_PLUS`, "BB"],
         jskey: ["=", "+"],
         jscode: "Equal",
     });
@@ -261,10 +263,12 @@ const createDefinitionSet = (() => {
     keys.set("1A", {
         linux: "AD11",
         label: ["[", "{"],
+        win: [`VK_OE${abbreviation}M_4`, "DB"],
     });
     keys.set("1B", {
         linux: "AD12",
         label: ["]", "}"],
+        win: [`VK_OE${abbreviation}M_6`, "DD"],
     });
     keys.set("2B", {
         linux: "BKSL",
@@ -339,10 +343,12 @@ const createDefinitionSet = (() => {
     keys.set("27", {
         linux: "AC10",
         label: [";", ":"],
+        win: [`VK_OE${abbreviation}M_1`, "BA"],
     });
     keys.set("28", {
         linux: "AC11",
         label: ["'", "\""],
+        win: [`VK_OE${abbreviation}M_7`, "DE"],
     });
     keys.set("1C", {
         linux: "RTRN",
@@ -402,19 +408,22 @@ const createDefinitionSet = (() => {
     keys.set("33", {
         linux: "AB08",
         label: [",", "<"],
+        win: [`VK_OE${abbreviation}M_COMMA`, "BC"],
     });
     keys.set("34", {
         linux: "AB09",
         label: [".", ">"],
+        win: [`VK_OE${abbreviation}M_PERIOD`, "BE"],
     });
     keys.set("35", {
         linux: "AB10",
         label: ["/", "?"],
+        win: [`VK_OE${abbreviation}M_2`, "BF"],
     });
     keys.set("36", {
         linux: "RTSH",
         label: "Shift",
-        win: ["VK_RSHIFT", "A1"],
+        win: ["VK_RSHIFT", "10"],
     });
     //row 5:
     keys.set("1D", {
