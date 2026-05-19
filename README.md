@@ -4,6 +4,6 @@
 
 [Use the keyboard online](https://sakryukov.github.io/keyboard-layout-assistant/code/keyboard.html)
 
-[Test JavaScript Events online](https://sakryukov.github.io/keyboard-layout-assistant/code/test/js/index.html)
+[Test JavaScript events online](https://sakryukov.github.io/keyboard-layout-assistant/code/test/js/index.html)
 
 (Under development)
