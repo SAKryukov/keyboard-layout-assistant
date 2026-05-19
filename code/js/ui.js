@@ -47,12 +47,13 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     }; //populate
     populate(groups);
 
-    elementSet.select.onchange = event => {
+    const selectHandler = select => {
         elementSet.svg.classList = [];
-        elementSet.svg.classList.add(event.target.value);
-    }; //elementSet.select.onchange
+        elementSet.svg.classList.add(select.value);
+    } //selectHandler
+    elementSet.select.onchange = event => selectHandler(event.target);
+    selectHandler(elementSet.select);
 
-    elementSet.svg.classList.add(definitionSet.names.classes.scancode);
     const output = document.querySelector(definitionSet.names.elements.textarea);
     for (const group of groups) {
         group.onpointerup = event => {

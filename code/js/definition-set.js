@@ -2,20 +2,80 @@
 
 const createDefinitionSet = (() => {
 
+    const twoCaseArray = lower => [lower, lower.toUpperCase()];
+    const arrow = {
+        up: String.fromCodePoint(0x2191),
+        left: String.fromCodePoint(0x2190),
+        down: String.fromCodePoint(0x2193),
+        right: String.fromCodePoint(0x2192),
+        super: [String.fromCodePoint(0x229E), "Super"],
+        menu: [String.fromCodePoint(0x1f5b9), "Menu"],
+    }; //arrow
+
     const keys = new Map();
     keys.set("01", {
         linux: "ESC",
         label: "Esc",
     });
+    // F row
+    keys.set("3B", {
+        linux: "FK01",
+        label: "F1",
+    });
+    keys.set("3C", {
+        linux: "FK02",
+        label: "F2",
+    });
+    keys.set("3D", {
+        linux: "FK03",
+        label: "F3",
+    });
+    keys.set("3E", {
+        linux: "FK04",
+        label: "F4",
+    });
+    keys.set("3F", {
+        linux: "FK05",
+        label: "F5",
+    });
+    keys.set("40", {
+        linux: "FK06",
+        label: "F6",
+    });
+    keys.set("41", {
+        linux: "FK07",
+        label: "F7",
+    });
+    keys.set("42", {
+        linux: "FK08",
+        label: "F8",
+    });
+    keys.set("43", {
+        linux: "FK09",
+        label: "F9",
+    });
+    keys.set("44", {
+        linux: "FK10",
+        label: "F10",
+    });
+    keys.set("57", {
+        linux: "FK11",
+        label: "F11",
+    });
+    keys.set("58", {
+        linux: "FK12",
+        label: "F12",
+    });
+    //
     keys.set("29", {
         linux: "TLDE",
-        label: ["'", "~"],
+        label: ["`", "~"],
     });
+    // row 1
     keys.set("02", {
         linux: "AE01",
         label: ["1", "!"],
     });
-
     keys.set("03", {
         linux: "AE02",
         label: ["2", "@"],
@@ -64,22 +124,192 @@ const createDefinitionSet = (() => {
         linux: "BKSP",
         label: "Backspace",
     });
-    //--------------
+
+    // row 2:
     keys.set("10", {
         linux: "AD01",
-        label: ["q", "Q"],
+        label: twoCaseArray("q"),
     });
     keys.set("11", {
         linux: "AD02",
-        label: ["w", "W"],
+        label: twoCaseArray("w"),
     });
     keys.set("12", {
         linux: "AD03",
-        label: ["e", "E"],
+        label: twoCaseArray("e"),
     });
-    //...
+    keys.set("13", {
+        linux: "AD04",
+        label: twoCaseArray("r"),
+    });
+    keys.set("14", {
+        linux: "AD05",
+        label: twoCaseArray("t"),
+    });
+    keys.set("15", {
+        linux: "AD06",
+        label: twoCaseArray("y"),
+    });
+    keys.set("16", {
+        linux: "AD07",
+        label: twoCaseArray("u"),
+    });
+    keys.set("17", {
+        linux: "AD08",
+        label: twoCaseArray("i"),
+    });
+    keys.set("18", {
+        linux: "AD09",
+        label: twoCaseArray("o"),
+    });
+    keys.set("19", {
+        linux: "AD10",
+        label: twoCaseArray("p"),
+    });
+    //row 2, extra:
+    keys.set("1A", {
+        linux: "AD11",
+        label: ["[", "{"],
+    });
+    keys.set("1B", {
+        linux: "AD12",
+        label: ["]", "}"],
+    });
+    keys.set("2B", {
+        linux: "BKSL",
+        label: ["\\", "|"],
+    });
+    //row 3:
+    keys.set("1E", {
+        linux: "AC01",
+        label: twoCaseArray("a"),
+    });
+    keys.set("1F", {
+        linux: "AC02",
+        label: twoCaseArray("s"),
+    });
+    keys.set("20", {
+        linux: "AC03",
+        label: twoCaseArray("d"),
+    });
+    keys.set("21", {
+        linux: "AC04",
+        label: twoCaseArray("f"),
+    });
+    keys.set("22", {
+        linux: "AC05",
+        label: twoCaseArray("g"),
+    });
+    keys.set("23", {
+        linux: "AC06",
+        label: twoCaseArray("h"),
+    });
+    keys.set("24", {
+        linux: "AC07",
+        label: twoCaseArray("j"),
+    });
+    keys.set("25", {
+        linux: "AC08",
+        label: twoCaseArray("k"),
+    });
+    keys.set("26", {
+        linux: "AC09",
+        label: twoCaseArray("l"),
+    });
+    //row3, extra:
+    keys.set("27", {
+        linux: "AC10",
+        label: [";", ":"],
+    });
+    keys.set("28", {
+        linux: "AC11",
+        label: ["'", "\""],
+    });
+    keys.set("1C", {
+        linux: "RTRN",
+        label: "Enter",
+    });
+    //row 4:
+    keys.set("2C", {
+        linux: "AB01",
+        label: twoCaseArray("z"),
+    });
+    keys.set("2D", {
+        linux: "AB02",
+        label: twoCaseArray("x"),
+    });
+    keys.set("2E", {
+        linux: "AB03",
+        label: twoCaseArray("c"),
+    });
+    keys.set("2F", {
+        linux: "AB04",
+        label: twoCaseArray("v"),
+    });
+    keys.set("30", {
+        linux: "AB05",
+        label: twoCaseArray("b"),
+    });
+    keys.set("31", {
+        linux: "AB06",
+        label: twoCaseArray("n"),
+    });
+    keys.set("32", {
+        linux: "AB07",
+        label: twoCaseArray("m"),
+    });
+    keys.set("33", {
+        linux: "AB08",
+        label: [",", "<"],
+    });
+    keys.set("34", {
+        linux: "AB09",
+        label: [".", ">"],
+    });
+    keys.set("35", {
+        linux: "AB10",
+        label: ["/", "?"],
+    });
+    keys.set("36", {
+        linux: "RTSH",
+        label: "Shift",
+    });
+    //row 5:
+    keys.set("1D", {
+        linux: "LCTL",
+        label: "Ctrl",
+    });
+    keys.set("E0 5B", {
+        linux: "LWIN",
+        label: arrow.super, //"Win",
+    });
+    keys.set("38", {
+        linux: "LALT",
+        label: "Alt",
+    });
+    keys.set("39", {
+        linux: "39",
+        label: "",
+    });
+    keys.set("E0 38", {
+        linux: "RALT",
+        label: "Alt",
+    });
+    keys.set("E0 5C", {
+        linux: "RWIN",
+        label: arrow.super, //"Win",
+    });
+    keys.set("E0 5D", {
+        linux: "MENU",
+        label: arrow.menu, //"Menu"
+    });
+    keys.set("E0 1D", {
+        linux: "RCTL",
+        label: "Ctrl",
+    });
+    
+    
     //--------------
-
     keys.set("54", {
         linux: "PRSC",
         label: "PtSc",
@@ -91,6 +321,131 @@ const createDefinitionSet = (() => {
     keys.set("E1 1D", {
         linux: "PAUS",
         label: "Pause",
+    });
+    //
+    //insert, pg up/down, arrows:
+    keys.set("E0 52", {
+        linux: "INS",
+        label: "Insert",
+    });
+    keys.set("E0 47", {
+        linux: "HOME",
+        label: "Home",
+    });
+    keys.set("E0 49", {
+        linux: "PGUP",
+        label: "PgUp",
+    });
+    keys.set("E0 53", {
+        linux: "DELE",
+        label: "Delete",
+    });
+    keys.set("E0 4F", {
+        linux: "END",
+        label: "End",
+    });
+    keys.set("E0 51", {
+        linux: "PGDN",
+        label: "PgDn",
+    });
+    keys.set("E0 48", {
+        linux: "UP",
+        label: arrow.up
+    });
+    keys.set("E0 4B", {
+        linux: "LEFT",
+        label: arrow.left
+    });
+    keys.set("E0 50", {
+        linux: "DOWN",
+        label: arrow.down
+    });
+    keys.set("E0 4D", {
+        linux: "RIGHT",
+        label: arrow.right
+    });
+
+    // keypad;
+    keys.set("45", {
+        linux: "NMLK",
+        label: ["Lock", "Num"],
+    });
+    keys.set("E0 35", {
+        linux: "KPDV",
+        label: "/",
+    });
+    keys.set("37", {
+        linux: "KPMU",
+        label: "*",
+    });
+    keys.set("4A", {
+        linux: "KPSU",
+        label: "-",
+    });
+    keys.set("47", {
+        linux: "KP7",
+        label: ["Home", "7"],
+    });
+    keys.set("48", {
+        linux: "KP8",
+        label: [arrow.up, "8"],
+    });
+    keys.set("49", {
+        linux: "KP9",
+        label: ["PgUp", "9"],
+    });
+    keys.set("4B", {
+        linux: "KP4",
+        label: [arrow.left, "4"],
+    });
+    keys.set("4C", {
+        linux: "KP5",
+        label: "5",
+    });
+    keys.set("4D", {
+        linux: "KP6",
+        label: [arrow.right, "6"],
+    });
+    keys.set("4F", {
+        linux: "KP1",
+        label: ["End", "1"],
+    });
+    keys.set("50", {
+        linux: "KP2",
+        label: [arrow.down, "2"],
+    });
+    keys.set("51", {
+        linux: "KP3",
+        label: ["PgDn", "3"],
+    });
+    keys.set("52", {
+        linux: "KP0",
+        label: ["Insert", "0"],
+    });
+    keys.set("53", {
+        linux: "KPDL",
+        label: ["Delete", "."],
+    });
+    keys.set("4E", {
+        linux: "KPAD",
+        label: "+",
+    });
+    keys.set("E0 1C", {
+        linux: "KPEN",
+        label: "Enter",
+    });
+    // remaining left:
+    keys.set("0F", {
+        linux: "TAB",
+        label: "Tab",
+    });
+    keys.set("3A", {
+        linux: "CAPS",
+        label: "Caps Lock",
+    });
+    keys.set("2A", {
+        linux: "LFSH",
+        label: "Shift",
     });
     // keys
 
