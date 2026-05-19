@@ -9,14 +9,14 @@ const createDefinitionSet = (() => {
         ? name.substring(0, name.indexOf(abbreviation)) + abbreviation
             : name;
 
-    const arrow = {
+    const ideograph = {
         up: String.fromCodePoint(0x2191),
         left: String.fromCodePoint(0x2190),
         down: String.fromCodePoint(0x2193),
         right: String.fromCodePoint(0x2192),
         super: [String.fromCodePoint(0x229E), "Super"],
         menu: [String.fromCodePoint(0x1f5b9), "Menu"],
-    }; //arrow
+    }; //ideograph
 
     const keys = new Map();
         keys.set("01", {
@@ -433,7 +433,7 @@ const createDefinitionSet = (() => {
     });
     keys.set("E0 5B", {
         linux: "LWIN",
-        label: arrow.super, //"Win",
+        label: ideograph.super, //"Win",
         win: [`VK_LWIN`, "5B"],
     });
     keys.set("38", {
@@ -453,12 +453,12 @@ const createDefinitionSet = (() => {
     });
     keys.set("E0 5C", {
         linux: "RWIN",
-        label: arrow.super, //"Win",
+        label: ideograph.super, //"Win",
         win: ["VK_RWIN", "5C"], 
     });
     keys.set("E0 5D", {
         linux: "MENU",
-        label: arrow.menu, //"Menu"
+        label: ideograph.menu, //"Menu"
         win: ["VK_APPS", "5D"],
     });
     keys.set("E0 1D", {
@@ -494,88 +494,108 @@ const createDefinitionSet = (() => {
     keys.set("E0 52", {
         linux: "INS",
         label: "Insert",
+        win: [`VK_IN${abbreviation}SERT`, "2D"],
     });
     keys.set("E0 47", {
         linux: "HOME",
         label: "Home",
+        win: [`VK_HO${abbreviation}ME`, "24"],
     });
     keys.set("E0 49", {
         linux: "PGUP",
         label: "PgUp",
+        win: [`VK_P${abbreviation}RIOR`, "21"],
     });
     keys.set("E0 53", {
         linux: "DELE",
         label: "Delete",
+        win: [`VK_DE${abbreviation}LETE`, "2E"],
     });
     keys.set("E0 4F", {
         linux: "END",
         label: "End",
+        win: [`VK_EN${abbreviation}D`, "23"],
     });
     keys.set("E0 51", {
         linux: "PGDN",
         label: "PgDn",
+        win: [`VK_N${abbreviation}EXT`, "22"],
     });
     keys.set("E0 48", {
         linux: "UP",
-        label: arrow.up
+        label: ideograph.up,
+        win: ["VK_UP", "26"],
     });
     keys.set("E0 4B", {
         linux: "LEFT",
-        label: arrow.left
+        label: ideograph.left,
+        win: [`VK_L${abbreviation}EFT`, "25"],
     });
     keys.set("E0 50", {
         linux: "DOWN",
-        label: arrow.down
+        label: ideograph.down,
+        win: [`VK_D${abbreviation}OWN`, "28"],
     });
     keys.set("E0 4D", {
         linux: "RIGHT",
-        label: arrow.right
+        label: ideograph.right,
+        win: [`VK_RI${abbreviation}GHT`, "27"],
     });
 
     // keypad;
     keys.set("45", {
         linux: "NMLK",
         label: ["Lock", "Num"],
+        win: [`VK_NU${abbreviation}MLOCK`, "90"],
         jskey: `Nu${abbreviation}mLock`,
         jscode: `Nu${abbreviation}mLock`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
         label: "/",
+        win: [`VK_DI${abbreviation}VIDE`, "6F"],
     });
     keys.set("37", {
         linux: "KPMU",
         label: "*",
+        win: [`VK_MU${abbreviation}LTIPLY`, "6A"],
     });
     keys.set("4A", {
         linux: "KPSU",
         label: "-",
         jskey: "-",
         jscode: `Nu${abbreviation}mpadSubtract`,
+        win: [`VK_SU${abbreviation}BTRACT`, "6D"],
     });
     keys.set("47", {
         linux: "KP7",
         label: ["Home", "7"],
+        win: [`VK_HO${abbreviation}ME`, "24"],
     });
     keys.set("48", {
         linux: "KP8",
-        label: [arrow.up, "8"],
+        label: [ideograph.up, "8"],
+        win: [`VK_UP`, "26"],
     });
     keys.set("49", {
         linux: "KP9",
         label: ["PgUp", "9"],
+        win: [`VK_PR${abbreviation}IOR`, "21"],
     });
     keys.set("4B", {
         linux: "KP4",
-        label: [arrow.left, "4"],
+        label: [ideograph.left, "4"],
+        win: [`VK_LE${abbreviation}FT`, "25"],
     });
     keys.set("4C", {
         linux: "KP5",
         label: "5",
+        win: [`VК_CL${abbreviation}EAR`, "0C", `VK_KE${abbreviation}YPAD_5`, "65"],
     });
     keys.set("4D", {
         linux: "KP6",
-        label: [arrow.right, "6"],
+        label: [ideograph.right, "6"],
+        win: [`VK_RI${abbreviation}GHT`, "27"],
     });
     keys.set("4F", {
         linux: "KP1",
@@ -583,7 +603,7 @@ const createDefinitionSet = (() => {
     });
     keys.set("50", {
         linux: "KP2",
-        label: [arrow.down, "2"],
+        label: [ideograph.down, "2"],
     });
     keys.set("51", {
         linux: "KP3",
