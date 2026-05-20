@@ -38,9 +38,11 @@
             output.removeChild(output.lastChild);
     }; //buttonClear.onclick
     buttonCopy.onclick = () => {
-        if (output.selectedIndex < 0) return;
-        const option = output.children[output.selectedIndex];
-        navigator.clipboard.writeText(option.textContent);
+        let text = "";
+        for (const option of output.children)
+            text += `${option.textContent}\n`;
+        if (text)
+            navigator.clipboard.writeText(text);
     } //buttonCopy.onclick
     window.onkeydown = event => {
         if (ignore.checked &&

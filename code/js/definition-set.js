@@ -31,61 +31,85 @@ const createDefinitionSet = (() => {
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
+        jskey: "F1",
+        jscode: "F1",
     });
     keys.set("3C", {
         linux: "FK02",
         label: "F2",
         win: ["VK_F2", "71"],
+        jskey: "F2",
+        jscode: "F2",
     });
     keys.set("3D", {
         linux: "FK03",
         label: "F3",
         win: ["VK_F3", "72"],
+        jskey: "F3",
+        jscode: "F3",
     });
     keys.set("3E", {
         linux: "FK04",
         label: "F4",
         win: ["VK_F4", "73"],
+        jskey: "F4",
+        jscode: "F4",
     });
     keys.set("3F", {
         linux: "FK05",
         label: "F5",
         win: ["VK_F5", "74"],
+        jskey: "F5",
+        jscode: "F5",
     });
     keys.set("40", {
         linux: "FK06",
         label: "F6",
         win: ["VK_F6", "75"],
+        jskey: "F6",
+        jscode: "F6",
     });
     keys.set("41", {
         linux: "FK07",
         label: "F7",
         win: ["VK_F7", "76"],
+        jskey: "F7",
+        jscode: "F7",
     });
     keys.set("42", {
         linux: "FK08",
         label: "F8",
         win: ["VK_F8", "77"],
+        jskey: "F8",
+        jscode: "F8",
     });
     keys.set("43", {
         linux: "FK09",
         label: "F9",
         win: ["VK_F9", "78"],
+        jskey: "F9",
+        jscode: "F9",
     });
     keys.set("44", {
         linux: "FK10",
         label: "F10",
         win: ["VK_F10", "79"],
+        jskey: "F10",
+        jscode: "F10",
     });
     keys.set("57", {
         linux: "FK11",
         label: "F11",
         win: ["VK_F11", "7A"],
+        jskey: "F11",
+        jscode: "F11",
     });
     keys.set("58", {
         linux: "FK12",
         label: "F12",
         win: ["VK_F12", "7B"],
+        jskey: "F12",
+        jscode: "F12",
     });
     //
     keys.set("29", {
@@ -264,16 +288,22 @@ const createDefinitionSet = (() => {
         linux: "AD11",
         label: ["[", "{"],
         win: [`VK_OE${abbreviation}M_4`, "DB"],
+        jskey: ["[", "{"],
+        jscode: `Bra${abbreviation}cketLeft`,
     });
     keys.set("1B", {
         linux: "AD12",
         label: ["]", "}"],
         win: [`VK_OE${abbreviation}M_6`, "DD"],
+        jskey: ["]", "}"],
+        jscode: `Bra${abbreviation}cketRight`,
     });
     keys.set("2B", {
         linux: "BKSL",
         label: ["\\", "|"],
         win: ["VK_OEM_5", "0xDC"],
+        jskey: ["\\", "|"],
+        jscode: `Backsl${abbreviation}ash`,
     });
     //row 3:
     keys.set("1E", {
@@ -344,16 +374,22 @@ const createDefinitionSet = (() => {
         linux: "AC10",
         label: [";", ":"],
         win: [`VK_OE${abbreviation}M_1`, "BA"],
+        jskey: [";", ":"],
+        jscode: `Sem${abbreviation}icolon`,
     });
     keys.set("28", {
         linux: "AC11",
         label: ["'", "\""],
         win: [`VK_OE${abbreviation}M_7`, "DE"],
+        jskey: ["'", "\""],
+        jscode: "Quote",
     });
     keys.set("1C", {
         linux: "RTRN",
         label: "Enter",
         win: ["VK_RETURN", "0D"],
+        jskey: "Enter",
+        jscode: "Enter",
     });
     //row 4:
     keys.set("2C", {
@@ -409,62 +445,92 @@ const createDefinitionSet = (() => {
         linux: "AB08",
         label: [",", "<"],
         win: [`VK_OE${abbreviation}M_COMMA`, "BC"],
+        jskey: [",", "<"],
+        jscode: `Com${abbreviation}ma`,
     });
     keys.set("34", {
         linux: "AB09",
         label: [".", ">"],
         win: [`VK_OE${abbreviation}M_PERIOD`, "BE"],
+        jskey: [".", ">"],
+        jscode: `Per${abbreviation}iod`,
     });
     keys.set("35", {
         linux: "AB10",
         label: ["/", "?"],
         win: [`VK_OE${abbreviation}M_2`, "BF"],
+        jskey: ["/", "?"],
+        jscode: `Slash`,
     });
     keys.set("36", {
         linux: "RTSH",
         label: "Shift",
         win: ["VK_RSHIFT", "10"],
+        jskey: "Shift",
+        jscode: "ShiftRight",
     });
     //row 5:
+
+/*
+code: AltRight, key: Alt
+code: ContextMenu, key: ContextMenu
+code: ControlRight, key: Control
+*/    
     keys.set("1D", {
         linux: "LCTL",
         label: "Ctrl",
         win: [`VK_LCO${abbreviation}NTROL`, "A2"],
+        jskey: "Control",
+        jscode: `Contr${abbreviation}olLeft`,
     });
     keys.set("E0 5B", {
         linux: "LWIN",
         label: ideograph.super, //"Win",
         win: [`VK_LWIN`, "5B"],
+        jskey: "Meta",
+        jscode: `MetaL${abbreviation}eft`,
     });
     keys.set("38", {
         linux: "LALT",
         label: "Alt",
         win: [`VK_LME${abbreviation}NU`, "A4"],
+        jskey: "Alt",
+        jscode: `AltLeft`,
     });
     keys.set("39", {
         linux: "39",
         label: "",
         win: ["VK_SPACE", "20"],
+        jskey: "",
+        jscode: "Space",
     });
     keys.set("E0 38", {
         linux: "RALT",
         label: "Alt",
         win: [`VK_RME${abbreviation}NU`, "A5"],
+        jskey: "Alt",
+        jscode: `AltRight`,
     });
     keys.set("E0 5C", {
         linux: "RWIN",
         label: ideograph.super, //"Win",
         win: ["VK_RWIN", "5C"], 
+        jskey: "Meta",
+        jscode: `MetaR${abbreviation}ight`,
     });
     keys.set("E0 5D", {
         linux: "MENU",
         label: ideograph.menu, //"Menu"
         win: ["VK_APPS", "5D"],
+        jskey: `Conte${abbreviation}xtMenu`,
+        jscode: `Conte${abbreviation}xtMenu`,
     });
     keys.set("E0 1D", {
         linux: "RCTL",
         label: "Ctrl",
         win: [`VK_RCO${abbreviation}NTROL`, "A3"],
+        jskey: "Control",
+        jscode: `Contr${abbreviation}olRight`,
     });
     //--------------
     keys.set("54", {
@@ -495,51 +561,71 @@ const createDefinitionSet = (() => {
         linux: "INS",
         label: "Insert",
         win: [`VK_IN${abbreviation}SERT`, "2D"],
+        jskey: `Insert`,
+        jscode: 'Insert',
     });
     keys.set("E0 47", {
         linux: "HOME",
         label: "Home",
         win: [`VK_HO${abbreviation}ME`, "24"],
+        jskey: `Home`,
+        jscode: 'Home',
     });
     keys.set("E0 49", {
         linux: "PGUP",
         label: "PgUp",
         win: [`VK_P${abbreviation}RIOR`, "21"],
+        jskey: `Pag${abbreviation}eUp`,
+        jscode: `Pag${abbreviation}eUp`,
     });
     keys.set("E0 53", {
         linux: "DELE",
         label: "Delete",
         win: [`VK_DE${abbreviation}LETE`, "2E"],
+        jskey: "Delete",
+        jscode: "Delete",
     });
     keys.set("E0 4F", {
         linux: "END",
         label: "End",
         win: [`VK_EN${abbreviation}D`, "23"],
+        jskey: "End",
+        jscode: "End",
     });
     keys.set("E0 51", {
         linux: "PGDN",
         label: "PgDn",
         win: [`VK_N${abbreviation}EXT`, "22"],
+        jskey: `Pag${abbreviation}eDown`,
+        jscode: `Pag${abbreviation}eDown`,
     });
     keys.set("E0 48", {
         linux: "UP",
         label: ideograph.up,
         win: ["VK_UP", "26"],
+        jskey: `Arr${abbreviation}owUp`,
+        jscode: `Arr${abbreviation}owUp`,
     });
     keys.set("E0 4B", {
         linux: "LEFT",
         label: ideograph.left,
         win: [`VK_L${abbreviation}EFT`, "25"],
+        jskey: `Arr${abbreviation}owLeft`,
+        jscode: `Arr${abbreviation}owLeft`,
     });
     keys.set("E0 50", {
         linux: "DOWN",
         label: ideograph.down,
         win: [`VK_D${abbreviation}OWN`, "28"],
+        jskey: `Arr${abbreviation}owDown`,
+        jscode: `Arr${abbreviation}owDown`,
     });
     keys.set("E0 4D", {
         linux: "RIGHT",
         label: ideograph.right,
         win: [`VK_RI${abbreviation}GHT`, "27"],
+        jskey: `Arr${abbreviation}owRight`,
+        jscode: `Arr${abbreviation}owRight`,
     });
 
     // keypad;
@@ -554,78 +640,111 @@ const createDefinitionSet = (() => {
         linux: "KPDV",
         label: "/",
         win: [`VK_DI${abbreviation}VIDE`, "6F"],
+        jskey: "/",
+        jscode: `Nu${abbreviation}mpadDivide`,
     });
     keys.set("37", {
         linux: "KPMU",
         label: "*",
         win: [`VK_MU${abbreviation}LTIPLY`, "6A"],
+        jskey: "*",
+        jscode: `Nu${abbreviation}mpadMultiply`,
     });
     keys.set("4A", {
         linux: "KPSU",
         label: "-",
+        win: [`VK_SU${abbreviation}BTRACT`, "6D"],
         jskey: "-",
         jscode: `Nu${abbreviation}mpadSubtract`,
-        win: [`VK_SU${abbreviation}BTRACT`, "6D"],
     });
     keys.set("47", {
         linux: "KP7",
         label: ["Home", "7"],
-        win: [`VK_HO${abbreviation}ME`, "24"],
+        win: [`VK_HO${abbreviation}ME`, "24", `VK_NU${abbreviation}MPAD7`, "67"],
+        jskey: ["Home", "7"],
+        jscode: `Nu${abbreviation}mpad7`,
     });
     keys.set("48", {
         linux: "KP8",
         label: [ideograph.up, "8"],
-        win: [`VK_UP`, "26"],
+        win: [`VK_UP`, "26", `VK_NU${abbreviation}MPAD8`, "68"],
+        jskey: [`Arr${abbreviation}owUp`, "8"],
+        jscode: `Nu${abbreviation}mpad8`,
     });
     keys.set("49", {
         linux: "KP9",
         label: ["PgUp", "9"],
-        win: [`VK_PR${abbreviation}IOR`, "21"],
+        win: [`VK_PR${abbreviation}IOR`, "21", `VK_NU${abbreviation}MPAD9`, "69"],
+        jskey: [`Pag${abbreviation}eUp`, "9"],
+        jscode: `Nu${abbreviation}mpad9`,
     });
     keys.set("4B", {
         linux: "KP4",
         label: [ideograph.left, "4"],
-        win: [`VK_LE${abbreviation}FT`, "25"],
+        win: [`VK_LE${abbreviation}FT`, "25", `VK_NU${abbreviation}MPAD4`, "64"],
+        jskey: [`Arr${abbreviation}owLeft`, "4"],
+        jscode: `Nu${abbreviation}mpad4`,
     });
     keys.set("4C", {
         linux: "KP5",
         label: "5",
-        win: [`VК_CL${abbreviation}EAR`, "0C", `VK_KE${abbreviation}YPAD_5`, "65"],
+        win: [`VК_CL${abbreviation}EAR`, "0C", `VK_NU${abbreviation}MPAD5`, "65"],
+        jskey: [`Uni${abbreviation}dentified`, "5"],
+        jscode: `Nu${abbreviation}mpad5`,
     });
     keys.set("4D", {
         linux: "KP6",
         label: [ideograph.right, "6"],
-        win: [`VK_RI${abbreviation}GHT`, "27"],
+        win: [`VK_RI${abbreviation}GHT`, "27", `VK_NU${abbreviation}MPAD6`, "66"],
+        jskey: [`Arr${abbreviation}owRight`, "6"],
+        jscode: `Nu${abbreviation}mpad6`,
     });
     keys.set("4F", {
         linux: "KP1",
         label: ["End", "1"],
+        win: [`VK_END`, "23", `VK_NU${abbreviation}MPAD1`, "61"],
+        jskey: [`End`, "1"],
+        jscode: `Nu${abbreviation}mpad1`,
     });
     keys.set("50", {
         linux: "KP2",
         label: [ideograph.down, "2"],
+        win: [`VK_DO${abbreviation}WN`, "28", `VK_NU${abbreviation}MPAD2`, "62"],
+        jskey: [`Arr${abbreviation}owDown`, "2"],
+        jscode: `Nu${abbreviation}mpad2`,
     });
     keys.set("51", {
         linux: "KP3",
         label: ["PgDn", "3"],
+        win: [`VK_NE${abbreviation}XT`, "22", `VK_NU${abbreviation}MPAD3`, "63"],
+        jskey: [`Pag${abbreviation}eDown`, "3"],
+        jscode: `Nu${abbreviation}mpad3`,
     });
     keys.set("52", {
         linux: "KP0",
         label: ["Insert", "0"],
+        win: [`VK_INSERT`, "2D", `VK_NUMPAD0`, "60"],
+        jskey: [`Insert`, "0"],
+        jscode: `Numpad0`,
     });
     keys.set("53", {
         linux: "KPDL",
         label: ["Delete", "."],
+        win: [`VK_DE${abbreviation}LETE`, "2E", `VK_DE${abbreviation}CIMAL`, "6E"],
+        jskey: [`Del${abbreviation}ete`, "."],
+        jscode: `Nu${abbreviation}mpadDecimal`,
     });
     keys.set("4E", {
         linux: "KPAD",
         label: "+",
+        win: [`VK_AD${abbreviation}D`, "6B"],
         jskey: "+",
         jscode: `Nu${abbreviation}mpadAdd`,
     });
     keys.set("E0 1C", {
         linux: "KPEN",
         label: "Enter",
+        win: [`VK_RE${abbreviation}TURN`, "0D"],
         jskey: "Enter",
         jscode: `Nu${abbreviation}mpadEnter`,
     });
@@ -648,6 +767,8 @@ const createDefinitionSet = (() => {
         linux: "LFSH",
         label: "Shift",
         win: ["VK_LSHIFT", "A0"],
+        jskey: "Shift",
+        jscode: "ShiftLeft",
     });
     // keys
 
