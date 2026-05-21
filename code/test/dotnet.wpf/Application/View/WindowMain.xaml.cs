@@ -1,6 +1,7 @@
 ﻿namespace SA.Test.CommandLine.View {
     using System.Windows;
     using System.Windows.Input;
+    using StringBuilder = System.Text.StringBuilder;
 
     public partial class WindowMain : Window {
 
@@ -11,8 +12,16 @@
                     ? eventArgs.SystemKey
                     : eventArgs.Key;
                 int keyValue = (int)key;
-                listBoxOutput.Items.Add($"{key.ToString()}, Value: {keyValue:X2}, Decimal Value: {keyValue}");
+                listBoxOutput.Items.Add($"{key}, Value: {keyValue:X2}, Decimal Value: {keyValue}");
             };
+            buttonClear.Click += (sender, eventArgs) => 
+                listBoxOutput.Items.Clear();
+            buttonCopy.Click += (sender, eventArgs) => {
+                StringBuilder sb = new();
+                foreach (var item in listBoxOutput.Items)
+                    sb.AppendLine(item.ToString());
+                Clipboard.SetText(sb.ToString());
+            }; //buttonCopy.Click
         } //WindowMain
 
     } //class WindowMain

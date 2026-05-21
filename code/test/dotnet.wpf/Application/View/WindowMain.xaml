@@ -13,10 +13,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="buttonCopy">Copy</Button>
             <Button  x:Name="buttonClear">Clear</Button>
-            <CheckBox>Include</CheckBox>
         </StackPanel>
-        <ListBox x:Name="listBoxOutput" Grid.Row="1">
-            <ListBoxItem>0</ListBoxItem>
-        </ListBox>
+        <ListBox x:Name="listBoxOutput" Grid.Row="1" />
     </Grid>
 </Window>
