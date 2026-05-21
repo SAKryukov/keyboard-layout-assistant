@@ -1,0 +1,22 @@
+﻿<Window x:Class="SA.Test.CommandLine.View.WindowMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:system="clr-namespace:System;assembly=netstandard"
+        WindowStartupLocation="CenterScreen"
+        Width="640"
+        MinWidth="540"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="buttonCopy">Copy</Button>
+            <Button  x:Name="buttonClear">Clear</Button>
+            <CheckBox>Include</CheckBox>
+        </StackPanel>
+        <ListBox x:Name="listBoxOutput" Grid.Row="1">
+            <ListBoxItem>0</ListBoxItem>
+        </ListBox>
+    </Grid>
+</Window>
