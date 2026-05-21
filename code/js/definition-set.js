@@ -23,144 +23,76 @@ const createDefinitionSet = (() => {
         linux: "ESC",
         label: "Esc",
         win: [`VK_ES${abbreviation}CAPE`, "1B"],
-        dotnetforms: [`Esc${abbreviation}ape`, "1B"],
-        dotnetwpf: [`Esc${abbreviation}ape`, "0D"],
-        jskey: `Esc${abbreviation}ape`,
-        jscode: `Esc${abbreviation}ape`,
+        dotnetforms: `Esc${abbreviation}ape`,
     });
     // F row
     keys.set("3B", {
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
-        dotnetforms: ["F1", "70"],
-        dotnetwpf: ["F1", "5A"],
-        jskey: "F1",
-        jscode: "F1",
     });
     keys.set("3C", {
         linux: "FK02",
         label: "F2",
         win: ["VK_F2", "71"],
-        dotnetforms: ["F2", "71"],
-        dotnetwpf: ["F2", "5B"],
-        jskey: "F2",
-        jscode: "F2",
     });
     keys.set("3D", {
         linux: "FK03",
         label: "F3",
         win: ["VK_F3", "72"],
-        dotnetforms: ["F3", "72"],
-        dotnetwpf: ["F3", "5C"],
-        jskey: "F3",
-        jscode: "F3",
     });
     keys.set("3E", {
         linux: "FK04",
         label: "F4",
         win: ["VK_F4", "73"],
-        dotnetforms: ["F4", "73"],
-        dotnetwpf: ["F4", "5D"],
-        jskey: "F4",
-        jscode: "F4",
     });
     keys.set("3F", {
         linux: "FK05",
         label: "F5",
         win: ["VK_F5", "74"],
-        dotnetforms: ["F5", "74"],
-        dotnetwpf: ["F5", "5E"],
-        jskey: "F5",
-        jscode: "F5",
     });
     keys.set("40", {
         linux: "FK06",
         label: "F6",
         win: ["VK_F6", "75"],
-        dotnetforms: ["F6", "75"],
-        dotnetwpf: ["F6", "5F"],
-        jskey: "F6",
-        jscode: "F6",
     });
     keys.set("41", {
         linux: "FK07",
         label: "F7",
         win: ["VK_F7", "76"],
-        dotnetforms: ["F7", "76"],
-        dotnetwpf: ["F7", "60"],
-        jskey: "F7",
-        jscode: "F7",
     });
     keys.set("42", {
         linux: "FK08",
         label: "F8",
         win: ["VK_F8", "77"],
-        dotnetforms: ["F8", "77"],
-        dotnetwpf: ["F8", "61"],
-        jskey: "F8",
-        jscode: "F8",
     });
     keys.set("43", {
         linux: "FK09",
         label: "F9",
         win: ["VK_F9", "78"],
-        dotnetforms: ["F9", "78"],
-        dotnetwpf: ["F9", "62"],
-        jskey: "F9",
-        jscode: "F9",
     });
     keys.set("44", {
         linux: "FK10",
         label: "F10",
         win: ["VK_F10", "79"],
-        dotnetforms: ["F10", "79"],
-        dotnetwpf: ["F10", "63"],
-        jskey: "F10",
-        jscode: "F10",
     });
     keys.set("57", {
         linux: "FK11",
         label: "F11",
         win: ["VK_F11", "7A"],
-        dotnetforms: ["F11", "7A"],
-        dotnetwpf: ["F11", "64"],
-        jskey: "F11",
-        jscode: "F11",
     });
     keys.set("58", {
         linux: "FK12",
         label: "F12",
         win: ["VK_F12", "7B"],
-        dotnetforms: ["F12", "7B"],
-        dotnetwpf: ["F12", "65"],
-        jskey: "F12",
-        jscode: "F12",
     });
     //
-
-/*
-System.Windows.Forms.Key: KeyCode: D1; KeyValue: 0x31; Decimal KeyValue: 49
-System.Windows.Forms.Key: KeyCode: D2; KeyValue: 0x32; Decimal KeyValue: 50
-System.Windows.Forms.Key: KeyCode: D3; KeyValue: 0x33; Decimal KeyValue: 51
-System.Windows.Forms.Key: KeyCode: D4; KeyValue: 0x34; Decimal KeyValue: 52
-System.Windows.Forms.Key: KeyCode: D5; KeyValue: 0x35; Decimal KeyValue: 53
-System.Windows.Forms.Key: KeyCode: D6; KeyValue: 0x36; Decimal KeyValue: 54
-System.Windows.Forms.Key: KeyCode: D7; KeyValue: 0x37; Decimal KeyValue: 55
-System.Windows.Forms.Key: KeyCode: D8; KeyValue: 0x38; Decimal KeyValue: 56
-System.Windows.Forms.Key: KeyCode: D9; KeyValue: 0x39; Decimal KeyValue: 57
-System.Windows.Forms.Key: KeyCode: D0; KeyValue: 0x30; Decimal KeyValue: 48
-System.Windows.Forms.Key: KeyCode: OemMinus; KeyValue: 0xBD; Decimal KeyValue: 189
-System.Windows.Forms.Key: KeyCode: Oemplus; KeyValue: 0xBB; Decimal KeyValue: 187
-System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
-*/
-
     keys.set("29", {
         linux: "TLDE",
         label: ["`", "~"],
         win: [`VK_O${abbreviation}EM_3`, "C0"],
-        dotnetforms: [`Oem${abbreviation}tilde`, "C0"],
-        dotnetwpf: [`Oem${abbreviation}Tilde`, "92"],
+        dotnetforms: `Oem${abbreviation}tilde`,
+        dotnetwpf: `Oem${abbreviation}Tilde`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: "`",
         jscode: `Bac${abbreviation}kquote`,
     });
@@ -169,8 +101,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE01",
         label: ["1", "!"],
         win: ["1", "31"],
-        dotnetforms: ["D1", "31"],
-        dotnetwpf: ["D1", "23"],
+        dotnetforms: "D1",
         jskey: ["1", "!"],
         jscode: "Digit1",
     });
@@ -178,8 +109,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE02",
         label: ["2", "@"],
         win: ["2", "32"],
-        dotnetforms: ["D2", "32"],
-        dotnetwpf: ["D2", "24"],
+        dotnetforms: "D2",
         jskey: ["2", "@"],
         jscode: "Digit2",
     });
@@ -187,8 +117,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: `AE03`,
         label: ["3", "#"],
         win: ["3", "33"],
-        dotnetforms: ["D3", "33"],
-        dotnetwpf: ["D3", "25"],
+        dotnetforms: "D3",
         jskey: ["3", "#"],
         jscode: "Digit3",
     });
@@ -196,8 +125,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE04",
         label: ["4", "$"],
         win: ["4", "34"],
-        dotnetforms: ["D4", "34"],
-        dotnetwpf: ["D4", "26"],
+        dotnetforms: "D4",
         jskey: ["4", "$"],
         jscode: "Digit4",
     });
@@ -205,8 +133,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE05",
         label: ["5", "%"],
         win: ["5", "35"],
-        dotnetforms: ["D5", "35"],
-        dotnetwpf: ["D5", "27"],
+        dotnetforms: "D5",
         jskey: ["5", "%"],
         jscode: "Digit5",
     });
@@ -214,8 +141,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE06",
         label: ["6", "^"],
         win: ["6", "36"],
-        dotnetforms: ["D6", "36"],
-        dotnetwpf: ["D6", "28"],
+        dotnetforms: "D6",
         jskey: ["6", "^"],
         jscode: "Digit6",
     });
@@ -223,8 +149,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE07",
         label: ["7", "&"],
         win: ["7", "37"],
-        dotnetforms: ["D7", "37"],
-        dotnetwpf: ["D7", "29"],
+        dotnetforms: "D7",
         jskey: ["7", "&"],
         jscode: "Digit7",
     });
@@ -232,8 +157,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE08",
         label: ["8", "*"],
         win: ["8", "38"],
-        dotnetforms: ["D8", "38"],
-        dotnetwpf: ["D8", "2A"],
+        dotnetforms: "D8",
         jskey: ["8", "*"],
         jscode: "Digit8",
     });
@@ -241,8 +165,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE09",
         label: ["9", "("],
         win: ["9", "39"],
-        dotnetforms: ["D9", "39"],
-        dotnetwpf: ["D9", "2B"],
+        dotnetforms: "D9",
         jskey: ["9", "("],
         jscode: "Digit9",
     });
@@ -250,8 +173,7 @@ System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
         linux: "AE10",
         label: ["0", ")"],
         win: ["0", "30"],
-        dotnetforms: ["D0", "30"],
-        dotnetwpf: ["D0", "22"],
+        dotnetforms: "D0",
         jskey: ["0", ")"],
         jscode: "Digit0",
     });
@@ -602,8 +524,7 @@ code: ControlRight, key: Control
         linux: "PRSC",
         label: "PtSc",
         win: [`VK_SN${abbreviation}APSHOT`, "2C"],
-        dotnetforms: [`Prin${abbreviation}tScreen`, "2C"],
-        dotnetwpf: [`Prin${abbreviation}tScreen`, "1C"],
+        dotnetforms: `Prin${abbreviation}tScreen`,
         jskey: `Pri${abbreviation}ntScreen`,
         jscode: `Pri${abbreviation}ntScreen`,
     });
@@ -611,8 +532,7 @@ code: ControlRight, key: Control
         linux: "SCLK",
         label: ["Lock", "Scroll"],
         win: [`VK_SC${abbreviation}CROLL`, 	"91"],
-        dotnetforms: [`Scroll`, "91"],
-        dotnetwpf: [`Scroll`, "73"],
+        dotnetforms: `Scroll`,
         jskey: `Scr${abbreviation}ollLock`,
         jscode: `Scr${abbreviation}ollLock`,
     });
@@ -620,8 +540,7 @@ code: ControlRight, key: Control
         linux: "PAUS",
         label: "Pause",
         win: [`VK_PA${abbreviation}USE`, "13"],
-        dotnetforms: [`Pause`, "13"],
-        dotnetwpf: [`Pause`, "07"],
+        dotnetforms: `Pause`,
         jskey: `Pause`,
         jscode: `Pause`,
     });
@@ -841,6 +760,21 @@ code: ControlRight, key: Control
         jscode: "ShiftLeft",
     });
     // keys
+    (keys => { // prepopulate
+        const values = keys.values();
+        for (const value of values) {
+            if (value.dotnetforms == undefined) {
+                value.dotnetforms = value.label;
+                value.dotnetwpf = value.label;
+                value.jskey = value.label;
+                value.jscode = value.label;
+            } else if (value.dotnetwpf == undefined) {
+                value.dotnetwpf = value.dotnetforms;
+                value.jskey = value.dotnetforms;
+                value.jscode = value.dotnetforms;
+            } //if
+        } //loop
+    })(keys);
 
     const initializeNames = objectArray => {
         for (const subset of objectArray)
