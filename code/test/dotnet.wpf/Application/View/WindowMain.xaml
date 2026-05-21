@@ -5,14 +5,22 @@
         Width="640"
         MinWidth="540"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="18 2 18 4"/>
+                <Setter Property="Margin" Value="4 4 4 4"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="buttonCopy">Copy</Button>
-            <Button  x:Name="buttonClear">Clear</Button>
+            <Button x:Name="buttonCopy">📋 C_opy</Button>
+            <Button  x:Name="buttonClear">❌ _Clear</Button>
         </StackPanel>
         <ListBox x:Name="listBoxOutput" Grid.Row="1" />
     </Grid>
