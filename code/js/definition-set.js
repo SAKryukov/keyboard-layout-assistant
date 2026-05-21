@@ -138,10 +138,29 @@ const createDefinitionSet = (() => {
         jscode: "F12",
     });
     //
+
+/*
+System.Windows.Forms.Key: KeyCode: D1; KeyValue: 0x31; Decimal KeyValue: 49
+System.Windows.Forms.Key: KeyCode: D2; KeyValue: 0x32; Decimal KeyValue: 50
+System.Windows.Forms.Key: KeyCode: D3; KeyValue: 0x33; Decimal KeyValue: 51
+System.Windows.Forms.Key: KeyCode: D4; KeyValue: 0x34; Decimal KeyValue: 52
+System.Windows.Forms.Key: KeyCode: D5; KeyValue: 0x35; Decimal KeyValue: 53
+System.Windows.Forms.Key: KeyCode: D6; KeyValue: 0x36; Decimal KeyValue: 54
+System.Windows.Forms.Key: KeyCode: D7; KeyValue: 0x37; Decimal KeyValue: 55
+System.Windows.Forms.Key: KeyCode: D8; KeyValue: 0x38; Decimal KeyValue: 56
+System.Windows.Forms.Key: KeyCode: D9; KeyValue: 0x39; Decimal KeyValue: 57
+System.Windows.Forms.Key: KeyCode: D0; KeyValue: 0x30; Decimal KeyValue: 48
+System.Windows.Forms.Key: KeyCode: OemMinus; KeyValue: 0xBD; Decimal KeyValue: 189
+System.Windows.Forms.Key: KeyCode: Oemplus; KeyValue: 0xBB; Decimal KeyValue: 187
+System.Windows.Forms.Key: KeyCode: Back; KeyValue: 0x08; Decimal KeyValue: 8
+*/
+
     keys.set("29", {
         linux: "TLDE",
         label: ["`", "~"],
         win: [`VK_O${abbreviation}EM_3`, "C0"],
+        dotnetforms: [`Oem${abbreviation}tilde`, "C0"],
+        dotnetwpf: [`Oem${abbreviation}Tilde`, "92"],
         jskey: "`",
         jscode: `Bac${abbreviation}kquote`,
     });
@@ -150,6 +169,8 @@ const createDefinitionSet = (() => {
         linux: "AE01",
         label: ["1", "!"],
         win: ["1", "31"],
+        dotnetforms: ["D1", "31"],
+        dotnetwpf: ["D1", "23"],
         jskey: ["1", "!"],
         jscode: "Digit1",
     });
@@ -157,6 +178,8 @@ const createDefinitionSet = (() => {
         linux: "AE02",
         label: ["2", "@"],
         win: ["2", "32"],
+        dotnetforms: ["D2", "32"],
+        dotnetwpf: ["D2", "24"],
         jskey: ["2", "@"],
         jscode: "Digit2",
     });
@@ -164,6 +187,8 @@ const createDefinitionSet = (() => {
         linux: `AE03`,
         label: ["3", "#"],
         win: ["3", "33"],
+        dotnetforms: ["D3", "33"],
+        dotnetwpf: ["D3", "25"],
         jskey: ["3", "#"],
         jscode: "Digit3",
     });
@@ -171,6 +196,8 @@ const createDefinitionSet = (() => {
         linux: "AE04",
         label: ["4", "$"],
         win: ["4", "34"],
+        dotnetforms: ["D4", "34"],
+        dotnetwpf: ["D4", "26"],
         jskey: ["4", "$"],
         jscode: "Digit4",
     });
@@ -178,6 +205,8 @@ const createDefinitionSet = (() => {
         linux: "AE05",
         label: ["5", "%"],
         win: ["5", "35"],
+        dotnetforms: ["D5", "35"],
+        dotnetwpf: ["D5", "27"],
         jskey: ["5", "%"],
         jscode: "Digit5",
     });
@@ -185,6 +214,8 @@ const createDefinitionSet = (() => {
         linux: "AE06",
         label: ["6", "^"],
         win: ["6", "36"],
+        dotnetforms: ["D6", "36"],
+        dotnetwpf: ["D6", "28"],
         jskey: ["6", "^"],
         jscode: "Digit6",
     });
@@ -192,6 +223,8 @@ const createDefinitionSet = (() => {
         linux: "AE07",
         label: ["7", "&"],
         win: ["7", "37"],
+        dotnetforms: ["D7", "37"],
+        dotnetwpf: ["D7", "29"],
         jskey: ["7", "&"],
         jscode: "Digit7",
     });
@@ -199,6 +232,8 @@ const createDefinitionSet = (() => {
         linux: "AE08",
         label: ["8", "*"],
         win: ["8", "38"],
+        dotnetforms: ["D8", "38"],
+        dotnetwpf: ["D8", "2A"],
         jskey: ["8", "*"],
         jscode: "Digit8",
     });
@@ -206,6 +241,8 @@ const createDefinitionSet = (() => {
         linux: "AE09",
         label: ["9", "("],
         win: ["9", "39"],
+        dotnetforms: ["D9", "39"],
+        dotnetwpf: ["D9", "2B"],
         jskey: ["9", "("],
         jscode: "Digit9",
     });
@@ -213,6 +250,8 @@ const createDefinitionSet = (() => {
         linux: "AE10",
         label: ["0", ")"],
         win: ["0", "30"],
+        dotnetforms: ["D0", "30"],
+        dotnetwpf: ["D0", "22"],
         jskey: ["0", ")"],
         jscode: "Digit0",
     });
@@ -564,6 +603,7 @@ code: ControlRight, key: Control
         label: "PtSc",
         win: [`VK_SN${abbreviation}APSHOT`, "2C"],
         dotnetforms: [`Prin${abbreviation}tScreen`, "2C"],
+        dotnetwpf: [`Prin${abbreviation}tScreen`, "1C"],
         jskey: `Pri${abbreviation}ntScreen`,
         jscode: `Pri${abbreviation}ntScreen`,
     });
@@ -572,7 +612,7 @@ code: ControlRight, key: Control
         label: ["Lock", "Scroll"],
         win: [`VK_SC${abbreviation}CROLL`, 	"91"],
         dotnetforms: [`Scroll`, "91"],
-        dotnetwpf: ["", ""],
+        dotnetwpf: [`Scroll`, "73"],
         jskey: `Scr${abbreviation}ollLock`,
         jscode: `Scr${abbreviation}ollLock`,
     });
@@ -581,7 +621,7 @@ code: ControlRight, key: Control
         label: "Pause",
         win: [`VK_PA${abbreviation}USE`, "13"],
         dotnetforms: [`Pause`, "13"],
-        dotnetwpf: ["??", "??"],
+        dotnetwpf: [`Pause`, "07"],
         jskey: `Pause`,
         jscode: `Pause`,
     });
