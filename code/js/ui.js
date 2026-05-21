@@ -9,8 +9,20 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         select: document.querySelector(definitionSet.names.elements.select),
         output: document.querySelector(definitionSet.names.elements.textarea),
         notes: document.querySelectorAll(definitionSet.names.classes.note),
+        buttons: {
+            copy: document.getElementById(definitionSet.names.buttonId.copy),
+            clear: document.getElementById(definitionSet.names.buttonId.clear),
+            help: document.getElementById(definitionSet.names.buttonId.help),
+        },
     }; //elementSet
     elementSet.select.size = elementSet.select.children.length;
+
+    elementSet.buttons.copy.onclick = () =>
+        navigator.clipboard.writeText(elementSet.output.value);
+    elementSet.buttons.clear.onclick = () =>
+        elementSet.output.value = new String();
+    elementSet.buttons.help.onclick = () =>
+        definitionSet.help();
 
     const createSvgElement = name => document.createElementNS(definitionSet.names.svgNamespace, name);
 

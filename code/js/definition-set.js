@@ -865,6 +865,11 @@ code: ControlRight, key: Control
             show: 0,
             note: "nav p",
         }, //classes
+        buttonId: { // should match <button> ids
+            copy: 0,
+            clear: 0,
+            help: 0,
+        }, //buttonId
         attributes: {
             x: 0,
             y: 0,
@@ -876,6 +881,7 @@ code: ControlRight, key: Control
         names.elements,
         names.classes,
         names.attributes,
+        names.buttonId,
     ]);
 
     const defaultShift = 0.25;
@@ -893,6 +899,10 @@ code: ControlRight, key: Control
         formatYShift: value => `${value + defaultShift}em`,
     }; //formats
 
-    return { keys, names, formats, trimAppreviation };
+    const help = () => {
+        window.open("../docs/help.html", '_blank').focus();
+    } //help
+
+    return { keys, names, formats, help, trimAppreviation };
 
 }); //createDefinitionSet

@@ -13,11 +13,21 @@
         main > section { display: table-row; }
         option { padding-left: 1em; padding-right: 1em; }
         select, textarea { display: table-cell; vertical-align: top; }
-        select { margin-right: 1em; }
         nav, nav p { margin-top: 0; margin-bottom: 0; }
         nav { margin-top: 0.2em; }
         nav p { display: none; }
         nav p.show { display: block; }
+        main nav { display: inline-block; margin: 0; }
+        main nav button {
+            padding-left: 0.2em;
+            padding-right: 0.2em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            width: 2em;
+            border: none;
+            background-color: transparent; }
+        main nav button:hover { background-color: lightcyan; }
+        main nav button:active { background-color: rgb(255, 222, 160); }
         code { background-color: rgb(194, 232, 247); }
     </style>
 <body>
@@ -407,9 +417,9 @@
        click on the key to see the notation used in the XKB keyboard layouts, <code>/usr/share/X11/xkb/symbols</code></p>
     <p id="win">Windows Virtual Keys: <code>VK_*</code> key names and hexadecimal values;
        click on the key to see a full name if it is abbreviated</p>
-    <p id="dotnetforms">.NET: <code>System.Windows.Forms.Key</code>, <code>KeyCode</code> and hexadecimal <code>KeyValue</code>;
+    <p id="dotnetforms">.NET: <code>System.Windows.Forms.Keys</code> names;
        click on the key to see a full name if it is abbreviated</p>
-    <p id="dotnetwpf">.NET: <code>System.Windows.Input.Key</code>, <code>KeyCode</code> and hexadecimal <code>KeyValue</code>;
+    <p id="dotnetwpf">.NET: <code>System.Windows.Input.Key</code> names;
        click on the key to see a full name if it is abbreviated</p>
     <p id="jskey">JavaScript <code>KeyboardEvent.key</code>: strings depending on the shift state and keyboard layout</code>;
        click on the key to see a full name if it is abbreviated</p>
@@ -428,6 +438,11 @@
     <option value="jskey">JavaScript key</option>
     <option value="jscode">JavaScript code</option>
 </select>
+<nav>
+    <button id="copy" title="Copy to clipboard">📋</button><br/>
+    <button id="clear" title="Clear">❌</button><br/>
+    <button id="help" title="Help">❓</button><br/>
+</nav>
 <textarea rows="8" cols="80"></textarea>
 </section><main>
 </body>
