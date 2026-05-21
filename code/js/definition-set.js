@@ -23,6 +23,8 @@ const createDefinitionSet = (() => {
         linux: "ESC",
         label: "Esc",
         win: [`VK_ES${abbreviation}CAPE`, "1B"],
+        dotnetforms: [`Esc${abbreviation}ape`, "1B"],
+        dotnetwpf: [`Esc${abbreviation}ape`, "0D"],
         jskey: `Esc${abbreviation}ape`,
         jscode: `Esc${abbreviation}ape`,
     });
@@ -31,6 +33,8 @@ const createDefinitionSet = (() => {
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
+        dotnetforms: ["F1", "70"],
+        dotnetwpf: ["F1", "5A"],
         jskey: "F1",
         jscode: "F1",
     });
@@ -38,6 +42,8 @@ const createDefinitionSet = (() => {
         linux: "FK02",
         label: "F2",
         win: ["VK_F2", "71"],
+        dotnetforms: ["F2", "71"],
+        dotnetwpf: ["F2", "5B"],
         jskey: "F2",
         jscode: "F2",
     });
@@ -45,6 +51,8 @@ const createDefinitionSet = (() => {
         linux: "FK03",
         label: "F3",
         win: ["VK_F3", "72"],
+        dotnetforms: ["F3", "72"],
+        dotnetwpf: ["F3", "5C"],
         jskey: "F3",
         jscode: "F3",
     });
@@ -52,6 +60,8 @@ const createDefinitionSet = (() => {
         linux: "FK04",
         label: "F4",
         win: ["VK_F4", "73"],
+        dotnetforms: ["F4", "73"],
+        dotnetwpf: ["F4", "5D"],
         jskey: "F4",
         jscode: "F4",
     });
@@ -59,6 +69,8 @@ const createDefinitionSet = (() => {
         linux: "FK05",
         label: "F5",
         win: ["VK_F5", "74"],
+        dotnetforms: ["F5", "74"],
+        dotnetwpf: ["F5", "5E"],
         jskey: "F5",
         jscode: "F5",
     });
@@ -66,6 +78,8 @@ const createDefinitionSet = (() => {
         linux: "FK06",
         label: "F6",
         win: ["VK_F6", "75"],
+        dotnetforms: ["F6", "75"],
+        dotnetwpf: ["F6", "5F"],
         jskey: "F6",
         jscode: "F6",
     });
@@ -73,6 +87,8 @@ const createDefinitionSet = (() => {
         linux: "FK07",
         label: "F7",
         win: ["VK_F7", "76"],
+        dotnetforms: ["F7", "76"],
+        dotnetwpf: ["F7", "60"],
         jskey: "F7",
         jscode: "F7",
     });
@@ -80,6 +96,8 @@ const createDefinitionSet = (() => {
         linux: "FK08",
         label: "F8",
         win: ["VK_F8", "77"],
+        dotnetforms: ["F8", "77"],
+        dotnetwpf: ["F8", "61"],
         jskey: "F8",
         jscode: "F8",
     });
@@ -87,6 +105,8 @@ const createDefinitionSet = (() => {
         linux: "FK09",
         label: "F9",
         win: ["VK_F9", "78"],
+        dotnetforms: ["F9", "78"],
+        dotnetwpf: ["F9", "62"],
         jskey: "F9",
         jscode: "F9",
     });
@@ -94,6 +114,8 @@ const createDefinitionSet = (() => {
         linux: "FK10",
         label: "F10",
         win: ["VK_F10", "79"],
+        dotnetforms: ["F10", "79"],
+        dotnetwpf: ["F10", "63"],
         jskey: "F10",
         jscode: "F10",
     });
@@ -101,6 +123,8 @@ const createDefinitionSet = (() => {
         linux: "FK11",
         label: "F11",
         win: ["VK_F11", "7A"],
+        dotnetforms: ["F11", "7A"],
+        dotnetwpf: ["F11", "64"],
         jskey: "F11",
         jscode: "F11",
     });
@@ -108,6 +132,8 @@ const createDefinitionSet = (() => {
         linux: "FK12",
         label: "F12",
         win: ["VK_F12", "7B"],
+        dotnetforms: ["F12", "7B"],
+        dotnetwpf: ["F12", "65"],
         jskey: "F12",
         jscode: "F12",
     });
@@ -537,6 +563,7 @@ code: ControlRight, key: Control
         linux: "PRSC",
         label: "PtSc",
         win: [`VK_SN${abbreviation}APSHOT`, "2C"],
+        dotnetforms: [`Prin${abbreviation}tScreen`, "2C"],
         jskey: `Pri${abbreviation}ntScreen`,
         jscode: `Pri${abbreviation}ntScreen`,
     });
@@ -544,6 +571,8 @@ code: ControlRight, key: Control
         linux: "SCLK",
         label: ["Lock", "Scroll"],
         win: [`VK_SC${abbreviation}CROLL`, 	"91"],
+        dotnetforms: [`Scroll`, "91"],
+        dotnetwpf: ["", ""],
         jskey: `Scr${abbreviation}ollLock`,
         jscode: `Scr${abbreviation}ollLock`,
     });
@@ -551,11 +580,12 @@ code: ControlRight, key: Control
         linux: "PAUS",
         label: "Pause",
         win: [`VK_PA${abbreviation}USE`, "13"],
+        dotnetforms: [`Pause`, "13"],
+        dotnetwpf: ["??", "??"],
         jskey: `Pause`,
         jscode: `Pause`,
     });
 
-    //
     //insert, pg up/down, arrows:
     keys.set("E0 52", {
         linux: "INS",
