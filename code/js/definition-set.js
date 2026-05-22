@@ -665,8 +665,7 @@ const createDefinitionSet = (() => {
         jskey: `Arr${abbreviation}owRight`,
         jscode: `Arr${abbreviation}owRight`,
     });
-
-    // keypad;
+    // keypad
     keys.set("45", {
         linux: "NMLK",
         label: ["Lock", "Num"],
@@ -700,6 +699,7 @@ const createDefinitionSet = (() => {
         linux: "KP7",
         label: ["Home", "7"],
         win: [`VK_HO${abbreviation}ME`, "24", `VK_NU${abbreviation}MPAD7`, "67"],
+        dotnetforms: "NumPad7",
         jskey: ["Home", "7"],
         jscode: `Nu${abbreviation}mpad7`,
     });
@@ -800,7 +800,7 @@ const createDefinitionSet = (() => {
         linux: "CAPS",
         label: "Caps Lock",
         win: ["VK_CAPITAL", "14"],
-        dotnetforms: `CapsLock`,
+        dotnetforms: `Capital`,
     });
     keys.set("2A", {
         linux: "LFSH",
