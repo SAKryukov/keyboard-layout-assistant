@@ -18,8 +18,6 @@ const createDefinitionSet = (() => {
         menu: [String.fromCodePoint(0x1f5b9), "Menu"],
     }; //ideograph
 
-    const setFallback = () => {}; //String.fromCodePoint(0x2705);
-    
     const keys = new Map();
         keys.set("01", {
         linux: "ESC",
@@ -28,62 +26,62 @@ const createDefinitionSet = (() => {
         dotnetforms: `Esc${abbreviation}ape`,
     });
     // F row
-    keys.set("3B", { dotnetforms: setFallback(),
+    keys.set("3B", {
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
     });
-    keys.set("3C", { dotnetforms: setFallback(),
+    keys.set("3C", {
         linux: "FK02",
         label: "F2",
         win: ["VK_F2", "71"],
     });
-    keys.set("3D", { dotnetforms: setFallback(),
+    keys.set("3D", {
         linux: "FK03",
         label: "F3",
         win: ["VK_F3", "72"],
     });
-    keys.set("3E", { dotnetforms: setFallback(),
+    keys.set("3E", {
         linux: "FK04",
         label: "F4",
         win: ["VK_F4", "73"],
     });
-    keys.set("3F", { dotnetforms: setFallback(),
+    keys.set("3F", {
         linux: "FK05",
         label: "F5",
         win: ["VK_F5", "74"],
     });
-    keys.set("40", { dotnetforms: setFallback(),
+    keys.set("40", {
         linux: "FK06",
         label: "F6",
         win: ["VK_F6", "75"],
     });
-    keys.set("41", { dotnetforms: setFallback(),
+    keys.set("41", {
         linux: "FK07",
         label: "F7",
         win: ["VK_F7", "76"],
     });
-    keys.set("42", { dotnetforms: setFallback(),
+    keys.set("42", {
         linux: "FK08",
         label: "F8",
         win: ["VK_F8", "77"],
     });
-    keys.set("43", { dotnetforms: setFallback(),
+    keys.set("43", {
         linux: "FK09",
         label: "F9",
         win: ["VK_F9", "78"],
     });
-    keys.set("44", { dotnetforms: setFallback(),
+    keys.set("44", {
         linux: "FK10",
         label: "F10",
         win: ["VK_F10", "79"],
     });
-    keys.set("57", { dotnetforms: setFallback(),
+    keys.set("57", {
         linux: "FK11",
         label: "F11",
         win: ["VK_F11", "7A"],
     });
-    keys.set("58", { dotnetforms: setFallback(),
+    keys.set("58", {
         linux: "FK12",
         label: "F12",
         win: ["VK_F12", "7B"],
@@ -596,12 +594,12 @@ const createDefinitionSet = (() => {
         jscode: `Pause`,
     });
     //insert, pg up/down, arrows:
-    keys.set("E0 52", { dotnetforms: setFallback(),
+    keys.set("E0 52", {
         linux: "INS",
         label: "Insert",
         win: [`VK_IN${abbreviation}SERT`, "2D"],
     });
-    keys.set("E0 47", { dotnetforms: setFallback(),
+    keys.set("E0 47", {
         linux: "HOME",
         label: "Home",
         win: [`VK_HO${abbreviation}ME`, "24"],
@@ -613,12 +611,12 @@ const createDefinitionSet = (() => {
         dotnetforms: `Pag${abbreviation}eUp`,
         jskey: `Pag${abbreviation}eUp`,
     });
-    keys.set("E0 53", { dotnetforms: setFallback(),
+    keys.set("E0 53", {
         linux: "DELE",
         label: "Delete",
         win: [`VK_DE${abbreviation}LETE`, "2E"],
     });
-    keys.set("E0 4F", { dotnetforms: setFallback(),
+    keys.set("E0 4F", {
         linux: "END",
         label: "End",
         win: [`VK_EN${abbreviation}D`, "23"],
@@ -670,13 +668,13 @@ const createDefinitionSet = (() => {
         linux: "NMLK",
         label: ["Lock", "Num"],
         win: [`VK_NU${abbreviation}MLOCK`, "90"],
-        jskey: `Nu${abbreviation}mLock`,
-        jscode: `Nu${abbreviation}mLock`,
+        dotnetforms: `Num${abbreviation}Lock`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
         label: "/",
         win: [`VK_DI${abbreviation}VIDE`, "6F"],
+        dotnetforms: `Divide`,
         jskey: "/",
         jscode: `Nu${abbreviation}mpadDivide`,
     });
@@ -684,6 +682,7 @@ const createDefinitionSet = (() => {
         linux: "KPMU",
         label: "*",
         win: [`VK_MU${abbreviation}LTIPLY`, "6A"],
+        dotnetforms: `Mult${abbreviation}iply`,
         jskey: "*",
         jscode: `Nu${abbreviation}mpadMultiply`,
     });
@@ -691,6 +690,7 @@ const createDefinitionSet = (() => {
         linux: "KPSU",
         label: "-",
         win: [`VK_SU${abbreviation}BTRACT`, "6D"],
+        dotnetforms: `Sub${abbreviation}tract`,
         jskey: "-",
         jscode: `Nu${abbreviation}mpadSubtract`,
     });
@@ -699,7 +699,7 @@ const createDefinitionSet = (() => {
         linux: "KP7",
         label: ["Home", "7"],
         win: [`VK_HO${abbreviation}ME`, "24", `VK_NU${abbreviation}MPAD7`, "67"],
-        dotnetforms: "NumPad7",
+        dotnetforms: [`Home`, `Num${abbreviation}Pad7`],
         jskey: ["Home", "7"],
         jscode: `Nu${abbreviation}mpad7`,
     });
@@ -707,6 +707,7 @@ const createDefinitionSet = (() => {
         linux: "KP8",
         label: [ideograph.up, "8"],
         win: [`VK_UP`, "26", `VK_NU${abbreviation}MPAD8`, "68"],
+        dotnetforms: [`Up`, `Num${abbreviation}Pad8`],
         jskey: [`Arr${abbreviation}owUp`, "8"],
         jscode: `Nu${abbreviation}mpad8`,
     });
@@ -714,6 +715,7 @@ const createDefinitionSet = (() => {
         linux: "KP9",
         label: ["PgUp", "9"],
         win: [`VK_PR${abbreviation}IOR`, "21", `VK_NU${abbreviation}MPAD9`, "69"],
+        dotnetforms: [`Pag${abbreviation}eUp`, `Num${abbreviation}Pad9`],
         jskey: [`Pag${abbreviation}eUp`, "9"],
         jscode: `Nu${abbreviation}mpad9`,
     });
@@ -721,6 +723,7 @@ const createDefinitionSet = (() => {
         linux: "KP4",
         label: [ideograph.left, "4"],
         win: [`VK_LE${abbreviation}FT`, "25", `VK_NU${abbreviation}MPAD4`, "64"],
+        dotnetforms: [`Left`, `Num${abbreviation}Pad4`],
         jskey: [`Arr${abbreviation}owLeft`, "4"],
         jscode: `Nu${abbreviation}mpad4`,
     });
@@ -728,6 +731,7 @@ const createDefinitionSet = (() => {
         linux: "KP5",
         label: "5",
         win: [`VК_CL${abbreviation}EAR`, "0C", `VK_NU${abbreviation}MPAD5`, "65"],
+        dotnetforms: [`Clear`, `Num${abbreviation}Pad5`],
         jskey: [`Uni${abbreviation}dentified`, "5"],
         jscode: `Nu${abbreviation}mpad5`,
     });
@@ -735,6 +739,7 @@ const createDefinitionSet = (() => {
         linux: "KP6",
         label: [ideograph.right, "6"],
         win: [`VK_RI${abbreviation}GHT`, "27", `VK_NU${abbreviation}MPAD6`, "66"],
+        dotnetforms: [`Right`, `Num${abbreviation}Pad6`],
         jskey: [`Arr${abbreviation}owRight`, "6"],
         jscode: `Nu${abbreviation}mpad6`,
     });
@@ -742,6 +747,7 @@ const createDefinitionSet = (() => {
         linux: "KP1",
         label: ["End", "1"],
         win: [`VK_END`, "23", `VK_NU${abbreviation}MPAD1`, "61"],
+        dotnetforms: [`End`, `Num${abbreviation}Pad1`],
         jskey: [`End`, "1"],
         jscode: `Nu${abbreviation}mpad1`,
     });
@@ -749,6 +755,7 @@ const createDefinitionSet = (() => {
         linux: "KP2",
         label: [ideograph.down, "2"],
         win: [`VK_DO${abbreviation}WN`, "28", `VK_NU${abbreviation}MPAD2`, "62"],
+        dotnetforms: [`Down`, `Num${abbreviation}Pad2`],
         jskey: [`Arr${abbreviation}owDown`, "2"],
         jscode: `Nu${abbreviation}mpad2`,
     });
@@ -756,6 +763,7 @@ const createDefinitionSet = (() => {
         linux: "KP3",
         label: ["PgDn", "3"],
         win: [`VK_NE${abbreviation}XT`, "22", `VK_NU${abbreviation}MPAD3`, "63"],
+        dotnetforms: [`Next`, `Num${abbreviation}Pad3`],
         jskey: [`Pag${abbreviation}eDown`, "3"],
         jscode: `Nu${abbreviation}mpad3`,
     });
@@ -763,6 +771,7 @@ const createDefinitionSet = (() => {
         linux: "KP0",
         label: ["Insert", "0"],
         win: [`VK_INSERT`, "2D", `VK_NUMPAD0`, "60"],
+        dotnetforms: [`Insert`, `Num${abbreviation}Pad0`],
         jskey: [`Insert`, "0"],
         jscode: `Numpad0`,
     });
@@ -770,6 +779,7 @@ const createDefinitionSet = (() => {
         linux: "KPDL",
         label: ["Delete", "."],
         win: [`VK_DE${abbreviation}LETE`, "2E", `VK_DE${abbreviation}CIMAL`, "6E"],
+        dotnetforms: [`Delete`, `Dec${abbreviation}imal`],         
         jskey: [`Del${abbreviation}ete`, "."],
         jscode: `Nu${abbreviation}mpadDecimal`,
     });
@@ -778,6 +788,7 @@ const createDefinitionSet = (() => {
         linux: "KPAD",
         label: "+",
         win: [`VK_AD${abbreviation}D`, "6B"],
+        dotnetforms: `Add`,
         jskey: "+",
         jscode: `Nu${abbreviation}mpadAdd`,
     });
@@ -785,11 +796,13 @@ const createDefinitionSet = (() => {
         linux: "KPEN",
         label: "Enter",
         win: [`VK_RE${abbreviation}TURN`, "0D"],
+        dotnetforms: `Enter`,
+        dotnetwpf: `Ret${abbreviation}urn`, //sic! names for System.Windows.Forms and wpf are different!
         jskey: "Enter",
         jscode: `Nu${abbreviation}mpadEnter`,
     });
     // remaining left:
-    keys.set("0F", { dotnetforms: setFallback(),
+    keys.set("0F", {
         linux: "TAB",
         label: "Tab",
         win: ["VK_TAB", "09"],
@@ -812,10 +825,9 @@ const createDefinitionSet = (() => {
         jscode: "ShiftLeft",
     });
     // keys
-    (keys => { // prepopulate fallback
+    (keys => { // fallback:
         const values = keys.values();
         for (const value of values) {
-            //break;
             if (value.dotnetforms == undefined)
                 value.dotnetforms = value.label;
             if (value.dotnetwpf == undefined)
