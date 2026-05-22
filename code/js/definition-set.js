@@ -18,6 +18,8 @@ const createDefinitionSet = (() => {
         menu: [String.fromCodePoint(0x1f5b9), "Menu"],
     }; //ideograph
 
+    const setFallback = () => {}; //String.fromCodePoint(0x2705);
+    
     const keys = new Map();
         keys.set("01", {
         linux: "ESC",
@@ -26,62 +28,62 @@ const createDefinitionSet = (() => {
         dotnetforms: `Esc${abbreviation}ape`,
     });
     // F row
-    keys.set("3B", {
+    keys.set("3B", { dotnetforms: setFallback(),
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
     });
-    keys.set("3C", {
+    keys.set("3C", { dotnetforms: setFallback(),
         linux: "FK02",
         label: "F2",
         win: ["VK_F2", "71"],
     });
-    keys.set("3D", {
+    keys.set("3D", { dotnetforms: setFallback(),
         linux: "FK03",
         label: "F3",
         win: ["VK_F3", "72"],
     });
-    keys.set("3E", {
+    keys.set("3E", { dotnetforms: setFallback(),
         linux: "FK04",
         label: "F4",
         win: ["VK_F4", "73"],
     });
-    keys.set("3F", {
+    keys.set("3F", { dotnetforms: setFallback(),
         linux: "FK05",
         label: "F5",
         win: ["VK_F5", "74"],
     });
-    keys.set("40", {
+    keys.set("40", { dotnetforms: setFallback(),
         linux: "FK06",
         label: "F6",
         win: ["VK_F6", "75"],
     });
-    keys.set("41", {
+    keys.set("41", { dotnetforms: setFallback(),
         linux: "FK07",
         label: "F7",
         win: ["VK_F7", "76"],
     });
-    keys.set("42", {
+    keys.set("42", { dotnetforms: setFallback(),
         linux: "FK08",
         label: "F8",
         win: ["VK_F8", "77"],
     });
-    keys.set("43", {
+    keys.set("43", { dotnetforms: setFallback(),
         linux: "FK09",
         label: "F9",
         win: ["VK_F9", "78"],
     });
-    keys.set("44", {
+    keys.set("44", { dotnetforms: setFallback(),
         linux: "FK10",
         label: "F10",
         win: ["VK_F10", "79"],
     });
-    keys.set("57", {
+    keys.set("57", { dotnetforms: setFallback(),
         linux: "FK11",
         label: "F11",
         win: ["VK_F11", "7A"],
     });
-    keys.set("58", {
+    keys.set("58", { dotnetforms: setFallback(),
         linux: "FK12",
         label: "F12",
         win: ["VK_F12", "7B"],
@@ -181,6 +183,7 @@ const createDefinitionSet = (() => {
         linux: "AE11",
         label: ["-", "_"],
         win: [`VK_OE${abbreviation}M_MINUS`, "BD"],
+        dotnetforms: `Oem${abbreviation}Minus`,
         jskey: ["-", "_"],
         jscode: "Minus",
     });
@@ -188,6 +191,8 @@ const createDefinitionSet = (() => {
         linux: "AE12",
         label: ["=", "+"],
         win: [`VK_OE${abbreviation}M_PLUS`, "BB"],
+        dotnetforms: `Oem${abbreviation}plus`,
+        dotnetwpf: `Oem${abbreviation}Plus`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: ["=", "+"],
         jscode: "Equal",
     });
@@ -195,15 +200,16 @@ const createDefinitionSet = (() => {
         linux: "BKSP",
         label: "Backspace",
         win: ["VK_BACK", "08"],
+        dotnetforms: `Back`,
         jskey: "Backspace",
         jscode: "Backspace",
     });
-
     // row 2:
     keys.set("10", {
         linux: "AD01",
         label: twoCaseArray("q"),
         win: ["Q", "51"],
+        dotnetforms: "Q",
         jskey: twoCaseArray("q"),
         jscode: "KeyQ",
     });
@@ -211,6 +217,7 @@ const createDefinitionSet = (() => {
         linux: "AD02",
         label: twoCaseArray("w"),
         win: ["W", "57"],
+        dotnetforms: "W",
         jskey: twoCaseArray("w"),
         jscode: "KeyW",
     });
@@ -218,6 +225,7 @@ const createDefinitionSet = (() => {
         linux: "AD03",
         label: twoCaseArray("e"),
         win: ["E", "45"],
+        dotnetforms: "E",
         jskey: twoCaseArray("e"),
         jscode: "KeyE",
     });
@@ -225,6 +233,7 @@ const createDefinitionSet = (() => {
         linux: "AD04",
         label: twoCaseArray("r"),
         win: ["R", "52"],
+        dotnetforms: "R",
         jskey: twoCaseArray("r"),
         jscode: "KeyR",
     });
@@ -232,6 +241,7 @@ const createDefinitionSet = (() => {
         linux: "AD05",
         label: twoCaseArray("t"),
         win: ["T", "54"],
+        dotnetforms: "T",
         jskey: twoCaseArray("t"),
         jscode: "KeyT",
     });
@@ -239,6 +249,7 @@ const createDefinitionSet = (() => {
         linux: "AD06",
         label: twoCaseArray("y"),
         win: ["Y", "59"],
+        dotnetforms: "Y",
         jskey: twoCaseArray("y"),
         jscode: "KeyY",
     });
@@ -246,6 +257,7 @@ const createDefinitionSet = (() => {
         linux: "AD07",
         label: twoCaseArray("u"),
         win: ["U", "55"],
+        dotnetforms: "U",
         jskey: twoCaseArray("u"),
         jscode: "KeyU",
     });
@@ -253,6 +265,7 @@ const createDefinitionSet = (() => {
         linux: "AD08",
         label: twoCaseArray("i"),
         win: ["I", "49"],
+        dotnetforms: "I",
         jskey: twoCaseArray("i"),
         jscode: "KeyI",
     });
@@ -260,6 +273,7 @@ const createDefinitionSet = (() => {
         linux: "AD09",
         label: twoCaseArray("o"),
         win: ["O", "4F"],
+        dotnetforms: "O",
         jskey: twoCaseArray("o"),
         jscode: "KeyO",
     });
@@ -267,6 +281,7 @@ const createDefinitionSet = (() => {
         linux: "AD10",
         label: twoCaseArray("p"),
         win: ["P", "50"],
+        dotnetforms: "P",
         jskey: twoCaseArray("p"),
         jscode: "KeyP",
     });
@@ -275,6 +290,8 @@ const createDefinitionSet = (() => {
         linux: "AD11",
         label: ["[", "{"],
         win: [`VK_OE${abbreviation}M_4`, "DB"],
+        dotnetforms: `Oem4`,
+        dotnetwpf: `Oem${abbreviation}OpenBrackets`,
         jskey: ["[", "{"],
         jscode: `Bra${abbreviation}cketLeft`,
     });
@@ -282,6 +299,8 @@ const createDefinitionSet = (() => {
         linux: "AD12",
         label: ["]", "}"],
         win: [`VK_OE${abbreviation}M_6`, "DD"],
+        dotnetforms: `Oem6`,
+        dotnetwpf: `Oem6`,
         jskey: ["]", "}"],
         jscode: `Bra${abbreviation}cketRight`,
     });
@@ -289,6 +308,8 @@ const createDefinitionSet = (() => {
         linux: "BKSL",
         label: ["\\", "|"],
         win: ["VK_OEM_5", "0xDC"],
+        dotnetforms: `OemPipe`,
+        dotnetwpf: `Oem5`,
         jskey: ["\\", "|"],
         jscode: `Backsl${abbreviation}ash`,
     });
@@ -297,6 +318,7 @@ const createDefinitionSet = (() => {
         linux: "AC01",
         label: twoCaseArray("a"),
         win: ["A", "41"],
+        dotnetforms: "A",
         jskey: twoCaseArray("a"),
         jscode: "KeyA",
     });
@@ -304,6 +326,7 @@ const createDefinitionSet = (() => {
         linux: "AC02",
         label: twoCaseArray("s"),
         win: ["S", "53"],
+        dotnetforms: "S",
         jskey: twoCaseArray("s"),
         jscode: "KeyS",
     });
@@ -311,6 +334,7 @@ const createDefinitionSet = (() => {
         linux: "AC03",
         label: twoCaseArray("d"),
         win: ["D", "44"],
+        dotnetforms: "D",
         jskey: twoCaseArray("d"),
         jscode: "KeyD",
     });
@@ -318,6 +342,7 @@ const createDefinitionSet = (() => {
         linux: "AC04",
         label: twoCaseArray("f"),
         win: ["F", "46"],
+        dotnetforms: "F",
         jskey: twoCaseArray("f"),
         jscode: "KeyF",
     });
@@ -325,6 +350,7 @@ const createDefinitionSet = (() => {
         linux: "AC05",
         label: twoCaseArray("g"),
         win: ["G", "47"],
+        dotnetforms: "G",
         jskey: twoCaseArray("g"),
         jscode: "KeyG",
     });
@@ -332,6 +358,7 @@ const createDefinitionSet = (() => {
         linux: "AC06",
         label: twoCaseArray("h"),
         win: ["H", "48"],
+        dotnetforms: "H",
         jskey: twoCaseArray("h"),
         jscode: "KeyH",
     });
@@ -339,6 +366,7 @@ const createDefinitionSet = (() => {
         linux: "AC07",
         label: twoCaseArray("j"),
         win: ["J", "4A"],
+        dotnetforms: "J",
         jskey: twoCaseArray("j"),
         jscode: "KeyJ",
     });
@@ -346,6 +374,7 @@ const createDefinitionSet = (() => {
         linux: "AC08",
         label: twoCaseArray("k"),
         win: ["K", "4B"],
+        dotnetforms: "K",
         jskey: twoCaseArray("k"),
         jscode: "KeyK",
     });
@@ -353,6 +382,7 @@ const createDefinitionSet = (() => {
         linux: "AC09",
         label: twoCaseArray("l"),
         win: ["L", "4C"],
+        dotnetforms: "L",
         jskey: twoCaseArray("l"),
         jscode: "KeyL",
     });
@@ -361,6 +391,8 @@ const createDefinitionSet = (() => {
         linux: "AC10",
         label: [";", ":"],
         win: [`VK_OE${abbreviation}M_1`, "BA"],
+        dotnetforms: `Oem${abbreviation}Semicolon`,
+        dotnetwpf: `Oem1`,
         jskey: [";", ":"],
         jscode: `Sem${abbreviation}icolon`,
     });
@@ -368,6 +400,7 @@ const createDefinitionSet = (() => {
         linux: "AC11",
         label: ["'", "\""],
         win: [`VK_OE${abbreviation}M_7`, "DE"],
+        dotnetforms: `Oem${abbreviation}Quotes`,
         jskey: ["'", "\""],
         jscode: "Quote",
     });
@@ -375,14 +408,15 @@ const createDefinitionSet = (() => {
         linux: "RTRN",
         label: "Enter",
         win: ["VK_RETURN", "0D"],
-        jskey: "Enter",
-        jscode: "Enter",
+        dotnetforms: "Enter",
+        dotnetwpf: "Return", // sic! names for System.Windows.Forms and wpf are different!
     });
     //row 4:
     keys.set("2C", {
         linux: "AB01",
         label: twoCaseArray("z"),
         win: ["Z", "5A"],
+        dotnetforms: "Z",
         jskey: twoCaseArray("z"),
         jscode: "KeyZ",
     });
@@ -390,6 +424,7 @@ const createDefinitionSet = (() => {
         linux: "AB02",
         label: twoCaseArray("x"),
         win: ["X", "58"],
+        dotnetforms: "X",
         jskey: twoCaseArray("x"),
         jscode: "KeyX",
     });
@@ -397,6 +432,7 @@ const createDefinitionSet = (() => {
         linux: "AB03",
         label: twoCaseArray("c"),
         win: ["C", "43"],        
+        dotnetforms: "C",
         jskey: twoCaseArray("c"),
         jscode: "KeyC",
     });
@@ -404,6 +440,7 @@ const createDefinitionSet = (() => {
         linux: "AB04",
         label: twoCaseArray("v"),
         win: ["V", "56"],
+        dotnetforms: "V",
         jskey: twoCaseArray("v"),
         jscode: "KeyV",
     });
@@ -411,6 +448,7 @@ const createDefinitionSet = (() => {
         linux: "AB05",
         label: twoCaseArray("b"),
         win: ["B", "42"],        
+        dotnetforms: "B",
         jskey: twoCaseArray("b"),
         jscode: "KeyB",
     });
@@ -418,6 +456,7 @@ const createDefinitionSet = (() => {
         linux: "AB06",
         label: twoCaseArray("n"),
         win: ["N", "4E"],
+        dotnetforms: "N",
         jskey: twoCaseArray("n"),
         jscode: "KeyN",
     });
@@ -425,6 +464,7 @@ const createDefinitionSet = (() => {
         linux: "AB07",
         label: twoCaseArray("m"),
         win: ["M", "4D"],
+        dotnetforms: "M",
         jskey: twoCaseArray("m"),
         jscode: "KeyM",
     });
@@ -432,6 +472,7 @@ const createDefinitionSet = (() => {
         linux: "AB08",
         label: [",", "<"],
         win: [`VK_OE${abbreviation}M_COMMA`, "BC"],
+        dotnetforms: `Oem${abbreviation}comma`,
         jskey: [",", "<"],
         jscode: `Com${abbreviation}ma`,
     });
@@ -439,6 +480,7 @@ const createDefinitionSet = (() => {
         linux: "AB09",
         label: [".", ">"],
         win: [`VK_OE${abbreviation}M_PERIOD`, "BE"],
+        dotnetforms: `Oem${abbreviation}Period`,
         jskey: [".", ">"],
         jscode: `Per${abbreviation}iod`,
     });
@@ -446,6 +488,7 @@ const createDefinitionSet = (() => {
         linux: "AB10",
         label: ["/", "?"],
         win: [`VK_OE${abbreviation}M_2`, "BF"],
+        dotnetforms: `Oem2`,
         jskey: ["/", "?"],
         jscode: `Slash`,
     });
@@ -453,20 +496,18 @@ const createDefinitionSet = (() => {
         linux: "RTSH",
         label: "Shift",
         win: ["VK_RSHIFT", "10"],
+        dotnetforms: "ShiftKey",
+        dotnetwpf: "RightShift",
         jskey: "Shift",
         jscode: "ShiftRight",
     });
     //row 5:
-
-/*
-code: AltRight, key: Alt
-code: ContextMenu, key: ContextMenu
-code: ControlRight, key: Control
-*/    
     keys.set("1D", {
         linux: "LCTL",
         label: "Ctrl",
         win: [`VK_LCO${abbreviation}NTROL`, "A2"],
+        dotnetforms: `Contro${abbreviation}lKey`, 
+        dotnetwpf: `LeftCtrl`,
         jskey: "Control",
         jscode: `Contr${abbreviation}olLeft`,
     });
@@ -474,6 +515,8 @@ code: ControlRight, key: Control
         linux: "LWIN",
         label: ideograph.super, //"Win",
         win: [`VK_LWIN`, "5B"],
+        dotnetforms: `LWin`, 
+        dotnetwpf: `LWin`,
         jskey: "Meta",
         jscode: `MetaL${abbreviation}eft`,
     });
@@ -481,6 +524,8 @@ code: ControlRight, key: Control
         linux: "LALT",
         label: "Alt",
         win: [`VK_LME${abbreviation}NU`, "A4"],
+        dotnetforms: `Menu`, 
+        dotnetwpf: `LeftAlt`,
         jskey: "Alt",
         jscode: `AltLeft`,
     });
@@ -488,6 +533,7 @@ code: ControlRight, key: Control
         linux: "39",
         label: "",
         win: ["VK_SPACE", "20"],
+        dotnetforms: "Space",
         jskey: "",
         jscode: "Space",
     });
@@ -495,6 +541,8 @@ code: ControlRight, key: Control
         linux: "RALT",
         label: "Alt",
         win: [`VK_RME${abbreviation}NU`, "A5"],
+        dotnetforms: `Menu`,
+        dotnetwpf: `RightAlt`,
         jskey: "Alt",
         jscode: `AltRight`,
     });
@@ -502,6 +550,7 @@ code: ControlRight, key: Control
         linux: "RWIN",
         label: ideograph.super, //"Win",
         win: ["VK_RWIN", "5C"], 
+        dotnetforms: `RWin`,
         jskey: "Meta",
         jscode: `MetaR${abbreviation}ight`,
     });
@@ -509,6 +558,7 @@ code: ControlRight, key: Control
         linux: "MENU",
         label: ideograph.menu, //"Menu"
         win: ["VK_APPS", "5D"],
+        dotnetforms: `Apps`,
         jskey: `Conte${abbreviation}xtMenu`,
         jscode: `Conte${abbreviation}xtMenu`,
     });
@@ -516,7 +566,8 @@ code: ControlRight, key: Control
         linux: "RCTL",
         label: "Ctrl",
         win: [`VK_RCO${abbreviation}NTROL`, "A3"],
-        jskey: "Control",
+        dotnetforms: `Contro${abbreviation}lKey`,
+        dotnetwpf: `RightCtrl`,
         jscode: `Contr${abbreviation}olRight`,
     });
     //--------------
@@ -544,37 +595,30 @@ code: ControlRight, key: Control
         jskey: `Pause`,
         jscode: `Pause`,
     });
-
     //insert, pg up/down, arrows:
-    keys.set("E0 52", {
+    keys.set("E0 52", { dotnetforms: setFallback(),
         linux: "INS",
         label: "Insert",
         win: [`VK_IN${abbreviation}SERT`, "2D"],
-        jskey: `Insert`,
-        jscode: 'Insert',
     });
-    keys.set("E0 47", {
+    keys.set("E0 47", { dotnetforms: setFallback(),
         linux: "HOME",
         label: "Home",
         win: [`VK_HO${abbreviation}ME`, "24"],
-        jskey: `Home`,
-        jscode: 'Home',
     });
     keys.set("E0 49", {
         linux: "PGUP",
         label: "PgUp",
         win: [`VK_P${abbreviation}RIOR`, "21"],
+        dotnetforms: `Pag${abbreviation}eUp`,
         jskey: `Pag${abbreviation}eUp`,
-        jscode: `Pag${abbreviation}eUp`,
     });
-    keys.set("E0 53", {
+    keys.set("E0 53", { dotnetforms: setFallback(),
         linux: "DELE",
         label: "Delete",
         win: [`VK_DE${abbreviation}LETE`, "2E"],
-        jskey: "Delete",
-        jscode: "Delete",
     });
-    keys.set("E0 4F", {
+    keys.set("E0 4F", { dotnetforms: setFallback(),
         linux: "END",
         label: "End",
         win: [`VK_EN${abbreviation}D`, "23"],
@@ -585,6 +629,7 @@ code: ControlRight, key: Control
         linux: "PGDN",
         label: "PgDn",
         win: [`VK_N${abbreviation}EXT`, "22"],
+        dotnetforms: `Next`,
         jskey: `Pag${abbreviation}eDown`,
         jscode: `Pag${abbreviation}eDown`,
     });
@@ -592,6 +637,7 @@ code: ControlRight, key: Control
         linux: "UP",
         label: ideograph.up,
         win: ["VK_UP", "26"],
+        dotnetforms: `Up`,
         jskey: `Arr${abbreviation}owUp`,
         jscode: `Arr${abbreviation}owUp`,
     });
@@ -599,6 +645,7 @@ code: ControlRight, key: Control
         linux: "LEFT",
         label: ideograph.left,
         win: [`VK_L${abbreviation}EFT`, "25"],
+        dotnetforms: `Left`,
         jskey: `Arr${abbreviation}owLeft`,
         jscode: `Arr${abbreviation}owLeft`,
     });
@@ -606,6 +653,7 @@ code: ControlRight, key: Control
         linux: "DOWN",
         label: ideograph.down,
         win: [`VK_D${abbreviation}OWN`, "28"],
+        dotnetforms: `Down`,
         jskey: `Arr${abbreviation}owDown`,
         jscode: `Arr${abbreviation}owDown`,
     });
@@ -613,6 +661,7 @@ code: ControlRight, key: Control
         linux: "RIGHT",
         label: ideograph.right,
         win: [`VK_RI${abbreviation}GHT`, "27"],
+        dotnetforms: `Right`,
         jskey: `Arr${abbreviation}owRight`,
         jscode: `Arr${abbreviation}owRight`,
     });
@@ -646,6 +695,7 @@ code: ControlRight, key: Control
         jskey: "-",
         jscode: `Nu${abbreviation}mpadSubtract`,
     });
+    // keypad: may depend on numlock:
     keys.set("47", {
         linux: "KP7",
         label: ["Home", "7"],
@@ -723,6 +773,7 @@ code: ControlRight, key: Control
         jskey: [`Del${abbreviation}ete`, "."],
         jscode: `Nu${abbreviation}mpadDecimal`,
     });
+    // end keypad
     keys.set("4E", {
         linux: "KPAD",
         label: "+",
@@ -738,7 +789,7 @@ code: ControlRight, key: Control
         jscode: `Nu${abbreviation}mpadEnter`,
     });
     // remaining left:
-    keys.set("0F", {
+    keys.set("0F", { dotnetforms: setFallback(),
         linux: "TAB",
         label: "Tab",
         win: ["VK_TAB", "09"],
@@ -749,33 +800,33 @@ code: ControlRight, key: Control
         linux: "CAPS",
         label: "Caps Lock",
         win: ["VK_CAPITAL", "14"],
-        jskey: "CapsLock",
-        jscode: "CapsLock",
+        dotnetforms: `CapsLock`,
     });
     keys.set("2A", {
         linux: "LFSH",
         label: "Shift",
         win: ["VK_LSHIFT", "A0"],
+        dotnetforms: "ShiftKey",
+        dotnetwpf: "LeftShift",
         jskey: "Shift",
         jscode: "ShiftLeft",
     });
     // keys
-    (keys => { // prepopulate
+    (keys => { // prepopulate fallback
         const values = keys.values();
         for (const value of values) {
-            if (value.dotnetforms == undefined) {
+            //break;
+            if (value.dotnetforms == undefined)
                 value.dotnetforms = value.label;
-                value.dotnetwpf = value.label;
-                value.jskey = value.label;
-                value.jscode = value.label;
-            } else if (value.dotnetwpf == undefined) {
+            if (value.dotnetwpf == undefined)
                 value.dotnetwpf = value.dotnetforms;
+            if (value.jskey == undefined)
                 value.jskey = value.dotnetforms;
-                value.jscode = value.dotnetforms;
-            } //if
+            if (value.jscode == undefined)
+                value.jscode = value.jskey;
         } //loop
     })(keys);
-
+    
     const initializeNames = objectArray => {
         for (const subset of objectArray)
             for (const index in subset)
