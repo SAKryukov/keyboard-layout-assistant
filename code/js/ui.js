@@ -31,7 +31,7 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         if (yShift)
             text.setAttribute(definitionSet.names.attributes.y, yShift);
         text[data] = textContent;
-        text.textContent = definitionSet.formats.formatLabel(textContent);
+        text.textContent = definitionSet.formats.formatKey(textContent);
         text.classList.add(className);
         parent.appendChild(text);
     } //addText

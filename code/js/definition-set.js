@@ -4,6 +4,7 @@ const createDefinitionSet = (() => {
 
     const twoCaseArray = lower => [lower, lower.toUpperCase()];
     const abbreviation = String.fromCodePoint(0x2026); // horizontal ellipsis
+    const abbreviationSeparator = "--";
     const empty = String();
     const trimAppreviation = name =>
         name.includes(abbreviation)
@@ -23,8 +24,8 @@ const createDefinitionSet = (() => {
         keys.set("01", {
         linux: "ESC",
         label: "Esc",
-        win: [`VK_ES${abbreviation}CAPE`, "1B"],
-        dotnetforms: `Esc${abbreviation}ape`,
+        win: [`VK_ESCAPE--VK_ES${abbreviation}`, "1B"],
+        dotnetforms: `Escape--Esc${abbreviation}`,
     });
     // F row
     keys.set("3B", {
@@ -91,13 +92,12 @@ const createDefinitionSet = (() => {
     keys.set("29", {
         linux: "TLDE",
         label: ["`", "~"],
-        win: [`VK_O${abbreviation}EM_3`, "C0"],
-        dotnetforms: `Oem${abbreviation}tilde`,
-        dotnetwpf: `Oem${abbreviation}Tilde`, // sic! names for System.Windows.Forms and wpf are different!
+        win: [`VK_OEM_3--VK_O${abbreviation}`, "C0"],
+        dotnetforms: `Oemtilde--Oem${abbreviation}`,
+        dotnetwpf: `OemTilde--Oem${abbreviation}`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: "`",
-        jscode: `Bac${abbreviation}kquote`,
-    });
-    // row 1
+        jscode: `Backquote--Bac${abbreviation}`,
+    });    // row 1
     keys.set("02", {
         linux: "AE01",
         label: ["1", "!"],
@@ -181,17 +181,17 @@ const createDefinitionSet = (() => {
     keys.set("0C", {
         linux: "AE11",
         label: ["-", "_"],
-        win: [`VK_OE${abbreviation}M_MINUS`, "BD"],
-        dotnetforms: `Oem${abbreviation}Minus`,
+        win: [`VK_OEM_MINUS--VK_OE${abbreviation}`, "BD"],
+        dotnetforms: `OemMinus--Oem${abbreviation}`,
         jskey: ["-", "_"],
         jscode: "Minus",
     });
     keys.set("0D", {
         linux: "AE12",
         label: ["=", "+"],
-        win: [`VK_OE${abbreviation}M_PLUS`, "BB"],
-        dotnetforms: `Oem${abbreviation}plus`,
-        dotnetwpf: `Oem${abbreviation}Plus`, // sic! names for System.Windows.Forms and wpf are different!
+        win: [`VK_OEM_PLUS--VK_OE${abbreviation}`, "BB"],
+        dotnetforms: `Oemplus--Oem${abbreviation}`,
+        dotnetwpf: `OemPlus--Oem${abbreviation}`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: ["=", "+"],
         jscode: "Equal",
     });
@@ -288,29 +288,29 @@ const createDefinitionSet = (() => {
     keys.set("1A", {
         linux: "AD11",
         label: ["[", "{"],
-        win: [`VK_OE${abbreviation}M_4`, "DB"],
+        win: [`VK_OEM_4--VK_OE${abbreviation}`, "DB"],
         dotnetforms: `Oem4`,
-        dotnetwpf: `Oem${abbreviation}OpenBrackets`,
+        dotnetwpf: `OemOpenBrackets--Oem${abbreviation}`,
         jskey: ["[", "{"],
-        jscode: `Bra${abbreviation}cketLeft`,
+        jscode: `BracketLeft--Bra${abbreviation}`,
     });
     keys.set("1B", {
         linux: "AD12",
         label: ["]", "}"],
-        win: [`VK_OE${abbreviation}M_6`, "DD"],
+        win: [`VK_OEM_6--VK_OE${abbreviation}`, "DD"],
         dotnetforms: `Oem6`,
         dotnetwpf: `Oem6`,
         jskey: ["]", "}"],
-        jscode: `Bra${abbreviation}cketRight`,
+        jscode: `BracketRight--Bra${abbreviation}`,
     });
     keys.set("2B", {
         linux: "BKSL",
         label: ["\\", "|"],
         win: ["VK_OEM_5", "0xDC"],
-        dotnetforms: `OemPipe`,
+        dotnetforms: `OemPipe--Oe${abbreviation}`,
         dotnetwpf: `Oem5`,
         jskey: ["\\", "|"],
-        jscode: `Backsl${abbreviation}ash`,
+        jscode: `Backslash--Backsl${abbreviation}`,
     });
     //row 3:
     keys.set("1E", {
@@ -389,17 +389,17 @@ const createDefinitionSet = (() => {
     keys.set("27", {
         linux: "AC10",
         label: [";", ":"],
-        win: [`VK_OE${abbreviation}M_1`, "BA"],
-        dotnetforms: `Oem${abbreviation}Semicolon`,
+        win: [`VK_OEM_1--VK_OE${abbreviation}`, "BA"],
+        dotnetforms: `OemSemicolon--Oem${abbreviation}`,
         dotnetwpf: `Oem1`,
         jskey: [";", ":"],
-        jscode: `Sem${abbreviation}icolon`,
+        jscode: `Semicolon--Sem${abbreviation}`,
     });
     keys.set("28", {
         linux: "AC11",
         label: ["'", "\""],
-        win: [`VK_OE${abbreviation}M_7`, "DE"],
-        dotnetforms: `Oem${abbreviation}Quotes`,
+        win: [`VK_OEM_7--VK_OE${abbreviation}`, "DE"],
+        dotnetforms: `OemQuotes--Oem${abbreviation}`,
         jskey: ["'", "\""],
         jscode: "Quote",
     });
@@ -470,24 +470,24 @@ const createDefinitionSet = (() => {
     keys.set("33", {
         linux: "AB08",
         label: [",", "<"],
-        win: [`VK_OE${abbreviation}M_COMMA`, "BC"],
-        dotnetforms: `Oem${abbreviation}comma`,
-        dotnetwpf: `Oem${abbreviation}Comma`, // sic! names for System.Windows.Forms and wpf are different!
+        win: [`VK_OEM_COMMA--VK_OE${abbreviation}`, "BC"],
+        dotnetforms: `Oemcomma--Oem${abbreviation}`,
+        dotnetwpf: `OemComma--Oem${abbreviation}`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: [",", "<"],
-        jscode: `Com${abbreviation}ma`,
+        jscode: `Comma--Com${abbreviation}`,
     });
     keys.set("34", {
         linux: "AB09",
         label: [".", ">"],
-        win: [`VK_OE${abbreviation}M_PERIOD`, "BE"],
-        dotnetforms: `Oem${abbreviation}Period`,
+        win: [`VK_OEM_PERIOD--VK_OE${abbreviation}`, "BE"],
+        dotnetforms: `OemPeriod--Oem${abbreviation}`,
         jskey: [".", ">"],
-        jscode: `Per${abbreviation}iod`,
+        jscode: `Period--Per${abbreviation}`,
     });
     keys.set("35", {
         linux: "AB10",
         label: ["/", "?"],
-        win: [`VK_OE${abbreviation}M_2`, "BF"],
+        win: [`VK_OEM_2--VK_OE${abbreviation}`, "BF"],
         dotnetforms: `Oem2`,
         jskey: ["/", "?"],
         jscode: `Slash`,
@@ -505,11 +505,11 @@ const createDefinitionSet = (() => {
     keys.set("1D", {
         linux: "LCTL",
         label: "Ctrl",
-        win: [`VK_LCO${abbreviation}NTROL`, "A2"],
-        dotnetforms: `Contro${abbreviation}lKey`, 
+        win: [`VK_LCONTROL--VK_LCO${abbreviation}`, "A2"],
+        dotnetforms: `ControlKey--Contro${abbreviation}`, 
         dotnetwpf: `LeftCtrl`,
         jskey: "Control",
-        jscode: `Contr${abbreviation}olLeft`,
+        jscode: `ControlLeft--Contr${abbreviation}`,
     });
     keys.set("E0 5B", {
         linux: "LWIN",
@@ -518,12 +518,12 @@ const createDefinitionSet = (() => {
         dotnetforms: `LWin`, 
         dotnetwpf: `LWin`,
         jskey: "Meta",
-        jscode: `MetaL${abbreviation}eft`,
+        jscode: `MetaLeft--MetaL${abbreviation}`,
     });
     keys.set("38", {
         linux: "LALT",
         label: "Alt",
-        win: [`VK_LME${abbreviation}NU`, "A4"],
+        win: [`VK_LMENU--VK_LME${abbreviation}`, "A4"],
         dotnetforms: `Menu`, 
         dotnetwpf: `LeftAlt`,
         jskey: "Alt",
@@ -540,7 +540,7 @@ const createDefinitionSet = (() => {
     keys.set("E0 38", {
         linux: "RALT",
         label: "Alt",
-        win: [`VK_RME${abbreviation}NU`, "A5"],
+        win: [`VK_RMENU--VK_RME${abbreviation}`, "A5"],
         dotnetforms: `Menu`,
         dotnetwpf: `RightAlt`,
         jskey: "Alt",
@@ -552,46 +552,46 @@ const createDefinitionSet = (() => {
         win: ["VK_RWIN", "5C"], 
         dotnetforms: `RWin`,
         jskey: "Meta",
-        jscode: `MetaR${abbreviation}ight`,
+        jscode: `MetaRight--MetaR${abbreviation}`,
     });
     keys.set("E0 5D", {
         linux: "MENU",
         label: ideograph.menu, //"Menu"
         win: ["VK_APPS", "5D"],
         dotnetforms: `Apps`,
-        jskey: `Conte${abbreviation}xtMenu`,
-        jscode: `Conte${abbreviation}xtMenu`,
+        jskey: `ContextMenu--Conte${abbreviation}`,
+        jscode: `ContextMenu--Conte${abbreviation}`,
     });
     keys.set("E0 1D", {
         linux: "RCTL",
         label: "Ctrl",
-        win: [`VK_RCO${abbreviation}NTROL`, "A3"],
-        dotnetforms: `Contro${abbreviation}lKey`,
-        dotnetwpf: `RightCtrl`,
+        win: [`VK_RCONTROL--VK_RCO${abbreviation}`, "A3"],
+        dotnetforms: `ControlKey--Contro${abbreviation}`,
+        dotnetwpf: `RightCtrl--RightC${abbreviation}`,
         jskey: `Control`,
-        jscode: `Contr${abbreviation}olRight`,
+        jscode: `ControlRight--Contr${abbreviation}`,
     });
     //--------------
     keys.set("54", {
         linux: "PRSC",
         label: "PtSc",
-        win: [`VK_SN${abbreviation}APSHOT`, "2C"],
-        dotnetforms: `Prin${abbreviation}tScreen`,
-        jskey: `Pri${abbreviation}ntScreen`,
-        jscode: `Pri${abbreviation}ntScreen`,
+        win: [`VK_SNAPSHOT--VK_SN${abbreviation}`, "2C"],
+        dotnetforms: `PrintScreen--Prin${abbreviation}`,
+        jskey: `PrintScreen--Pri${abbreviation}`,
+        jscode: `PrintScreen--Pri${abbreviation}`,
     });
     keys.set("46", {
         linux: "SCLK",
         label: ["Lock", "Scroll"],
-        win: [`VK_SC${abbreviation}CROLL`, 	"91"],
+        win: [`VK_SCROLL--VK_SC${abbreviation}`, 	"91"],
         dotnetforms: `Scroll`,
-        jskey: `Scr${abbreviation}ollLock`,
-        jscode: `Scr${abbreviation}ollLock`,
+        jskey: `ScrollLock--Scr${abbreviation}`,
+        jscode: `ScrollLock--Scr${abbreviation}`,
     });
     keys.set("E1 1D", {
         linux: "PAUS",
         label: "Pause",
-        win: [`VK_PA${abbreviation}USE`, "13"],
+        win: [`VK_PAUSE--VK_PA${abbreviation}`, "13"],
         dotnetforms: `Pause`,
         jskey: `Pause`,
         jscode: `Pause`,
@@ -600,209 +600,203 @@ const createDefinitionSet = (() => {
     keys.set("E0 52", {
         linux: "INS",
         label: "Insert",
-        win: [`VK_IN${abbreviation}SERT`, "2D"],
+        win: [`VK_INSERT--VK_IN${abbreviation}`, "2D"],
     });
     keys.set("E0 47", {
         linux: "HOME",
         label: "Home",
-        win: [`VK_HO${abbreviation}ME`, "24"],
+        win: [`VK_HOME--VK_HO${abbreviation}`, "24"],
     });
     keys.set("E0 49", {
         linux: "PGUP",
         label: "PgUp",
-        win: [`VK_P${abbreviation}RIOR`, "21"],
-        dotnetforms: `Pag${abbreviation}eUp`,
-        jskey: `Pag${abbreviation}eUp`,
+        win: [`VK_PRIOR--VK_P${abbreviation}`, "21"],
+        dotnetforms: `PageUp--Pag${abbreviation}`,
+        jskey: `PageUp--Pag${abbreviation}`,
     });
     keys.set("E0 53", {
         linux: "DELE",
         label: "Delete",
-        win: [`VK_DE${abbreviation}LETE`, "2E"],
+        win: [`VK_DELETE--VK_DE${abbreviation}`, "2E"],
     });
     keys.set("E0 4F", {
         linux: "END",
         label: "End",
-        win: [`VK_EN${abbreviation}D`, "23"],
+        win: [`VK_END--VK_EN${abbreviation}`, "23"],
         jskey: "End",
-        jscode: "End",
     });
     keys.set("E0 51", {
         linux: "PGDN",
         label: "PgDn",
-        win: [`VK_N${abbreviation}EXT`, "22"],
+        win: [`VK_NEXT--VK_NE${abbreviation}`, "22"],
         dotnetforms: `Next`,
-        jskey: `Pag${abbreviation}eDown`,
-        jscode: `Pag${abbreviation}eDown`,
+        jskey: `PageDown--Pag${abbreviation}`,
     });
     keys.set("E0 48", {
         linux: "UP",
         label: ideograph.up,
         win: ["VK_UP", "26"],
         dotnetforms: `Up`,
-        jskey: `Arr${abbreviation}owUp`,
-        jscode: `Arr${abbreviation}owUp`,
+        jskey: `ArrowUp--Arr${abbreviation}`,
     });
     keys.set("E0 4B", {
         linux: "LEFT",
         label: ideograph.left,
-        win: [`VK_L${abbreviation}EFT`, "25"],
+        win: [`VK_LEFT--VK_L${abbreviation}`, "25"],
         dotnetforms: `Left`,
-        jskey: `Arr${abbreviation}owLeft`,
-        jscode: `Arr${abbreviation}owLeft`,
+        jskey: `ArrowLeft--Arr${abbreviation}`,
     });
     keys.set("E0 50", {
         linux: "DOWN",
         label: ideograph.down,
-        win: [`VK_D${abbreviation}OWN`, "28"],
+        win: [`VK_DOWN--VK_D${abbreviation}`, "28"],
         dotnetforms: `Down`,
-        jskey: `Arr${abbreviation}owDown`,
-        jscode: `Arr${abbreviation}owDown`,
+        jskey: `ArrowDown--Arr${abbreviation}`,
     });
     keys.set("E0 4D", {
         linux: "RIGHT",
         label: ideograph.right,
-        win: [`VK_RI${abbreviation}GHT`, "27"],
+        win: [`VK_RIGHT--VK_RI${abbreviation}`, "27"],
         dotnetforms: `Right`,
-        jskey: `Arr${abbreviation}owRight`,
-        jscode: `Arr${abbreviation}owRight`,
+        jskey: `ArrowRight--Arr${abbreviation}`,
     });
     // keypad
     keys.set("45", {
         linux: "NMLK",
         label: ["Lock", "Num"],
-        win: [`VK_NU${abbreviation}MLOCK`, "90"],
-        dotnetforms: `Num${abbreviation}Lock`,
+        win: [`VK_NUMLOCK--VK_NU${abbreviation}`, "90"],
+        dotnetforms: `NumLock--Num${abbreviation}`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
         label: "/",
-        win: [`VK_DI${abbreviation}VIDE`, "6F"],
+        win: [`VK_DIVIDE--VK_DI${abbreviation}`, "6F"],
         dotnetforms: `Divide`,
         jskey: "/",
-        jscode: `Nu${abbreviation}mpadDivide`,
+        jscode: `NumpadDivide--Nu${abbreviation}`,
     });
     keys.set("37", {
         linux: "KPMU",
         label: "*",
-        win: [`VK_MU${abbreviation}LTIPLY`, "6A"],
-        dotnetforms: `Mult${abbreviation}iply`,
+        win: [`VK_MULTIPLY--VK_MU${abbreviation}`, "6A"],
+        dotnetforms: `Multiply--Mult${abbreviation}`,
         jskey: "*",
-        jscode: `Nu${abbreviation}mpadMultiply`,
+        jscode: `NumpadMultiply--Nu${abbreviation}`,
     });
     keys.set("4A", {
         linux: "KPSU",
         label: "-",
-        win: [`VK_SU${abbreviation}BTRACT`, "6D"],
-        dotnetforms: `Sub${abbreviation}tract`,
+        win: [`VK_SUBTRACT--VK_SU${abbreviation}`, "6D"],
+        dotnetforms: `Subtract--Sub${abbreviation}`,
         jskey: "-",
-        jscode: `Nu${abbreviation}mpadSubtract`,
+        jscode: `NumpadSubtract--Nu${abbreviation}`,
     });
     // keypad: may depend on numlock:
     keys.set("47", {
         linux: "KP7",
         label: ["Home", "7"],
-        win: [`VK_HO${abbreviation}ME`, "24", `VK_NU${abbreviation}MPAD7`, "67"],
-        dotnetforms: [`Home`, `Num${abbreviation}Pad7`],
+        win: [`VK_HOME--VK_HO${abbreviation}`, "24", `VK_NUMPAD7--VK_NU${abbreviation}`, "67"],
+        dotnetforms: [`Home`, `NumPad7--Num${abbreviation}`],
         jskey: ["Home", "7"],
-        jscode: `Nu${abbreviation}mpad7`,
+        jscode: `Numpad7--Nu${abbreviation}`,
     });
     keys.set("48", {
         linux: "KP8",
         label: [ideograph.up, "8"],
-        win: [`VK_UP`, "26", `VK_NU${abbreviation}MPAD8`, "68"],
-        dotnetforms: [`Up`, `Num${abbreviation}Pad8`],
-        jskey: [`Arr${abbreviation}owUp`, "8"],
-        jscode: `Nu${abbreviation}mpad8`,
+        win: [`VK_UP`, "26", `VK_NUMPAD8--VK_NU${abbreviation}`, "68"],
+        dotnetforms: [`Up`, `NumPad8--Num${abbreviation}`],
+        jskey: [`ArrowUp--Arr${abbreviation}`, "8"],
+        jscode: `Numpad8--Nu${abbreviation}`,
     });
     keys.set("49", {
         linux: "KP9",
         label: ["PgUp", "9"],
-        win: [`VK_PR${abbreviation}IOR`, "21", `VK_NU${abbreviation}MPAD9`, "69"],
-        dotnetforms: [`Pag${abbreviation}eUp`, `Num${abbreviation}Pad9`],
-        jskey: [`Pag${abbreviation}eUp`, "9"],
-        jscode: `Nu${abbreviation}mpad9`,
+        win: [`VK_PRIOR--VK_PR${abbreviation}`, "21", `VK_NUMPAD9--VK_NU${abbreviation}`, "69"],
+        dotnetforms: [`PageUp--Pag${abbreviation}`, `NumPad9--Num${abbreviation}`],
+        jskey: [`PageUp--Pag${abbreviation}`, "9"],
+        jscode: `Numpad9--Nu${abbreviation}`,
     });
     keys.set("4B", {
         linux: "KP4",
         label: [ideograph.left, "4"],
-        win: [`VK_LE${abbreviation}FT`, "25", `VK_NU${abbreviation}MPAD4`, "64"],
-        dotnetforms: [`Left`, `Num${abbreviation}Pad4`],
-        jskey: [`Arr${abbreviation}owLeft`, "4"],
-        jscode: `Nu${abbreviation}mpad4`,
+        win: [`VK_LEFT--VK_LE${abbreviation}`, "25", `VK_NUMPAD4--VK_NU${abbreviation}`, "64"],
+        dotnetforms: [`Left`, `NumPad4--Num${abbreviation}`],
+        jskey: [`ArrowLeft--Arr${abbreviation}`, "4"],
+        jscode: `Numpad4--Nu${abbreviation}`,
     });
     keys.set("4C", {
         linux: "KP5",
         label: [`Clear`, "5"],
-        win: [`VК_CL${abbreviation}EAR`, "0C", `VK_NU${abbreviation}MPAD5`, "65"],
-        dotnetforms: [`Clear`, `Num${abbreviation}Pad5`],
+        win: [`VК_CLEAR--VК_CL${abbreviation}`, "0C", `VK_NUMPAD5--VK_NU${abbreviation}`, "65"],
+        dotnetforms: [`Clear`, `NumPad5--Num${abbreviation}`],
         jskey: [`Clear`, "5"],
-        jscode: `Nu${abbreviation}mpad5`,
+        jscode: `Numpad5--Nu${abbreviation}`,
     });
     keys.set("4D", {
         linux: "KP6",
         label: [ideograph.right, "6"],
-        win: [`VK_RI${abbreviation}GHT`, "27", `VK_NU${abbreviation}MPAD6`, "66"],
-        dotnetforms: [`Right`, `Num${abbreviation}Pad6`],
-        jskey: [`Arr${abbreviation}owRight`, "6"],
-        jscode: `Nu${abbreviation}mpad6`,
+        win: [`VK_RIGHT--VK_RI${abbreviation}`, "27", `VK_NUMPAD6--VK_NU${abbreviation}`, "66"],
+        dotnetforms: [`Right`, `NumPad6--Num${abbreviation}`],
+        jskey: [`ArrowRight--Arr${abbreviation}`, "6"],
+        jscode: `Numpad6--Nu${abbreviation}`,
     });
     keys.set("4F", {
         linux: "KP1",
         label: ["End", "1"],
-        win: [`VK_END`, "23", `VK_NU${abbreviation}MPAD1`, "61"],
-        dotnetforms: [`End`, `Num${abbreviation}Pad1`],
+        win: [`VK_END`, "23", `VK_NUMPAD1--VK_NU${abbreviation}`, "61"],
+        dotnetforms: [`End`, `NumPad1--Num${abbreviation}`],
         jskey: [`End`, "1"],
-        jscode: `Nu${abbreviation}mpad1`,
+        jscode: `Numpad1--Nu${abbreviation}`,
     });
     keys.set("50", {
         linux: "KP2",
         label: [ideograph.down, "2"],
-        win: [`VK_DO${abbreviation}WN`, "28", `VK_NU${abbreviation}MPAD2`, "62"],
-        dotnetforms: [`Down`, `Num${abbreviation}Pad2`],
-        jskey: [`Arr${abbreviation}owDown`, "2"],
-        jscode: `Nu${abbreviation}mpad2`,
+        win: [`VK_DOWN--VK_DO${abbreviation}`, "28", `VK_NUMPAD2--VK_NU${abbreviation}`, "62"],
+        dotnetforms: [`Down`, `NumPad2--Num${abbreviation}`],
+        jskey: [`ArrowDown--Arr${abbreviation}`, "2"],
+        jscode: `Numpad2--Nu${abbreviation}`,
     });
     keys.set("51", {
         linux: "KP3",
         label: ["PgDn", "3"],
-        win: [`VK_NE${abbreviation}XT`, "22", `VK_NU${abbreviation}MPAD3`, "63"],
-        dotnetforms: [`Next`, `Num${abbreviation}Pad3`],
-        jskey: [`Pag${abbreviation}eDown`, "3"],
-        jscode: `Nu${abbreviation}mpad3`,
+        win: [`VK_NEXT--VK_NE${abbreviation}`, "22", `VK_NUMPAD3--VK_NU${abbreviation}`, "63"],
+        dotnetforms: [`Next`, `NumPad3--Num${abbreviation}`],
+        jskey: [`PageDown--Pag${abbreviation}`, "3"],
+        jscode: `Numpad3--Nu${abbreviation}`,
     });
     keys.set("52", {
         linux: "KP0",
         label: ["Insert", "0"],
         win: [`VK_INSERT`, "2D", `VK_NUMPAD0`, "60"],
-        dotnetforms: [`Insert`, `Num${abbreviation}Pad0`],
+        dotnetforms: [`Insert`, `NumPad0--Num${abbreviation}`],
         jskey: [`Insert`, "0"],
         jscode: `Numpad0`,
     });
     keys.set("53", {
         linux: "KPDL",
         label: ["Delete", "."],
-        win: [`VK_DE${abbreviation}LETE`, "2E", `VK_DE${abbreviation}CIMAL`, "6E"],
-        dotnetforms: [`Delete`, `Dec${abbreviation}imal`],         
-        jskey: [`Del${abbreviation}ete`, "."],
-        jscode: `Nu${abbreviation}mpadDecimal`,
+        win: [`VK_DELETE--VK_DE${abbreviation}`, "2E", `VK_DECIMAL--VK_DE${abbreviation}`, "6E"],
+        dotnetforms: [`Delete`, `Decimal--Dec${abbreviation}`],
+        jskey: [`Delete--Del${abbreviation}`, "."],
+        jscode: `NumpadDecimal--Nu${abbreviation}`,
     });
     // end keypad
     keys.set("4E", {
         linux: "KPAD",
         label: "+",
-        win: [`VK_AD${abbreviation}D`, "6B"],
+        win: [`VK_ADD--VK_AD${abbreviation}`, "6B"],
         dotnetforms: `Add`,
         jskey: "+",
-        jscode: `Nu${abbreviation}mpadAdd`,
+        jscode: `NumpadAdd--Nu${abbreviation}`,
     });
     keys.set("E0 1C", {
         linux: "KPEN",
         label: "Enter",
-        win: [`VK_RE${abbreviation}TURN`, "0D"],
+        win: [`VK_RETURN--VK_RE${abbreviation}`, "0D"],
         dotnetforms: `Enter`,
-        dotnetwpf: `Ret${abbreviation}urn`, //sic! names for System.Windows.Forms and wpf are different!
+        dotnetwpf: `Return--Ret${abbreviation}`, //sic! names for System.Windows.Forms and wpf are different!
         jskey: "Enter",
-        jscode: `Nu${abbreviation}mpadEnter`,
+        jscode: `NumpadEnter--Nu${abbreviation}`,
     });
     // remaining left:
     keys.set("0F", {
@@ -887,16 +881,25 @@ const createDefinitionSet = (() => {
 
     const defaultShift = 0.25;
     const formats = {
-        formatLabel: data => trimAppreviation(data),
-        output: (data, style) => {
-            if (data.includes(abbreviation))
-                data = data.replace(abbreviation, empty);
+        formatKey: (data, fullName) => {
+            const split = data.split(abbreviationSeparator);
+            if (split.length > 1) {
+                const index = fullName ? 0 : 1;
+                return split[index];
+            } //if
+            return data;
+        }, // formatKey
+        output: function (data, style) {
+            const keyData = this.formatKey(data, true);
             let bra = empty, ket = empty;
             if (style == names.classes.linux) {
                 bra = "<"; ket = ">";
             } //if
-            return `${bra}${data}${ket} `;
+            return `${bra}${keyData}${ket} `;
         }, //output
+        /*
+        formatLabel: data => trimAppreviation(data),
+        */
         defaultShift: `${defaultShift}em`,
         formatYShift: value => `${value + defaultShift}em`,
     }; //formats
