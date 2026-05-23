@@ -665,7 +665,7 @@ const createDefinitionSet = (() => {
         linux: "NMLK",
         label: ["Lock", "Num"],
         win: [`VK_NUMLOCK--VK_NU${abbreviation}`, "90"],
-        dotnetforms: `NumLock--Num${abbreviation}`,
+        dotnetforms: `NumLock--Nu${abbreviation}`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
@@ -696,79 +696,79 @@ const createDefinitionSet = (() => {
         linux: "KP7",
         label: ["Home", "7"],
         win: [`VK_HOME--VK_HO${abbreviation}`, "24", `VK_NUMPAD7--VK_NU${abbreviation}`, "67"],
-        dotnetforms: [`Home`, `NumPad7--Num${abbreviation}`],
+        dotnetforms: [`Home`, `NumPad7--N${abbreviation}7`],
         jskey: ["Home", "7"],
-        jscode: `Numpad7--Nu${abbreviation}`,
+        jscode: `Numpad7--N${abbreviation}7`,
     });
     keys.set("48", {
         linux: "KP8",
         label: [ideograph.up, "8"],
         win: [`VK_UP`, "26", `VK_NUMPAD8--VK_NU${abbreviation}`, "68"],
-        dotnetforms: [`Up`, `NumPad8--Num${abbreviation}`],
+        dotnetforms: [`Up`, `NumPad8--N${abbreviation}8`],
         jskey: [`ArrowUp--Arr${abbreviation}`, "8"],
-        jscode: `Numpad8--Nu${abbreviation}`,
+        jscode: `Numpad8--N${abbreviation}8`,
     });
     keys.set("49", {
         linux: "KP9",
         label: ["PgUp", "9"],
         win: [`VK_PRIOR--VK_PR${abbreviation}`, "21", `VK_NUMPAD9--VK_NU${abbreviation}`, "69"],
-        dotnetforms: [`PageUp--Pag${abbreviation}`, `NumPad9--Num${abbreviation}`],
+        dotnetforms: [`PageUp--Pag${abbreviation}`, `NumPad9--N${abbreviation}9`],
         jskey: [`PageUp--Pag${abbreviation}`, "9"],
-        jscode: `Numpad9--Nu${abbreviation}`,
+        jscode: `Numpad9--N${abbreviation}9`,
     });
     keys.set("4B", {
         linux: "KP4",
         label: [ideograph.left, "4"],
         win: [`VK_LEFT--VK_LE${abbreviation}`, "25", `VK_NUMPAD4--VK_NU${abbreviation}`, "64"],
-        dotnetforms: [`Left`, `NumPad4--Num${abbreviation}`],
+        dotnetforms: [`Left`, `NumPad4--N${abbreviation}4`],
         jskey: [`ArrowLeft--Arr${abbreviation}`, "4"],
-        jscode: `Numpad4--Nu${abbreviation}`,
+        jscode: `Numpad4--N${abbreviation}4`,
     });
     keys.set("4C", {
         linux: "KP5",
         label: [`Clear`, "5"],
         win: [`VК_CLEAR--VК_CL${abbreviation}`, "0C", `VK_NUMPAD5--VK_NU${abbreviation}`, "65"],
-        dotnetforms: [`Clear`, `NumPad5--Num${abbreviation}`],
+        dotnetforms: [`Clear`, `NumPad5--N${abbreviation}5`],
         jskey: [`Clear`, "5"],
-        jscode: `Numpad5--Nu${abbreviation}`,
+        jscode: `Numpad5--N${abbreviation}5`,
     });
     keys.set("4D", {
         linux: "KP6",
         label: [ideograph.right, "6"],
         win: [`VK_RIGHT--VK_RI${abbreviation}`, "27", `VK_NUMPAD6--VK_NU${abbreviation}`, "66"],
-        dotnetforms: [`Right`, `NumPad6--Num${abbreviation}`],
+        dotnetforms: [`Right`, `NumPad6--N${abbreviation}6`],
         jskey: [`ArrowRight--Arr${abbreviation}`, "6"],
-        jscode: `Numpad6--Nu${abbreviation}`,
+        jscode: `Numpad6--N${abbreviation}6`,
     });
     keys.set("4F", {
         linux: "KP1",
         label: ["End", "1"],
         win: [`VK_END`, "23", `VK_NUMPAD1--VK_NU${abbreviation}`, "61"],
-        dotnetforms: [`End`, `NumPad1--Num${abbreviation}`],
+        dotnetforms: [`End`, `NumPad1--N${abbreviation}1`],
         jskey: [`End`, "1"],
-        jscode: `Numpad1--Nu${abbreviation}`,
+        jscode: `Numpad1--N${abbreviation}1`,
     });
     keys.set("50", {
         linux: "KP2",
         label: [ideograph.down, "2"],
         win: [`VK_DOWN--VK_DO${abbreviation}`, "28", `VK_NUMPAD2--VK_NU${abbreviation}`, "62"],
-        dotnetforms: [`Down`, `NumPad2--Num${abbreviation}`],
+        dotnetforms: [`Down`, `NumPad2--N${abbreviation}2`],
         jskey: [`ArrowDown--Arr${abbreviation}`, "2"],
-        jscode: `Numpad2--Nu${abbreviation}`,
+        jscode: `Numpad2--N${abbreviation}2`,
     });
     keys.set("51", {
         linux: "KP3",
         label: ["PgDn", "3"],
         win: [`VK_NEXT--VK_NE${abbreviation}`, "22", `VK_NUMPAD3--VK_NU${abbreviation}`, "63"],
-        dotnetforms: [`Next`, `NumPad3--Num${abbreviation}`],
+        dotnetforms: [`Next`, `NumPad3--N${abbreviation}3`],
         jskey: [`PageDown--Pag${abbreviation}`, "3"],
-        jscode: `Numpad3--Nu${abbreviation}`,
+        jscode: `Numpad3--N${abbreviation}3`,
     });
     keys.set("52", {
         linux: "KP0",
         label: ["Insert", "0"],
         win: [`VK_INSERT`, "2D", `VK_NUMPAD0`, "60"],
-        dotnetforms: [`Insert`, `NumPad0--Num${abbreviation}`],
+        dotnetforms: [`Insert`, `NumPad0`],
         jskey: [`Insert`, "0"],
         jscode: `Numpad0`,
     });
