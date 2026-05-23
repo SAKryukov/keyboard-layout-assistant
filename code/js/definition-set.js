@@ -4,6 +4,7 @@ const createDefinitionSet = (() => {
 
     const twoCaseArray = lower => [lower, lower.toUpperCase()];
     const abbreviation = String.fromCodePoint(0x2026); // horizontal ellipsis
+    const empty = String();
     const trimAppreviation = name =>
         name.includes(abbreviation)
         ? name.substring(0, name.indexOf(abbreviation)) + abbreviation
@@ -886,10 +887,11 @@ const createDefinitionSet = (() => {
 
     const defaultShift = 0.25;
     const formats = {
+        formatLabel: data => trimAppreviation(data),
         output: (data, style) => {
             if (data.includes(abbreviation))
-                data = data.replace(abbreviation, "");
-            let bra = "", ket = "";
+                data = data.replace(abbreviation, empty);
+            let bra = empty, ket = empty;
             if (style == names.classes.linux) {
                 bra = "<"; ket = ">";
             } //if
@@ -900,7 +902,6 @@ const createDefinitionSet = (() => {
     }; //formats
 
     const generateReport = keys => {
-        const empty = String();
         const formatLabel = data => {
             if (data instanceof Array) {
                 const clone = structuredClone(data);
@@ -938,6 +939,6 @@ const createDefinitionSet = (() => {
         window.open("../docs/help.html", '_blank').focus();
     } //help
 
-    return { keys, names, formats, help, trimAppreviation };
+    return { keys, names, formats, help };
 
 }); //createDefinitionSet
