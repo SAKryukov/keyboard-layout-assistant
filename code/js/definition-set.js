@@ -471,6 +471,7 @@ const createDefinitionSet = (() => {
         label: [",", "<"],
         win: [`VK_OE${abbreviation}M_COMMA`, "BC"],
         dotnetforms: `Oem${abbreviation}comma`,
+        dotnetwpf: `Oem${abbreviation}Comma`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: [",", "<"],
         jscode: `Com${abbreviation}ma`,
     });
@@ -528,11 +529,11 @@ const createDefinitionSet = (() => {
         jscode: `AltLeft`,
     });
     keys.set("39", {
-        linux: "39",
-        label: "",
+        linux: "SPCE",
+        label: " ",
         win: ["VK_SPACE", "20"],
         dotnetforms: "Space",
-        jskey: "",
+        jskey: " ",
         jscode: "Space",
     });
     keys.set("E0 38", {
@@ -566,6 +567,7 @@ const createDefinitionSet = (() => {
         win: [`VK_RCO${abbreviation}NTROL`, "A3"],
         dotnetforms: `Contro${abbreviation}lKey`,
         dotnetwpf: `RightCtrl`,
+        jskey: `Control`,
         jscode: `Contr${abbreviation}olRight`,
     });
     //--------------
@@ -729,10 +731,10 @@ const createDefinitionSet = (() => {
     });
     keys.set("4C", {
         linux: "KP5",
-        label: "5",
+        label: [`Clear`, "5"],
         win: [`VК_CL${abbreviation}EAR`, "0C", `VK_NU${abbreviation}MPAD5`, "65"],
         dotnetforms: [`Clear`, `Num${abbreviation}Pad5`],
-        jskey: [`Uni${abbreviation}dentified`, "5"],
+        jskey: [`Clear`, "5"],
         jscode: `Nu${abbreviation}mpad5`,
     });
     keys.set("4D", {
@@ -814,6 +816,7 @@ const createDefinitionSet = (() => {
         label: "Caps Lock",
         win: ["VK_CAPITAL", "14"],
         dotnetforms: `Capital`,
+        jskey: "CapsLock",
     });
     keys.set("2A", {
         linux: "LFSH",
@@ -896,7 +899,42 @@ const createDefinitionSet = (() => {
         formatYShift: value => `${value + defaultShift}em`,
     }; //formats
 
+    const generateReport = keys => {
+        const empty = String();
+        const formatLabel = data => {
+            if (data instanceof Array) {
+                const clone = structuredClone(data);
+                for (const index in data)
+                    clone[index] = `"${data[index].replace(abbreviation, empty)}"`;
+                return `[${clone.join(", ")}]`;
+            } else
+                return `"${data.replace(abbreviation, empty)}"`;
+        }; //formatLabel
+        const layers = {};
+        let layerCount = 0;
+        for (const [scancode, value] of keys) {
+            for (const property in value) {
+                if (layers[property] == undefined) {
+                    layers[property] = { layer: property, array: [] };
+                    layerCount++;
+                } //if
+                layers[property].array.push(`Scan code: "${scancode}", value: ${formatLabel(value[property])}\n`);
+            } //loop in value
+        } //loop main
+        let result = empty;
+        let count = 1;
+        for (const layerIndex in layers) {
+            const layer = layers[layerIndex];
+            result += `\nSending key Map data, ${count++} of ${layerCount}, Layer: ${layer.layer}:\n`;
+            for (const element of layer.array) {
+                result += `${element}`;
+            } //loop array
+        } //loop layers
+        return result;
+    } //generateReport
+    
     const help = () => {
+        //navigator.clipboard.writeText(generateReport(keys));
         window.open("../docs/help.html", '_blank').focus();
     } //help
 
