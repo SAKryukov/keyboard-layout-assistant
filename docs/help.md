@@ -2,8 +2,6 @@ Keyboard Layout Assistant{title}
 
 # Labels
 
-# Labels
-
 Provided for the orientation only, can be different on different keyboards.
 
 # Scan Codes
