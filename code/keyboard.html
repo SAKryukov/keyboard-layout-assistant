@@ -29,6 +29,18 @@
         main nav button:hover { background-color: lightcyan; }
         main nav button:active { background-color: rgb(255, 222, 160); }
         code { background-color: rgb(194, 232, 247); }
+        aside { /* hover box */
+            display: none;
+            position: absolute;
+            background-color: linen;
+            border: 2px solid blue; border-radius: 0.4em;
+            padding: 1em;
+            pointer-events: none;
+            table { border-collapse: collapse;
+                th { color: blue; text-align: right; padding-right: 1em; }
+                th, td { white-space: preserve nowrap; }
+            }
+        }
     </style>
 <body>
 
@@ -426,6 +438,83 @@
     <p id="jscode">JavaScript <code>KeyboardEvent.code</code>: key names independent from the shift state and keyboard layout</code>;
        click on the key to see a full name if it is abbreviated</p>
 </nav>
+
+<aside>
+    <table id="numlock-key-value-1">
+        <tr>
+            <th>Num Lock Off:</th>
+        <tr/>
+        <tr>
+            <th></th><th>Key:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th></th><th>Numeric value:</th><td>0x<span></span></td>
+        </tr>
+        <tr>
+            <th>Num Lock On:</th>
+        <tr/>
+        <tr>
+            <th></th><th>Key:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th></th><th>Numeric value:</th><td>0x<span></span></td>
+        </tr>
+        <tr>
+            <th>Scan Code:</th><td></td><td><span></span></td>
+        <tr/>
+    </table>
+    <table id="numlock-key-2">
+        <tr>
+            <th>Num Lock Off:</th>
+        <tr/>
+        <tr>
+            <th></th><th>Key:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th>Num Lock On:</th>
+        <tr/>
+        <tr>
+            <th></th><th>Key:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th>Scan Code:</th><td></td><td><span></span></td>
+        <tr/>
+    </table>
+    <table id="key-value-3">
+        <tr>
+            <th>Key:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th>Numeric value:</th><td>0x<span></span></td>
+        <tr/>
+        <tr>
+            <th>Scan Code:</th><td><span></span></td>
+        <tr/>
+    </table>
+    <table id="lower-upper-4">
+        <tr>
+            <th>Lower Case:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th>Upper Case:</th><td><span></span></td>
+        <tr/>
+        <tr>
+            <th>Scan Code:</th><td><span></span></td>
+        <tr/>
+    </table>
+    <table id="simple-5">
+        <tr>
+            <th>Key:</th><td><span></span></td>
+        <tr/>
+            <th>Scan Code:</th><td><span></span></td>
+        <tr/>
+    </table>
+    <table id="scan-code-6">
+        <tr/>
+            <th>Scan Code:</th><td><span></span></td>
+        <tr/>
+    </table>
+</aside>
 
 <main><section>
 <select>

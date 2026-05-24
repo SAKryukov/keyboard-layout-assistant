@@ -3,13 +3,18 @@
 const createDefinitionSet = (() => {
 
     const twoCaseArray = lower => [lower, lower.toUpperCase()];
-    const abbreviation = String.fromCodePoint(0x2026); // horizontal ellipsis
+    const abbreviation = String.fromCodePoint(0x22EE); // vertical ellipsis
     const abbreviationSeparator = "--";
     const empty = String();
-    const trimAppreviation = name =>
-        name.includes(abbreviation)
-        ? name.substring(0, name.indexOf(abbreviation)) + abbreviation
-            : name;
+
+    const tableDescriptors = {
+        numLockKeysAndValues: "numlock-key-value-1",
+        numLockKeys: "numlock-key-2",
+        keyValue: "key-value-3",
+        LowerUpper: "lower-upper-4",
+        simple: "simple-5",
+        scanCode: "scan-code-6",
+    }; //tableDescriptors
 
     const ideograph = {
         up: String.fromCodePoint(0x2191),
@@ -17,7 +22,9 @@ const createDefinitionSet = (() => {
         down: String.fromCodePoint(0x2193),
         right: String.fromCodePoint(0x2192),
         super: [String.fromCodePoint(0x229E), "Super"],
+        superLegend: `${String.fromCodePoint(0x229E)} Super, Meta, Windows Logo`,
         menu: [String.fromCodePoint(0x1f5b9), "Menu"],
+        menuLegend: `${String.fromCodePoint(0x1f5b9)} Context Menu`,
     }; //ideograph
 
     const keys = new Map();
@@ -512,6 +519,7 @@ const createDefinitionSet = (() => {
         jscode: `ControlLeft--Contr${abbreviation}`,
     });
     keys.set("E0 5B", {
+        legend: ideograph.superLegend,
         linux: "LWIN",
         label: ideograph.super, //"Win",
         win: [`VK_LWIN`, "5B"],
@@ -547,6 +555,7 @@ const createDefinitionSet = (() => {
         jscode: `AltRight`,
     });
     keys.set("E0 5C", {
+        legend: ideograph.superLegend,
         linux: "RWIN",
         label: ideograph.super, //"Win",
         win: ["VK_RWIN", "5C"], 
@@ -555,6 +564,7 @@ const createDefinitionSet = (() => {
         jscode: `MetaRight--MetaR${abbreviation}`,
     });
     keys.set("E0 5D", {
+        legend: ideograph.menuLegend,
         linux: "MENU",
         label: ideograph.menu, //"Menu"
         win: ["VK_APPS", "5D"],
@@ -665,7 +675,7 @@ const createDefinitionSet = (() => {
         linux: "NMLK",
         label: ["Lock", "Num"],
         win: [`VK_NUMLOCK--VK_NU${abbreviation}`, "90"],
-        dotnetforms: `NumLock--Nu${abbreviation}`,
+        dotnetforms: `NumLock--Nu${abbreviation}L`,
     });
     keys.set("E0 35", {
         linux: "KPDV",
@@ -673,7 +683,7 @@ const createDefinitionSet = (() => {
         win: [`VK_DIVIDE--VK_DI${abbreviation}`, "6F"],
         dotnetforms: `Divide`,
         jskey: "/",
-        jscode: `NumpadDivide--Nu${abbreviation}`,
+        jscode: `NumpadDivide--Nu${abbreviation}D`,
     });
     keys.set("37", {
         linux: "KPMU",
@@ -681,7 +691,7 @@ const createDefinitionSet = (() => {
         win: [`VK_MULTIPLY--VK_MU${abbreviation}`, "6A"],
         dotnetforms: `Multiply--Mult${abbreviation}`,
         jskey: "*",
-        jscode: `NumpadMultiply--Nu${abbreviation}`,
+        jscode: `NumpadMultiply--Nu${abbreviation}M`,
     });
     keys.set("4A", {
         linux: "KPSU",
@@ -689,82 +699,92 @@ const createDefinitionSet = (() => {
         win: [`VK_SUBTRACT--VK_SU${abbreviation}`, "6D"],
         dotnetforms: `Subtract--Sub${abbreviation}`,
         jskey: "-",
-        jscode: `NumpadSubtract--Nu${abbreviation}`,
+        jscode: `NumpadSubtract--Nu${abbreviation}S`,
     });
     // keypad: may depend on numlock:
     keys.set("47", {
+        isKeypad: true,
         linux: "KP7",
         label: ["Home", "7"],
         win: [`VK_HOME--VK_HO${abbreviation}`, "24", `VK_NUMPAD7--VK_NU${abbreviation}`, "67"],
-        dotnetforms: [`Home`, `NumPad7--N${abbreviation}7`],
+        dotnetforms: [`Home`, `NumPad7--Nu${abbreviation}7`],
         jskey: ["Home", "7"],
-        jscode: `Numpad7--N${abbreviation}7`,
+        jscode: `Numpad7--Nu${abbreviation}7`,
     });
     keys.set("48", {
+        isKeypad: true,
         linux: "KP8",
         label: [ideograph.up, "8"],
         win: [`VK_UP`, "26", `VK_NUMPAD8--VK_NU${abbreviation}`, "68"],
-        dotnetforms: [`Up`, `NumPad8--N${abbreviation}8`],
+        dotnetforms: [`Up`, `NumPad8--Nu${abbreviation}8`],
         jskey: [`ArrowUp--Arr${abbreviation}`, "8"],
-        jscode: `Numpad8--N${abbreviation}8`,
+        jscode: `Numpad8--Nu${abbreviation}8`,
     });
     keys.set("49", {
+        isKeypad: true,
         linux: "KP9",
         label: ["PgUp", "9"],
         win: [`VK_PRIOR--VK_PR${abbreviation}`, "21", `VK_NUMPAD9--VK_NU${abbreviation}`, "69"],
-        dotnetforms: [`PageUp--Pag${abbreviation}`, `NumPad9--N${abbreviation}9`],
+        dotnetforms: [`PageUp--Pag${abbreviation}`, `NumPad9--Nu${abbreviation}9`],
         jskey: [`PageUp--Pag${abbreviation}`, "9"],
-        jscode: `Numpad9--N${abbreviation}9`,
+        jscode: `Numpad9--Nu${abbreviation}9`,
     });
     keys.set("4B", {
+        isKeypad: true,
         linux: "KP4",
         label: [ideograph.left, "4"],
         win: [`VK_LEFT--VK_LE${abbreviation}`, "25", `VK_NUMPAD4--VK_NU${abbreviation}`, "64"],
-        dotnetforms: [`Left`, `NumPad4--N${abbreviation}4`],
+        dotnetforms: [`Left`, `NumPad4--Nu${abbreviation}4`],
         jskey: [`ArrowLeft--Arr${abbreviation}`, "4"],
-        jscode: `Numpad4--N${abbreviation}4`,
+        jscode: `Numpad4--Nu${abbreviation}4`,
     });
     keys.set("4C", {
+        isKeypad: true,
         linux: "KP5",
         label: [`Clear`, "5"],
         win: [`VК_CLEAR--VК_CL${abbreviation}`, "0C", `VK_NUMPAD5--VK_NU${abbreviation}`, "65"],
-        dotnetforms: [`Clear`, `NumPad5--N${abbreviation}5`],
+        dotnetforms: [`Clear`, `NumPad5--Nu${abbreviation}5`],
         jskey: [`Clear`, "5"],
-        jscode: `Numpad5--N${abbreviation}5`,
+        jscode: `Numpad5--Nu${abbreviation}5`,
     });
     keys.set("4D", {
+        isKeypad: true,
         linux: "KP6",
         label: [ideograph.right, "6"],
         win: [`VK_RIGHT--VK_RI${abbreviation}`, "27", `VK_NUMPAD6--VK_NU${abbreviation}`, "66"],
-        dotnetforms: [`Right`, `NumPad6--N${abbreviation}6`],
+        dotnetforms: [`Right`, `NumPad6--Nu${abbreviation}6`],
         jskey: [`ArrowRight--Arr${abbreviation}`, "6"],
-        jscode: `Numpad6--N${abbreviation}6`,
+        jscode: `Numpad6--Nu${abbreviation}6`,
     });
     keys.set("4F", {
+        isKeypad: true,
         linux: "KP1",
         label: ["End", "1"],
         win: [`VK_END`, "23", `VK_NUMPAD1--VK_NU${abbreviation}`, "61"],
-        dotnetforms: [`End`, `NumPad1--N${abbreviation}1`],
+        dotnetforms: [`End`, `NumPad1--Nu${abbreviation}1`],
         jskey: [`End`, "1"],
-        jscode: `Numpad1--N${abbreviation}1`,
+        jscode: `Numpad1--Nu${abbreviation}1`,
     });
     keys.set("50", {
+        isKeypad: true,
         linux: "KP2",
         label: [ideograph.down, "2"],
         win: [`VK_DOWN--VK_DO${abbreviation}`, "28", `VK_NUMPAD2--VK_NU${abbreviation}`, "62"],
-        dotnetforms: [`Down`, `NumPad2--N${abbreviation}2`],
+        dotnetforms: [`Down`, `NumPad2--Nu${abbreviation}2`],
         jskey: [`ArrowDown--Arr${abbreviation}`, "2"],
-        jscode: `Numpad2--N${abbreviation}2`,
+        jscode: `Numpad2--Nu${abbreviation}2`,
     });
     keys.set("51", {
+        isKeypad: true,
         linux: "KP3",
         label: ["PgDn", "3"],
         win: [`VK_NEXT--VK_NE${abbreviation}`, "22", `VK_NUMPAD3--VK_NU${abbreviation}`, "63"],
-        dotnetforms: [`Next`, `NumPad3--N${abbreviation}3`],
+        dotnetforms: [`Next`, `NumPad3--Nu${abbreviation}3`],
         jskey: [`PageDown--Pag${abbreviation}`, "3"],
-        jscode: `Numpad3--N${abbreviation}3`,
+        jscode: `Numpad3--Nu${abbreviation}3`,
     });
     keys.set("52", {
+        isKeypad: true,
         linux: "KP0",
         label: ["Insert", "0"],
         win: [`VK_INSERT`, "2D", `VK_NUMPAD0`, "60"],
@@ -773,6 +793,7 @@ const createDefinitionSet = (() => {
         jscode: `Numpad0`,
     });
     keys.set("53", {
+        isKeypad: true,
         linux: "KPDL",
         label: ["Delete", "."],
         win: [`VK_DELETE--VK_DE${abbreviation}`, "2E", `VK_DECIMAL--VK_DE${abbreviation}`, "6E"],
@@ -787,7 +808,7 @@ const createDefinitionSet = (() => {
         win: [`VK_ADD--VK_AD${abbreviation}`, "6B"],
         dotnetforms: `Add`,
         jskey: "+",
-        jscode: `NumpadAdd--Nu${abbreviation}`,
+        jscode: `NumpadAdd--Nu${abbreviation}A`,
     });
     keys.set("E0 1C", {
         linux: "KPEN",
@@ -796,7 +817,7 @@ const createDefinitionSet = (() => {
         dotnetforms: `Enter`,
         dotnetwpf: `Return--Ret${abbreviation}`, //sic! names for System.Windows.Forms and wpf are different!
         jskey: "Enter",
-        jscode: `NumpadEnter--Nu${abbreviation}`,
+        jscode: `NumpadEnter--Nu${abbreviation}E`,
     });
     // remaining left:
     keys.set("0F", {
@@ -853,11 +874,16 @@ const createDefinitionSet = (() => {
             textarea: 0,
             g: 0,
             text: 0,
+            rect: 0,
+            aside: 0,
+            table: 0,
+            span: 0,
         }, //elements
         classes: { // special cases, should match two <select> <option> values:
             scancode: 0, // <g> id's are scancodes
             linux: 0, // to support <>, see formats output: (data, style)
-            show: 0,
+            win: 0, // to support discrimination between 2-field arrays of string
+            show: 0, // to support legend
             note: "nav p",
         }, //classes
         buttonId: { // should match <button> ids
@@ -869,6 +895,12 @@ const createDefinitionSet = (() => {
             x: 0,
             y: 0,
         }, //attributes
+        displayStyles: {
+            none: 0,
+            block: 0,
+            table: 0,
+            auto: 0,
+        }, //displayStyles
         getTextClass: function(className) { return `${this.elements.text}.${className}`; },
     }; //names
     initializeNames([
@@ -877,6 +909,7 @@ const createDefinitionSet = (() => {
         names.classes,
         names.attributes,
         names.buttonId,
+        names.displayStyles,
     ]);
 
     const defaultShift = 0.25;
@@ -891,17 +924,21 @@ const createDefinitionSet = (() => {
         }, // formatKey
         output: function (data, style) {
             const keyData = this.formatKey(data, true);
+            if (style == names.classes.scancode)
+                return `${this.scanCode(data)} `;
             let bra = empty, ket = empty;
             if (style == names.classes.linux) {
                 bra = "<"; ket = ">";
             } //if
             return `${bra}${keyData}${ket} `;
         }, //output
-        /*
-        formatLabel: data => trimAppreviation(data),
-        */
+        location: value => `${value}px`,
         defaultShift: `${defaultShift}em`,
         formatYShift: value => `${value + defaultShift}em`,
+        scanCode: id => {
+            const codes = id.split(" ");
+            return `0x${codes.join(" 0x")}`;
+        },
     }; //formats
 
     const generateReport = keys => {
@@ -936,12 +973,13 @@ const createDefinitionSet = (() => {
         } //loop layers
         return result;
     } //generateReport
+
     
     const help = () => {
         //navigator.clipboard.writeText(generateReport(keys));
         window.open("../docs/help.html", '_blank').focus();
     } //help
 
-    return { keys, names, formats, help };
+    return { tableDescriptors, keys, names, formats, help };
 
 }); //createDefinitionSet
