@@ -591,9 +591,10 @@ const createDefinitionSet = (() => {
         jscode: `PrintScreen--Pri${abbreviation}`,
     });
     keys.set("46", {
+        legend: "Scroll Lock",
         linux: "SCLK",
         label: ["Lock", "Scroll"],
-        win: [`VK_SCROLL--VK_SC${abbreviation}`, 	"91"],
+        win: [`VK_SCROLL--VK_SC${abbreviation}`, "91"],
         dotnetforms: `Scroll`,
         jskey: `ScrollLock--Scr${abbreviation}`,
         jscode: `ScrollLock--Scr${abbreviation}`,
