@@ -4,6 +4,7 @@ const createDefinitionSet = (() => {
 
     const twoCaseArray = lower => [lower, lower.toUpperCase()];
     const abbreviation = String.fromCodePoint(0x22EE); // vertical ellipsis
+    const sameAs = ` ${String.fromCodePoint(0x2261)} `; // equivalent
     const abbreviationSeparator = "--";
     const empty = String();
 
@@ -100,8 +101,8 @@ const createDefinitionSet = (() => {
         linux: "TLDE",
         label: ["`", "~"],
         win: [`VK_OEM_3--VK_O${abbreviation}`, "C0"],
-        dotnetforms: `Oemtilde--Oem${abbreviation}`,
-        dotnetwpf: `OemTilde--Oem${abbreviation}`, // sic! names for System.Windows.Forms and wpf are different!
+        dotnetforms: `Oemtilde${sameAs}Oem3--Oem${abbreviation}`,
+        dotnetwpf: `OemTilde${sameAs}Oem3--Oem${abbreviation}`, // sic! names for System.Windows.Forms and wpf are different!
         jskey: "`",
         jscode: `Backquote--Bac${abbreviation}`,
     });    // row 1
@@ -296,8 +297,8 @@ const createDefinitionSet = (() => {
         linux: "AD11",
         label: ["[", "{"],
         win: [`VK_OEM_4--VK_OE${abbreviation}`, "DB"],
-        dotnetforms: `Oem4`,
-        dotnetwpf: `OemOpenBrackets--Oem${abbreviation}`,
+        dotnetforms: `Oem4${sameAs}OemOpenBrackets--Oem${abbreviation}`,
+        dotnetwpf: `OemOpenBrackets${sameAs}Oem4--Oem${abbreviation}`,
         jskey: ["[", "{"],
         jscode: `BracketLeft--Bra${abbreviation}`,
     });
@@ -305,8 +306,7 @@ const createDefinitionSet = (() => {
         linux: "AD12",
         label: ["]", "}"],
         win: [`VK_OEM_6--VK_OE${abbreviation}`, "DD"],
-        dotnetforms: `Oem6`,
-        dotnetwpf: `Oem6`,
+        dotnetforms: `Oem6${sameAs}OemCloseBrackets--Oem${abbreviation}`,
         jskey: ["]", "}"],
         jscode: `BracketRight--Bra${abbreviation}`,
     });
@@ -314,8 +314,8 @@ const createDefinitionSet = (() => {
         linux: "BKSL",
         label: ["\\", "|"],
         win: ["VK_OEM_5", "0xDC"],
-        dotnetforms: `OemPipe--Oe${abbreviation}`,
-        dotnetwpf: `Oem5`,
+        dotnetforms: `OemPipe${sameAs}Oem5--OemPipe`,
+        dotnetwpf: `Oem5${sameAs}OemPipe--Oem5`,
         jskey: ["\\", "|"],
         jscode: `Backslash--Backsl${abbreviation}`,
     });
@@ -397,8 +397,8 @@ const createDefinitionSet = (() => {
         linux: "AC10",
         label: [";", ":"],
         win: [`VK_OEM_1--VK_OE${abbreviation}`, "BA"],
-        dotnetforms: `OemSemicolon--Oem${abbreviation}`,
-        dotnetwpf: `Oem1`,
+        dotnetforms: `OemSemicolon${sameAs}Oem1--Oem${abbreviation}`,
+        dotnetwpf: `Oem1${sameAs}OemSemicolon--Oem1`,
         jskey: [";", ":"],
         jscode: `Semicolon--Sem${abbreviation}`,
     });
@@ -406,7 +406,7 @@ const createDefinitionSet = (() => {
         linux: "AC11",
         label: ["'", "\""],
         win: [`VK_OEM_7--VK_OE${abbreviation}`, "DE"],
-        dotnetforms: `OemQuotes--Oem${abbreviation}`,
+        dotnetforms: `OemQuotes${sameAs}Oem7--Oem${abbreviation}`,
         jskey: ["'", "\""],
         jscode: "Quote",
     });
@@ -495,7 +495,7 @@ const createDefinitionSet = (() => {
         linux: "AB10",
         label: ["/", "?"],
         win: [`VK_OEM_2--VK_OE${abbreviation}`, "BF"],
-        dotnetforms: `Oem2`,
+        dotnetforms: `Oem2${sameAs}OemQuestion--Oem2`,
         jskey: ["/", "?"],
         jscode: `Slash`,
     });
@@ -586,7 +586,7 @@ const createDefinitionSet = (() => {
         linux: "PRSC",
         label: "PtSc",
         win: [`VK_SNAPSHOT--VK_SN${abbreviation}`, "2C"],
-        dotnetforms: `PrintScreen--Prin${abbreviation}`,
+        dotnetforms: `PrintScreen${sameAs}Snapshot--Prin${abbreviation}`,
         jskey: `PrintScreen--Pri${abbreviation}`,
         jscode: `PrintScreen--Pri${abbreviation}`,
     });

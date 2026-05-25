@@ -127,15 +127,19 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
             const rectangle = eventInstance.currentTarget.querySelector(definitionSet.names.elements.rect);
             const bounds = rectangle.getBoundingClientRect();
             if (bounds.right > window.innerWidth / 2) {
-                elementSet.hoverBox.style.left = definitionSet.names.displayStyles.auto
-                elementSet.hoverBox.style.right = definitionSet.formats.location(window.innerWidth - bounds.right);
+                elementSet.hoverBox.style.left = definitionSet.names.displayStyles.auto;
+                let location = window.innerWidth - bounds.right;
+                if (location < 0) location = 0;
+                elementSet.hoverBox.style.right = definitionSet.formats.location(location);
             } else {
                 elementSet.hoverBox.style.right = definitionSet.names.displayStyles.auto;
                 elementSet.hoverBox.style.left = definitionSet.formats.location(bounds.left);
             } //if
             if (bounds.top > window.innerHeight / 2) {
                 elementSet.hoverBox.style.top = definitionSet.names.displayStyles.auto;
-                elementSet.hoverBox.style.bottom = definitionSet.formats.location(window.innerHeight - bounds.top);
+                let location = window.innerHeight - bounds.top;
+                if (location < 0) location = 0;
+                elementSet.hoverBox.style.bottom = definitionSet.formats.location(location);
             } else {
                 elementSet.hoverBox.style.bottom = definitionSet.names.displayStyles.auto;
                 elementSet.hoverBox.style.top = definitionSet.formats.location(bounds.bottom);
