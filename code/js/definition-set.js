@@ -673,6 +673,7 @@ const createDefinitionSet = (() => {
     });
     // keypad
     keys.set("45", {
+        legend: "Num Lock",
         linux: "NMLK",
         label: ["Lock", "Num"],
         win: [`VK_NUMLOCK--VK_NU${abbreviation}`, "90"],
@@ -884,6 +885,7 @@ const createDefinitionSet = (() => {
             scancode: 0, // <g> id's are scancodes
             linux: 0, // to support <>, see formats output: (data, style)
             win: 0, // to support discrimination between 2-field arrays of string
+            label: 0, // to support correct output using legend for faked two-level 
             show: 0, // to support legend
             note: "nav p",
         }, //classes
@@ -933,6 +935,7 @@ const createDefinitionSet = (() => {
             } //if
             return `${bra}${keyData}${ket} `;
         }, //output
+        outputLegend: value => `${value} `,
         location: value => `${value}px`,
         defaultShift: `${defaultShift}em`,
         formatYShift: value => `${value + defaultShift}em`,

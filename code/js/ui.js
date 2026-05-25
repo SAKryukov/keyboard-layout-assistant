@@ -82,6 +82,10 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     for (const group of groups) {
         group.onpointerup = event => {
             const style = elementSet.select.value;
+            const keyInfo = definitionSet.keys.get(group.id);
+            if (style == definitionSet.names.classes.label && keyInfo.legend) {
+                output.value += definitionSet.formats.outputLegend(keyInfo.legend); return;
+            } //if
             const textElements = event.currentTarget.querySelectorAll(definitionSet.names.getTextClass(style));
             if (textElements)
                 for (const element of textElements)
