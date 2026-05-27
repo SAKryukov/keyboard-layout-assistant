@@ -124,32 +124,43 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
                         fields[index].textContent = definitionSet.formats.output(textInfo[index], style);
             } //if
             fields[fields.length - 1].textContent = definitionSet.formats.scanCode(group.id);
-            const rectangle = eventInstance.currentTarget.querySelector(definitionSet.names.elements.rect);
-            const bounds = rectangle.getBoundingClientRect();
-            if (bounds.right > window.innerWidth / 2) {
+            const key = eventInstance.currentTarget.querySelector(definitionSet.names.elements.rect);
+            const boundingRectangleViewPort = key.getBoundingClientRect();
+            const bounds = new DOMRect( boundingRectangleViewPort.x + window.scrollX, boundingRectangleViewPort.y + window.scrollY,
+                                        boundingRectangleViewPort.width, boundingRectangleViewPort.height);
+            const keyCenterViewPort = { x: boundingRectangleViewPort.x + boundingRectangleViewPort.width / 2,
+                                        y: boundingRectangleViewPort.y + boundingRectangleViewPort.height / 2, };
+            const viewPortSize = { x: document.documentElement.clientWidth, y: document.documentElement.clientHeight, };
+            if (keyCenterViewPort.x > viewPortSize.x / 2) {
                 elementSet.hoverBox.style.left = definitionSet.names.displayStyles.auto;
-                let location = window.innerWidth - bounds.right;
-                if (location < 0) location = 0;
-                elementSet.hoverBox.style.right = definitionSet.formats.location(location);
+                let x = viewPortSize.x - bounds.right;
+                if (x < 0) x = 0;
+                elementSet.hoverBox.style.right = definitionSet.formats.location(Math.round(x));
             } else {
                 elementSet.hoverBox.style.right = definitionSet.names.displayStyles.auto;
-                elementSet.hoverBox.style.left = definitionSet.formats.location(bounds.left);
+                let x = bounds.left;
+                if (x < 0) x = 0;
+                elementSet.hoverBox.style.left = definitionSet.formats.location(Math.round(x));
             } //if
-            if (bounds.top > window.innerHeight / 2) {
+            if (keyCenterViewPort.y > viewPortSize.y / 2) {
                 elementSet.hoverBox.style.top = definitionSet.names.displayStyles.auto;
-                let location = window.innerHeight - bounds.top;
-                if (location < 0) location = 0;
-                elementSet.hoverBox.style.bottom = definitionSet.formats.location(location);
+                let y = viewPortSize.y - bounds.top;
+                if (y < 0) y = 0;
+                elementSet.hoverBox.style.bottom = definitionSet.formats.location(Math.round(y));
             } else {
                 elementSet.hoverBox.style.bottom = definitionSet.names.displayStyles.auto;
-                elementSet.hoverBox.style.top = definitionSet.formats.location(bounds.bottom);
+                let y = bounds.bottom;
+                if (y < 0) y = 0;
+                elementSet.hoverBox.style.top = definitionSet.formats.location(Math.round(y));
             } //if
             elementSet.hoverBox.style.display = definitionSet.names.displayStyles.block;
         }; //group.onpointerenter
         group.onpointerleave = () => 
             elementSet.hoverBox.style.display = definitionSet.names.displayStyles.none;
     } //loop
-
+ 
     elementSet.select.focus();
 
 }); //DOMContentLoaded
+
+window.onload = () => globalThis.scrollTo({ top: 0, behavior: definitionSet.names.instantScrollBehavior });

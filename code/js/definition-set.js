@@ -870,6 +870,7 @@ const createDefinitionSet = (() => {
     const names = {
         DOMContentLoaded: 0,
         svgNamespace: "http://www.w3.org/2000/svg",
+        instantScrollBehavior: "instant",
         elements: {
             svg: 0,
             select: 0,
@@ -977,8 +978,7 @@ const createDefinitionSet = (() => {
         } //loop layers
         return result;
     } //generateReport
-
-    
+ 
     const help = () => {
         //navigator.clipboard.writeText(generateReport(keys));
         window.open("../docs/help.html", '_blank').focus();
