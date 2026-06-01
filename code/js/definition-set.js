@@ -881,6 +881,8 @@ const createDefinitionSet = (() => {
             aside: 0,
             table: 0,
             span: 0,
+            metadata: { selector: "footer span", versionIndex: 0, copyrightIndex: 1 },
+            advice: "article main section p:last-of-type",
         }, //elements
         classes: { // special cases, should match two <select> <option> values:
             scancode: 0, // <g> id's are scancodes
@@ -888,7 +890,6 @@ const createDefinitionSet = (() => {
             win: 0, // to support discrimination between 2-field arrays of string
             label: 0, // to support correct output using legend for faked two-level 
             show: 0, // to support legend
-            note: "nav p",
         }, //classes
         buttonId: { // should match <button> ids
             copy: 0,

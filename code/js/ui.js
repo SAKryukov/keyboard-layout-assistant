@@ -8,16 +8,19 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         svg: document.querySelector(definitionSet.names.elements.svg),
         select: document.querySelector(definitionSet.names.elements.select),
         output: document.querySelector(definitionSet.names.elements.textarea),
-        notes: document.querySelectorAll(definitionSet.names.classes.note),
         buttons: {
             copy: document.getElementById(definitionSet.names.buttonId.copy),
             clear: document.getElementById(definitionSet.names.buttonId.clear),
             help: document.getElementById(definitionSet.names.buttonId.help),
         },
         hoverBox: document.querySelector(definitionSet.names.elements.aside),
+        advice: document.querySelector(definitionSet.names.elements.advice),
     }; //elementSet
     elementSet.hoverBoxTables = elementSet.hoverBox.querySelectorAll(definitionSet.names.elements.table);
     elementSet.select.size = elementSet.select.children.length;
+    const metadataElements = document.querySelectorAll(definitionSet.names.elements.metadata.selector);
+    metadataElements[definitionSet.names.elements.metadata.versionIndex].innerHTML = metadata.version;
+    metadataElements[definitionSet.names.elements.metadata.copyrightIndex].innerHTML = metadata.copyright;
 
     elementSet.buttons.copy.onclick = () =>
         navigator.clipboard.writeText(elementSet.output.value);
@@ -69,11 +72,6 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     const selectHandler = select => {
         elementSet.svg.classList = [];
         elementSet.svg.classList.add(select.value);
-        for (const note of elementSet.notes)
-            note.classList = [];
-        const visibleNote = document.getElementById(select.value);
-        if (visibleNote)
-            visibleNote.className = definitionSet.names.classes.show;
     } //selectHandler
     elementSet.select.onchange = event => selectHandler(event.target);
     selectHandler(elementSet.select);
@@ -81,6 +79,7 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     const output = document.querySelector(definitionSet.names.elements.textarea);
     for (const group of groups) {
         group.onpointerup = event => {
+            elementSet.advice.style.display = definitionSet.names.displayStyles.none;
             const style = elementSet.select.value;
             const keyInfo = definitionSet.keys.get(group.id);
             if (style == definitionSet.names.classes.label && keyInfo.legend) {

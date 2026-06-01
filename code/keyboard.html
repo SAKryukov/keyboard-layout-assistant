@@ -3,20 +3,35 @@
     <head>
         <meta charset="UTF-8">
         <title>Keyboard Layout Assistant</title>
+        <script src="./js/metadata.js"></script>
         <script src="./js/definition-set.js"></script>
         <script src="./js/ui.js"></script>
     </head>
     <style>
+        :root {
+            --horizontal-gap: 1em;
+            --vertical-gap: 0.4em;
+            --home-color: hsl(30, 72%, 92%);
+            --home-line-color: hsl(30, 72%, 40%);
+            --hover-color: rgba(0, 0, 128, 0.681) ;
+            --key-hover-color: hsl(194, 50%, 88%);
+            --key-active-color: hsl(194, 50%, 80%);
+        }
         * { font-family: sans-serif; }
-        body { padding-left: 1em; padding-right: 1em; }
-        main { display: table; margin-top: 1em; width: 100%; }
+        /* flex: */
+        * { padding: 0; margin: 0; box-sizing: content-box; }
+        body, html { display: flex; flex-flow: column; height: 100%; }
+        article { overflow: auto; height: 100%; }
+        /* end flex */
+        footer { background-color: var(--home-color); border-top: var(--home-line-color) solid thin; }
+        footer { display: flex; flex-direction: row; justify-content:space-between; }
+        footer span, footer em { white-space: preserve nowrap; font-style: normal; }
+        article, header, footer { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
+        header { padding-top: var(--vertical-gap); }
+        main { display: table; margin-top: var(--vertical-gap); width: 100%; }
         main > section { display: table-row; }
-        option { padding-left: 1em; padding-right: 1em; }
-        select, textarea { display: table-cell; vertical-align: top; }
-        nav, nav p { margin-top: 0; margin-bottom: 0; }
-        nav { margin-top: 0.2em; }
-        nav p { display: none; }
-        nav p.show { display: block; }
+        option { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
+        select, textarea { display: table-cell; vertical-align: top; padding: var(--vertical-gap); }
         main nav { display: inline-block; margin: 0; }
         main nav button {
             padding-left: 0.2em;
@@ -26,25 +41,25 @@
             width: 2em;
             border: none;
             background-color: transparent; }
-        main nav button:hover { background-color: lightcyan; }
-        main nav button:active { background-color: rgb(255, 222, 160); }
-        code { background-color: rgb(194, 232, 247); }
+        main nav button:hover { background-color: var(--key-hover-color); }
+        main nav button:active { background-color: var(--key-active-color); }
+        article main section p:last-of-type { margin-top: var(--vertical-gap); }
         aside { /* hover box */
             display: none;
             position: absolute;
-            background-color: linen;
-            border: 2px solid blue; border-radius: 0.4em;
+            background-color: var(--home-color);
+            border: 2px solid var(--hover-color); border-radius: 0.4em;
             padding: 1em;
             pointer-events: none;
             table { border-collapse: collapse;
-                th { color: blue; text-align: right; padding-right: 1em; }
+                th { color: var(--hover-color); text-align: right; padding-right: var(--horizontal-gap); }
                 th, td { white-space: preserve nowrap; }
             }
         }
     </style>
 <body>
 
-<svg
+<header><svg
    version="1.1" width="100%"
    viewBox="0 0 1313.354 395.38502"
    xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -52,9 +67,9 @@
    text { pointer-events: none; }
    path, rect { fill: transparent; stroke: black; }
    rect { fill: white; rx: 0.4em; ry: 0.4em; }
-   rect:hover { fill: lightcyan; }
-   rect:active { fill: cyan; stroke-width: 2; }
-   text { font-family: sans-serif; font-size: 90%; transform: translate(0.3em, 1em); }
+   rect:hover { fill: var(--key-hover-color); }
+   rect:active { fill: var(--key-active-color); stroke-width: 2; }
+   text { font-size: 90%; transform: translate(0.3em, 1em); }
    text.linux { font-size: 76%; }
    text.win { font-size: 62%; }
    text { display: none; }
@@ -420,24 +435,33 @@
 </g>
 <!-- end keypad -->
 
-</svg>
+</svg></header>
 
+<article>
+
+<main><section>
+<select>
+    <option value="label">Labels</option>
+    <option value="scancode">Scan Codes</option>
+    <option value="linux">Linux XKB Key Codes</option>
+    <option value="win">Windows Virtual Keys</option>
+    <option value="dotnetforms">.NET System.Windows.Forms</option>
+    <option value="dotnetwpf">.NET WPF</option>
+    <option value="jskey">JavaScript key</option>
+    <option value="jscode">JavaScript code</option>
+</select>
 <nav>
-    <p id="label">Labels: provided for the orientation only, can be different on different keyboards</p>
-    <p id="scancode">Scan codes: hexadecial codes or code sequences separated by blank space</p>
-    <p id="linux">Linux XKB Key Codes;
-       click on the key to see the notation used in the XKB keyboard layouts, <code>/usr/share/X11/xkb/symbols</code></p>
-    <p id="win">Windows Virtual Keys: <code>VK_*</code> key names and hexadecimal values;
-       click on the key to see a full name if it is abbreviated</p>
-    <p id="dotnetforms">.NET: <code>System.Windows.Forms.Keys</code> names;
-       click on the key to see a full name if it is abbreviated</p>
-    <p id="dotnetwpf">.NET: <code>System.Windows.Input.Key</code> names;
-       click on the key to see a full name if it is abbreviated</p>
-    <p id="jskey">JavaScript <code>KeyboardEvent.key</code>: strings depending on the shift state and keyboard layout</code>;
-       click on the key to see a full name if it is abbreviated</p>
-    <p id="jscode">JavaScript <code>KeyboardEvent.code</code>: key names independent from the shift state and keyboard layout</code>;
-       click on the key to see a full name if it is abbreviated</p>
+    <button id="copy" title="Copy to clipboard">📋</button><br/>
+    <button id="clear" title="Clear">❌</button><br/>
+    <button id="help" title="Help">❓</button><br/>
 </nav>
+<textarea rows="8" cols="80"></textarea>
+<br/>
+<p>Point to the key to see the details, click it to copy the key information</p>
+</section><main>
+</article>
+
+<footer><em>v.&thinsp;<span></span></em><em>Copyright &copy; <span></span></em></footer>
 
 <aside>
     <table id="numlock-key-value-1">
@@ -516,23 +540,5 @@
     </table>
 </aside>
 
-<main><section>
-<select>
-    <option value="label">Labels</option>
-    <option value="scancode">Scan Codes</option>
-    <option value="linux">Linux XKB Key Codes</option>
-    <option value="win">Windows Virtual Keys</option>
-    <option value="dotnetforms">.NET System.Windows.Forms</option>
-    <option value="dotnetwpf">.NET WPF</option>
-    <option value="jskey">JavaScript key</option>
-    <option value="jscode">JavaScript code</option>
-</select>
-<nav>
-    <button id="copy" title="Copy to clipboard">📋</button><br/>
-    <button id="clear" title="Clear">❌</button><br/>
-    <button id="help" title="Help">❓</button><br/>
-</nav>
-<textarea rows="8" cols="80"></textarea>
-</section><main>
 </body>
 </html>
