@@ -19,7 +19,7 @@
         }
         * { font-family: sans-serif; }
         /* flex: */
-        * { padding: 0; margin: 0; box-sizing: content-box; }
+        * { padding: 0; margin: 0; box-sizing: border-box; }
         body, html { display: flex; flex-flow: column; height: 100%; }
         article { overflow: auto; height: 100%; }
         /* end flex */
@@ -28,21 +28,26 @@
         footer span, footer em { white-space: preserve nowrap; font-style: normal; }
         article, header, footer { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
         header { padding-top: var(--vertical-gap); }
-        main { display: table; margin-top: var(--vertical-gap); width: 100%; }
+        main { margin-top: var(--vertical-gap); width: 100%; }
         main > section { display: table-row; }
         option { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
-        select, textarea { display: table-cell; vertical-align: top; padding: var(--vertical-gap); }
-        main nav { display: inline-block; margin: 0; }
+        select, textarea, main nav { vertical-align: top; display: inline-block; margin: 0; }
+        textarea { padding: var(--vertical-gap) }
         main nav button {
             padding-left: 0.2em;
             padding-right: 0.2em;
             padding-top: 0.5em;
             padding-bottom: 0.5em;
-            width: 2em;
-            border: none;
+            margin: 0;
+            margin-left: 2px;
+            margin-right: 3px;
+            width: 2em;            
             background-color: transparent; }
         main nav button:hover { background-color: var(--key-hover-color); }
         main nav button:active { background-color: var(--key-active-color); }
+        select, textarea { border: none; outline: 1px solid silver; border-radius: 2px; }
+        main nav button { border: none; }
+        select:focus, textarea:focus, main nav button:focus { outline: solid 2px blue; }
         article main section p:last-of-type { margin-top: var(--vertical-gap); }
         aside { /* hover box */
             display: none;
