@@ -7,6 +7,9 @@ const createDefinitionSet = (() => {
     const sameAs = ` ${String.fromCodePoint(0x2261)} `; // equivalent
     const abbreviationSeparator = "--";
     const empty = String();
+    const blankSeparator = " ";
+    const hexPrefix = "0x";
+    const scanCodeKeyBreak = 0x80;
 
     const tableDescriptors = {
         numLockKeysAndValues: "numlock-key-value-1",
@@ -37,7 +40,6 @@ const createDefinitionSet = (() => {
     });
     // F row
     keys.set("3B", {
-        scancodeUp: "1313", //SA??? remove
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
@@ -600,9 +602,9 @@ const createDefinitionSet = (() => {
         jskey: `ScrollLock--Scr${abbreviation}`,
         jscode: `ScrollLock--Scr${abbreviation}`,
     });
-    keys.set("E1...", {
-        scanCodeSpecialCase: "0xE1 0x1D 0x45 0xE1 0x9D 0xC5",
-        scancodeUp: "",
+    keys.set("E1 1D 45 E1 9D C5", {
+        scanCodeAbbreviation: `E1${abbreviation}`,
+        scancodeUp: empty,
         linux: "PAUS",
         label: "Pause",
         win: [`VK_PAUSE--VK_PA${abbreviation}`, "13"],
@@ -862,6 +864,22 @@ const createDefinitionSet = (() => {
                 value.jscode = value.jskey;
         } //loop
     })(keys);
+    (keys => { // auto-fill scancodeUp:
+        for (const [index, value] of keys) {
+            if (value.scancodeUp != undefined)
+                continue;
+            const sequence = index.split(blankSeparator);
+            let result = [];
+            for (let position = 0; position < sequence.length; ++position) {
+                let element = sequence[position];
+                element = parseInt(`${hexPrefix}${element}`);
+                if (position == sequence.length - 1)
+                    element += scanCodeKeyBreak;
+                result.push(element.toString(16).toUpperCase());
+            } //loop
+            value.scancodeUp = result.join(blankSeparator);
+        } //loop
+    })(keys);
     
     const initializeNames = objectArray => {
         for (const subset of objectArray)
@@ -874,6 +892,7 @@ const createDefinitionSet = (() => {
         DOMContentLoaded: 0,
         svgNamespace: "http://www.w3.org/2000/svg",
         instantScrollBehavior: "instant",
+        keys: { F1: 0, },
         elements: {
             svg: 0,
             select: 0,
@@ -885,7 +904,6 @@ const createDefinitionSet = (() => {
             table: 0,
             span: 0,
             metadata: { selector: "footer span", versionIndex: 0, copyrightIndex: 1 },
-            advice: "article main section p:last-of-type",
         }, //elements
         classes: { // special cases, should match two <select> <option> values:
             scancode: 0, // <g> id's are scancodes
@@ -913,6 +931,7 @@ const createDefinitionSet = (() => {
     }; //names
     initializeNames([
         names,
+        names.keys,
         names.elements,
         names.classes,
         names.attributes,
@@ -944,9 +963,11 @@ const createDefinitionSet = (() => {
         location: value => `${value}px`,
         defaultShift: `${defaultShift}em`,
         formatYShift: value => `${value + defaultShift}em`,
-        scanCode: id => {
-            const codes = id.split(" ");
-            return `0x${codes.join(" 0x")}`;
+        scanCode: (id, forOutput) => {
+            const separator = forOutput ? blankSeparator : empty;
+            const keyInfo = keys.get(id);
+            const codes = id.split(blankSeparator);
+            return `0x${codes.join(`${blankSeparator}${hexPrefix}`)}` + separator;
         },
     }; //formats
 

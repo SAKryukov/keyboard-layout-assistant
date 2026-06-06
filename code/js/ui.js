@@ -14,7 +14,6 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
             help: document.getElementById(definitionSet.names.buttonId.help),
         },
         hoverBox: document.querySelector(definitionSet.names.elements.aside),
-        advice: document.querySelector(definitionSet.names.elements.advice),
     }; //elementSet
     elementSet.hoverBoxTables = elementSet.hoverBox.querySelectorAll(definitionSet.names.elements.table);
     elementSet.select.size = elementSet.select.children.length;
@@ -28,15 +27,24 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         elementSet.output.value = new String();
     elementSet.buttons.help.onclick = () =>
         definitionSet.help();
+    window.onkeydown = event => { 
+        if (event.key == definitionSet.names.keys.F1) {
+            definitionSet.help();
+            event.preventDefault();
+        } //if
+    }; //windows.onkeydown, help
 
     const createSvgElement = name => document.createElementNS(definitionSet.names.svgNamespace, name);
 
-    const addText = (parent, textContent, className, yShift) => {
+    const addText = (parent, textContent, className, yShift, abbreviatedTextContent) => {
         const text = createSvgElement(definitionSet.names.elements.text);
         if (yShift)
             text.setAttribute(definitionSet.names.attributes.y, yShift);
         text[data] = textContent;
-        text.textContent = definitionSet.formats.formatKey(textContent);
+        const effectiveTextContent = abbreviatedTextContent == undefined
+            ? textContent
+            : abbreviatedTextContent;
+        text.textContent = definitionSet.formats.formatKey(effectiveTextContent);
         text.classList.add(className);
         parent.appendChild(text);
     } //addText
@@ -51,8 +59,8 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
         for (const group of groups) {
             const scancode = group.id;
             if (!scancode) continue;
-            addText(group, scancode, definitionSet.names.classes.scancode, definitionSet.formats.defaultShift);
             const info = definitionSet.keys.get(scancode);
+            addText(group, scancode, definitionSet.names.classes.scancode, definitionSet.formats.defaultShift, info.scanCodeAbbreviation);
             if (!info) continue;
             for (const property in info) {
                 const nameSet = info[property];
@@ -79,18 +87,16 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
     const output = document.querySelector(definitionSet.names.elements.textarea);
     for (const group of groups) {
         group.onpointerup = event => {
-            elementSet.advice.style.display = definitionSet.names.displayStyles.none;
             const style = elementSet.select.value;
             const keyInfo = definitionSet.keys.get(group.id);
             if (style == definitionSet.names.classes.label && keyInfo.legend) {
                 output.value += definitionSet.formats.outputLegend(keyInfo.legend); return;
             } //if
             const textElements = event.currentTarget.querySelectorAll(definitionSet.names.getTextClass(style));
-            if (style == definitionSet.names.classes.scancode && keyInfo.scanCodeSpecialCase)
-                output.value += keyInfo.scanCodeSpecialCase;
-            else if (textElements)
+            if (textElements)
                 for (const element of textElements)
                     output.value += definitionSet.formats.output(element[data], style);
+            output.placeholder = String();
         } //group.onpointerup
         group.onpointerenter = eventInstance => {
             const style = elementSet.select.value;
@@ -124,10 +130,7 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
                     for (let index = 0; index < textInfo.length; ++index)
                         fields[index].textContent = definitionSet.formats.output(textInfo[index], style);
             } //if
-            if (style == definitionSet.names.classes.scancode && keyInfo.scanCodeSpecialCase)
-                fields[0].textContent = keyInfo.scanCodeSpecialCase;
-            else
-                fields[fields.length - 1].textContent = definitionSet.formats.scanCode(group.id);
+            fields[fields.length - 1].textContent = definitionSet.formats.scanCode(group.id);
             const key = eventInstance.currentTarget.querySelector(definitionSet.names.elements.rect);
             const boundingRectangleViewPort = key.getBoundingClientRect();
             const bounds = new DOMRect( boundingRectangleViewPort.x + window.scrollX, boundingRectangleViewPort.y + window.scrollY,
