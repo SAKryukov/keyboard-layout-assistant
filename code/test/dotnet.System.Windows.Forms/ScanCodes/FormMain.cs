@@ -21,34 +21,39 @@ public partial class FormScanCodes : Form {
         internal Flags Flags = 0;
         internal ushort Reserved = 0;
         internal ushort VKey = 0;
-        internal System.UInt32 Message = 0;
-        internal System.IntPtr  ExtraInformation = 0;        
-    }
+        internal UInt32 Message = 0;
+        internal IntPtr  ExtraInformation = 0;
+        internal static ushort Size { get; } = 4 * 2 + 4 + 8;
+    } //struct RAWKEYBOARD
+
     struct RAWINPUTHEADER {
         public RAWINPUTHEADER() {}
         internal UInt32 type = 0;
         internal UInt32 size = 0;
-        internal System.IntPtr device = 0;
-        internal System.IntPtr wParam = 0;
-    }
+        internal IntPtr device = 0;
+        internal IntPtr wParam = 0;
+        internal static ushort Size { get; } = 2 * (4 + 8);
+    } //struct RAWINPUTHEADER
+
     struct RAWINPUT {
         public RAWINPUT() {}
         internal RAWINPUTHEADER header = new();
         internal RAWKEYBOARD keyboard = new();
-    }
+    } //struct RAWINPUT
+
     struct RAWINPUTDEVICE {    
         public RAWINPUTDEVICE() {}
         internal ushort usUsagePage = 0;
         internal ushort usUsage = 0;
         internal System.UInt32 dwFlags = 0;
         internal System.IntPtr hwndTarget = 0;
-    }
+    } //struct RAWINPUTDEVICE
 
     [DllImport("user32.dll")]
     static extern bool RegisterRawInputDevices(RAWINPUTDEVICE[] pRawInputDevices, uint uiNumDevices, uint cbSize);
 
     [DllImport("user32.dll")]
-    static extern int GetRawInputData(System.IntPtr hRawInput, uint uiCommand, out RAWINPUT pData, ref uint pcbSize, uint cbSizeHeader);
+    static extern  int GetRawInputData(System.IntPtr hRawInput, uint uiCommand, out RAWINPUT pData, ref uint pcbSize, uint cbSizeHeader);
 
     protected override void OnHandleCreated(EventArgs e) {
         base.OnHandleCreated(e);
@@ -107,10 +112,8 @@ public partial class FormScanCodes : Form {
             listBox.Items.Clear();
     } //FormScanCodes
 
-    private const int WM_KEYDOWN = 0x0100;
-    private const int WM_KEYUP = 0x0101;
-    private const int WM_INPUT = 0x00FF;
-    private const int RID_INPUT = 0x10000003;
+    const int WM_INPUT = 0x00FF;
+    const int RID_INPUT = 0x10000003;
 
     protected override void WndProc(ref Message m) {
         if (checkBox.Checked != true)
@@ -118,8 +121,8 @@ public partial class FormScanCodes : Form {
         if (m.Msg != WM_INPUT)
             { base.WndProc(ref m); return; }
         RAWINPUT rawInput;
-        uint cbSizeHeader = 2 * 4 + 2 * 8;
-        uint cbSizeKeyboard = 3 * 4 + 8;
+        uint cbSizeHeader = RAWINPUTHEADER.Size;
+        uint cbSizeKeyboard = RAWKEYBOARD.Size;
         uint pcbSize = cbSizeHeader + cbSizeKeyboard;
         int result = GetRawInputData(m.LParam, RID_INPUT, out rawInput, ref pcbSize, cbSizeHeader);
         if (result >= 0) {
