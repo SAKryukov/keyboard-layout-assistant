@@ -52,7 +52,6 @@ public partial class FormScanCodes : Form {
 
     protected override void OnHandleCreated(EventArgs e) {
         base.OnHandleCreated(e);
-        // Register to receive raw input for keyboard
         RAWINPUTDEVICE[] rid = new RAWINPUTDEVICE[1];
         rid[0].usUsagePage = 0x01;
         rid[0].usUsage = 0x06;
@@ -113,33 +112,12 @@ public partial class FormScanCodes : Form {
     private const int WM_INPUT = 0x00FF;
     private const int RID_INPUT = 0x10000003;
 
-    /*
-    protected override bool ProcessKeyPreview(ref Message m) {
-        if (checkBox.Checked != true)
-            return base.ProcessKeyPreview(ref m);
-        if (m.Msg != WM_KEYDOWN && m.Msg != WM_KEYUP)
-            return base.ProcessKeyPreview(ref m);
-        string direction = m.Msg == WM_KEYUP ? "Key up" : "Key down";
-        int lParam = (int)m.LParam;
-        int scanCode = (lParam >> 16) & 0xFF;
-        int isExtended = (lParam >> 24) & 0x1;
-        string value =
-            $"{direction}: " +
-            $"Virtual Key Code: 0x{m.WParam:X2}; " +
-            $"Scan Code: 0x{scanCode:X2}; " +
-            $"Decimal scan Code: {scanCode}; " +
-            $"Extended: {isExtended}";
-            listBox.Items.Add(value);
-        return base.ProcessKeyPreview(ref m);
-    } //ProcessCmdKey
-    */
-
     protected override void WndProc(ref Message m) {
         if (checkBox.Checked != true)
             { base.WndProc(ref m); return; }
         if (m.Msg != WM_INPUT)
             { base.WndProc(ref m); return; }
-        RAWINPUT rawInput = new();
+        RAWINPUT rawInput;
         uint cbSizeHeader = 2 * 4 + 2 * 8;
         uint cbSizeKeyboard = 3 * 4 + 8;
         uint pcbSize = cbSizeHeader + cbSizeKeyboard;
@@ -149,17 +127,19 @@ public partial class FormScanCodes : Form {
             bool prefixE0 = (rawInput.keyboard.Flags & Flags.RI_KEY_E0) > 0;
             bool prefixE1 = (rawInput.keyboard.Flags & Flags.RI_KEY_E1) > 0;
             string direction = isUp ? "up" : "down";
-            string e0 = prefixE0 ? "E0" : "";
-            string e1 = prefixE1 ? "E1" : "";
+            string e0 = prefixE0 ? "E0 " : "";
+            string e1 = prefixE1 ? "E1 " : "";
+            ushort principle = isUp ? (ushort)(rawInput.keyboard.MakeCode | 0x80) : rawInput.keyboard.MakeCode;
+            string scanCodeSequence = prefixE1 && (rawInput.keyboard.MakeCode == 0x1D) // special case Pause
+                ? "E1 1D 45 E1 9D C5"
+                : $"{e0}{e1}{principle:X2}";
             listBox.Items.Add(
                 $"Key {direction}: " +
-                $"0x{rawInput.keyboard.MakeCode:X2}: " +
-                $"Prefixes: {e0} {e1}"
+                $"Scan code sequence: {scanCodeSequence}; " +
+                $"Virtual Key: 0x{rawInput.keyboard.VKey:X2}"
             );
         } else 
             listBox.Items.Add($"Raw input error");
-        // Call GetRawInputData to populate the RAWINPUT structure
-        // Process the raw.keyboard.MakeCode and Flags (E0, E1, Break)
         base.WndProc(ref m);
     } //WndProc
     
