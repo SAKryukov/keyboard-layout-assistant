@@ -86,7 +86,9 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
                 output.value += definitionSet.formats.outputLegend(keyInfo.legend); return;
             } //if
             const textElements = event.currentTarget.querySelectorAll(definitionSet.names.getTextClass(style));
-            if (textElements)
+            if (style == definitionSet.names.classes.scancode && keyInfo.scanCodeSpecialCase)
+                output.value += keyInfo.scanCodeSpecialCase;
+            else if (textElements)
                 for (const element of textElements)
                     output.value += definitionSet.formats.output(element[data], style);
         } //group.onpointerup
@@ -122,7 +124,10 @@ window.addEventListener(definitionSet.names.DOMContentLoaded, () => {
                     for (let index = 0; index < textInfo.length; ++index)
                         fields[index].textContent = definitionSet.formats.output(textInfo[index], style);
             } //if
-            fields[fields.length - 1].textContent = definitionSet.formats.scanCode(group.id);
+            if (style == definitionSet.names.classes.scancode && keyInfo.scanCodeSpecialCase)
+                fields[0].textContent = keyInfo.scanCodeSpecialCase;
+            else
+                fields[fields.length - 1].textContent = definitionSet.formats.scanCode(group.id);
             const key = eventInstance.currentTarget.querySelector(definitionSet.names.elements.rect);
             const boundingRectangleViewPort = key.getBoundingClientRect();
             const bounds = new DOMRect( boundingRectangleViewPort.x + window.scrollX, boundingRectangleViewPort.y + window.scrollY,

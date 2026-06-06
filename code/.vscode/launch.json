@@ -6,6 +6,18 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "file": "${workspaceFolder}/keyboard.html"
-        }
+        },
+        {
+            "name": "System.Windows.Forms",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/dotnet.System.Windows.Forms/output.AnyCPU.Debug/ScanCodes.exe",
+            "args": [],
+            //"preLaunchTask": "incrementalBuild",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },       
+
     ]
 }

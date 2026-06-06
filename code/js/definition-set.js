@@ -37,6 +37,7 @@ const createDefinitionSet = (() => {
     });
     // F row
     keys.set("3B", {
+        scancodeUp: "1313", //SA??? remove
         linux: "FK01",
         label: "F1",
         win: ["VK_F1", "70"],
@@ -599,7 +600,9 @@ const createDefinitionSet = (() => {
         jskey: `ScrollLock--Scr${abbreviation}`,
         jscode: `ScrollLock--Scr${abbreviation}`,
     });
-    keys.set("E1 1D", {
+    keys.set("E1...", {
+        scanCodeSpecialCase: "0xE1 0x1D 0x45 0xE1 0x9D 0xC5",
+        scancodeUp: "",
         linux: "PAUS",
         label: "Pause",
         win: [`VK_PAUSE--VK_PA${abbreviation}`, "13"],
