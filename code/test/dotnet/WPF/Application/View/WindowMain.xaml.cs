@@ -12,7 +12,7 @@
                     ? eventArgs.SystemKey
                     : eventArgs.Key;
                 int keyValue = (int)key;
-                listBoxOutput.Items.Add($"WPF: {key}, Value: {keyValue:X2}, Decimal Value: {keyValue}");
+                listBoxOutput.Items.Add($"WPF: System.Windows.Input.Key.{key}, Value: {keyValue:X2}, Decimal Value: {keyValue}");
             };
             buttonClear.Click += (sender, eventArgs) => 
                 listBoxOutput.Items.Clear();

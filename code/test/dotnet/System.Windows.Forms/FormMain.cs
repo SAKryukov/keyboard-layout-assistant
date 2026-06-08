@@ -82,7 +82,7 @@ public partial class FormScanCodes : Form {
 
     public FormScanCodes() {
         InitializeComponent();
-        Text = "Test Keyboard";
+        Text = "Keyboard Test";
         Width = 800;
         Height = 600;
         clearButton.Location = new Point(copyButton.Location.X + 4 + copyButton.Width, copyButton.Location.Y);
@@ -96,10 +96,9 @@ public partial class FormScanCodes : Form {
         listBox.KeyDown += (sender, eventArgs) => {
             if (checkBox.Checked == true) return;
             string value = 
-                "System.Windows.Forms.Key: " +
-                $"KeyCode: {eventArgs.KeyCode}; " +
-                $"KeyValue: 0x{eventArgs.KeyValue:X2}; " +
-                $"Decimal KeyValue: {eventArgs.KeyValue}";
+                $"System.Windows.Forms.Key.{eventArgs.KeyCode}; " +
+                $"Key Value: 0x{eventArgs.KeyValue:X2}; " +
+                $"Decimal Key Value: {eventArgs.KeyValue}";
             listBox.Items.Add(value);
         };
         copyButton.Click += (sender, eventArgs) => {
