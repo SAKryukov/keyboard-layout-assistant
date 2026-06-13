@@ -4,4 +4,6 @@
 
 [Use the keyboard online](https://sakryukov.github.io/keyboard-layout-assistant/code/keyboard.html)
 
-[Test JavaScript events online](https://sakryukov.github.io/keyboard-layout-assistant/code/test/js/index.html)
+See also:
+- [Color Names for CSS and WPF](https://github.com/SAKryukov/color-names-js-wpf)
+- [Code Publishing](https://github.com/SAKryukov/code-publishing)
