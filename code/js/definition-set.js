@@ -28,7 +28,7 @@ const createDefinitionSet = (() => {
         super: [String.fromCodePoint(0x229E), "Super"],
         superLegend: `${String.fromCodePoint(0x229E)} Super, Meta, Windows Logo`,
         menu: [String.fromCodePoint(0x1f5b9), "Menu"],
-        menuLegend: `${String.fromCodePoint(0x1f5b9)} Context Menu`,
+        menuLegend: `${String.fromCodePoint(0x1f5b9)} Context Menu, Application`,
     }; //ideograph
 
     const keys = new Map();
