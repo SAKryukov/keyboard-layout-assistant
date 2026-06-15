@@ -7,27 +7,28 @@
         * { font-family: sans-serif; }
         .title { font-size: 200%; border-bottom: solid thin black; }
         h1 { font-size: 160%; }
-        h2 { font-size: 120%; }
+        h2 { font-size: 110%; }
         code { background-color: rgb(194, 232, 247); }
     </style>
 </head>
 <body>
 
-<span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;dark&quot;,&quot;lightModeTheme&quot;:&quot;default&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
-				<p class="title">Keyboard Layout Assistant</p><p>Кeyboard Layout Аssistant is an application used to
-assist in the creation of keyboard layouts for different systems
-and the development of software applications using the keyboard.</p><h1 id="heading-layers">Layers</h1>
-<h2 id="heading-labels">Labels</h2>
-<p>Provided for the orientation only, can be different on different keyboards.</p><h2 id="heading-scan-codes">Scan Codes</h2>
-<p>Scan codes: hexadecial codes or code sequences separated by blank space.</p><h2 id="heading-linux-xkb-key-codes">Linux XKB Key Codes</h2>
-<p>…The notation used in the XKB keyboard layouts, <code>/usr/share/X11/xkb/symbols</code>.
-Shown without the angilar brackets.</p><h2 id="heading-windows-virtual-keys">Windows Virtual Keys</h2>
-<p><code>VK_*</code> key names and hexadecimal values.
-Click on the key to see a full name if it is abbreviated.</p><h2 id="heading-.net-system.windows.forms">.NET System.Windows.Forms</h2>
-<p><code>System.Windows.Input.Key</code> names.</p><h2 id="heading-.net-wpf">.NET WPF</h2>
-<p><code>System.Windows.Input.Keys</code> names.</p><h2 id="heading-javascript-key">JavaScript Key</h2>
-<p>JavaScript <code>KeyboardEvent.key</code></code>`: strings depending on the shift state and keyboard layout.;</p><h2 id="heading-javascript-code">JavaScript Code</h2>
-<p>JavaScript <code>KeyboardEvent.code</code>: key names independent from the shift state and keyboard layout</code>.</p>
+<p class="title">Keyboard Layout Assistant</p><p>Кeyboard Layout Аssistant is an application used to assist in the creation of keyboard layouts for different systems, remapping keyboard keys, and the development of software applications handling keyboard events.</p><p>The application presents a standard US physical keyboard layout. For other layouts, please use
+test applications <a href="https://github.com/SAKryukov/keyboard-layout-assistant/tree/main/code/test/dotnet">for Windows</a> and <a href="https://github.com/SAKryukov/keyboard-layout-assistant/tree/main/code/test/js">browsers</a>.</p><h1 id="heading-layers">Layers</h1>
+<p>The key data is shown in 9 separate layers representing different platforms.</p><h2 id="heading-labels">Labels</h2>
+<p>This layer is informal. It roughly corresponds to the labels written on the key of a standard US keyboard, but provides a bit more information.</p><p>Point to the key to see the details. Some keys have different names on different keyboard models notably, the Windows Logo key (also known as “Super” or “Meta”) and the Context Menu key.</p><h2 id="heading-scan-codes2c-key-down">Scan Codes, Key Down</h2>
+<p>Low-level hardware <em>scan codes</em> sent by the keyboard to the computer when a user pressed a key. Please see <a href="#heading-scan-codes">Scan Codes</a> for more information.</p><h2 id="heading-scan-codes2c-key-up">Scan Codes, Key Up</h2>
+<p>Low-level hardware <em>scan codes</em> sent by the keyboard to the computer when a user releases a key. Please see <a href="#heading-scan-codes">Scan Codes</a> for more information.</p><h2 id="heading-linux-xkb-key-codes">Linux XKB Key Codes</h2>
+<p><a href="https://en.wikipedia.org/wiki/X_keyboard_extension">X Keyboard Extension</a> (XKB) is a part of <a href="https://en.wikipedia.org/wiki/X_Window_System">X_Window_System</a>.</p><p>It can be used, in particular, for <a href="https://medium.com/@damko/a-simple-humble-but-comprehensive-guide-to-xkb-for-linux-6f1ad5e13450">the creation of keyboard layouts for Linux</a>.</p><p>On the keyboard, the key names are shown without angular brackets. Point to the key to see the details or click it to see how the key names are presented in the files.</p><h2 id="heading-windows-virtual-keys">Windows Virtual Keys</h2>
+<p><a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown"><code>WM_KEYDOWN</code></a> <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keyup"><code>WM_KEYUP</code></a></p><h2 id="heading-.net-system.windows.forms">.NET System.Windows.Forms</h2>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys"><code>System.Windows.Forms.Keys</code></a></p><h2 id="heading-.net-wpf">.NET WPF</h2>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.key"><code>System.Windows.Input.Key</code></a></p><h2 id="heading-javascript-key">JavaScript key</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key">KeyboardEvent.key</a></p><h2 id="heading-javascript-code">JavaScript code</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code">KeyboardEvent.code</a></p><h1 id="heading-notes">Notes</h1>
+<h2 id="heading-scan-codes">Scan Codes</h2>
+<p>Keyboards create hardware interrupt and send sequences of low-level hardware scan codes, typically 1 or 2 bytes, or more, in some special cases.</p><p>On PC, this is IRQ 1, <code>int 1</code>, and the data can be read from the port 0x60, and the port 0x64 is used for the status information. The application must send an End-Of-Interrupt (EOI) command to the port 0x20, so the CPU knows it can receive future hardware interrupts.</p><p>The scan codes sent when a user presses the key and releases the key are different, so the scan codes are presented in two separate layers.</p><p>On Windows, the scan codes can be obtained by handling the message <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-input"><code>WM_INPUT</code></a> and using <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/raw-input">raw input</a>. Please see the <a href="https://github.com/SAKryukov/keyboard-layout-assistant/tree/main/code/test/dotnet">test application based on .NET <code>System.Windows.Forms</code></a> (application name “KeyboardTest.exe”) for more information.</p><h2 id="heading-windows-virtual-keys.">Windows Virtual Keys</h2>
+<p><code>VK_*</code> key names and hexadecimal values.</p><p>Windows virtual keys are dispatched to the Windows application handling the event <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown"><code>WM_KEYDOWN</code></a> and <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keyup"><code>WM_KEYDUP</code></a> messages. The virtual-key code is passed as the parameter <code>wParam</code>.</p><p>See also: <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes">Virtual-Key Codes</a>.</p><p>The virtual key codes do not depend on the culture or keyboard layout. However, the virtual key codes of the <a href="https://en.wikipedia.org/wiki/Numeric_keypad">numpad</a> depend on the state of the Num Lock key.</p><p>The Hardware PortsData Port (0x60): Read the actual byte of data (the scan code) sent by the keyboard when a key is pressed or released.Status/Command Port (0x64): Read the status of the controller or send commands to it.</p><h1 id="heading-any-questions3f">Any Questions?</h1>
+<p>Please ask any questions using the <a href="https://github.com/SAKryukov/keyboard-layout-assistant/discussions">GitHub Discussions related to this repository</a>.</p>
 
 </body>
 </html>
