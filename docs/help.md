@@ -33,23 +33,37 @@ On the keyboard, the key names are shown without angular brackets. Point to the 
 
 ## Windows Virtual Keys
 
-[`WM_KEYDOWN`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown) [`WM_KEYUP`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keyup)
+Windows virtual keys are dispatched to the Windows application handling the event [`WM_KEYDOWN`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown) and [`WM_KEYDUP`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keyup) messages. The virtual-key code is passed as the parameter `wParam`.
+
+See also: [Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+
+The virtual key codes do not depend on the culture or keyboard layout. However, the virtual key codes of the [numpad](https://en.wikipedia.org/wiki/Numeric_keypad) depend on the state of the Num Lock key.
 
 ## .NET System.Windows.Forms
 
-[`System.Windows.Forms.Keys`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys)
+The enumeration members of the type [`System.Windows.Forms.Keys`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys).
+
+See [.NET Keyboard Events](#heading-.net-keyboard-events).
 
 ## .NET WPF
 
-[`System.Windows.Input.Key`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.key)
+[`System.Windows.Input.Key`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.key).
 
-## JavaScript key
+See [.NET Keyboard Events](#heading-.net-keyboard-events).
 
-[KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+## JavaScript Key
 
-## JavaScript code
+[KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) property values.
 
-[KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
+This is the only case when the key data depends on the software keyboard layout. To indentify the keys independently from the layout, [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) can be used.
+
+See also [Web Browser Keyboard Events](#heading-web-browser-keyboard-events).
+
+## JavaScript Code
+
+[KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) property values.
+
+See also [Web Browser Keyboard Events](#heading-web-browser-keyboard-events).
 
 # Notes
 
@@ -63,17 +77,21 @@ The scan codes sent when a user presses the key and releases the key are differe
 
 On Windows, the scan codes can be obtained by handling the message [`WM_INPUT`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-input) and using [raw input](https://learn.microsoft.com/en-us/windows/win32/inputdev/raw-input). Please see the [test application based on .NET `System.Windows.Forms`](https://github.com/SAKryukov/keyboard-layout-assistant/tree/main/code/test/dotnet) (application name “KeyboardTest.exe”) for more information.
 
-## Windows Virtual Keys
+Scan codes can be used on Windows for *remapping* the keyboard keys. The remapping table is stored in the system Registry at the key `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout` under the name `Scancode Map`. The table is the block of 4-byte sequences of the type `REG_BINARY` representing the pairs of the output and input scan codes. The algorithm for packing and unpacking the mapping is defined in the application [SharpKeys](https://github.com/randyrants/sharpkeys/blob/master/SharpKeys/Dialog_Main.cs). [This application](https://github.com/randyrants/sharpkeys) can be used to remap the keys and store the new mapping in the system Registry.
 
-`VK_*` key names and hexadecimal values.
+## .NET Keyboard Events
 
-Windows virtual keys are dispatched to the Windows application handling the event [`WM_KEYDOWN`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown) and [`WM_KEYDUP`](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keyup) messages. The virtual-key code is passed as the parameter `wParam`.
+.NET Keyboard Events depends on the presentation framework uses. There are two different keyboard systems for [System.Windows.Forms](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms) and [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview).
 
-See also: [Virtual-Key Codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+The enumeration types [`System.Windows.Forms.Keys`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys) and the [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview) [`System.Windows.Input.Key`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.key) are pretty similar but different. Importantly, these two enumeration types have different underlying numeric values. [`System.Windows.Forms.Keys`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys) is modeled after the [Windows Virtual Keys](#heading-windows-virtual-keys).
 
-The virtual key codes do not depend on the culture or keyboard layout. However, the virtual key codes of the [numpad](https://en.wikipedia.org/wiki/Numeric_keypad) depend on the state of the Num Lock key.
+The names of the enumeration members are also different. It looks like some [`System.Windows.Forms.Keys`](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys) member names have been corrected in WPF.
 
-The Hardware PortsData Port (0x60): Read the actual byte of data (the scan code) sent by the keyboard when a key is pressed or released.Status/Command Port (0x64): Read the status of the controller or send commands to it.
+## Web Browser Keyboard Events
+
+In the browsers, the the [`KeyboardEvent` object](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) is passed to the handlers of the events [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event), [keyup](https://developer.mozilla.org/en-US/docs/Web/API/Element/keyup_event), or obsolete `keypress`.
+
+Two properties, not considering the obsolete ones, can be used to identify keys: [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) and [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code).
 
 # Any Questions?
 
