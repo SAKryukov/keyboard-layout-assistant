@@ -1,4 +1,4 @@
-﻿<Window x:Class="SA.Test.CommandLine.View.WindowMain"
+﻿<Window x:Class="SA.Test.View.WindowMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:system="clr-namespace:System;assembly=netstandard"
         WindowStartupLocation="CenterScreen"
@@ -16,12 +16,21 @@
     <Grid>
         <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="buttonCopy">📋 C_opy</Button>
-            <Button  x:Name="buttonClear">❌ _Clear</Button>
+            <Button x:Name="buttonCopy">📋 Copy</Button>
+            <Button  x:Name="buttonClear">❌ Clear</Button>
         </StackPanel>
-        <ListBox x:Name="listBoxOutput" Grid.Row="1" />
+        <Border Grid.Row="1" BorderThickness="0 1 0 1" Padding="4 8 4 8" BorderBrush="Gray">
+        <StackPanel Orientation="Vertical">
+            <RadioButton x:Name="radioScanCodes" IsChecked="true">Scan Codes</RadioButton>
+            <RadioButton x:Name="radioVirtualKeys">Windows Virtual Keys and System.Windows.Forms.Keys</RadioButton>
+            <RadioButton x:Name="radioWpf">WPF System.Windows.Input.Key</RadioButton>
+            <CheckBox x:Name="checkBoxIgnore" Margin="0 12 0 0">Ignore prefix keys</CheckBox>
+        </StackPanel>
+        </Border>
+        <ListBox x:Name="listBoxOutput" Grid.Row="2" />
     </Grid>
 </Window>

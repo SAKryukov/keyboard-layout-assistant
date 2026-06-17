@@ -2,21 +2,30 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Keyboard",
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
             "file": "${workspaceFolder}/keyboard.html"
         },
         {
-            "name": "System.Windows.Forms",
+            "name": "WPF",
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/test/dotnet.System.Windows.Forms/output.AnyCPU.Debug/ScanCodes.exe",
+            "program": "${workspaceFolder}/test/dotnet/output.AnyCPU.Debug/KeyboardTest.exe",
             "args": [],
-            //"preLaunchTask": "incrementalBuild",
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
+        },       
+       {
+            "name": "Duplicates",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/dotnet/output.AnyCPU.Debug/Duplicates.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "externalTerminal"
         },       
 
     ]

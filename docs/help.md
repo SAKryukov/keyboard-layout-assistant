@@ -16,7 +16,7 @@ This layer is informal. It roughly corresponds to the labels written on the key 
 Point to the key to see the details. Some keys have different names for different keyboard models, notably, the Windows Logo key (also known as “Super” or “Meta”) and the Context Menu key.
 
 ## Scan Codes, Key Down
-
+    
 Low-level hardware *scan codes* are sent by the keyboard to the computer when a user presses a key. Please see [Scan Codes](#heading-scan-codes) for more information.
 
 ## Scan Codes, Key Up

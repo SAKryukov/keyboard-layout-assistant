@@ -1,4 +1,4 @@
-namespace SA.Test.CommandLine.Main {
+namespace SA.Test.Main {
     using System;
     using System.Windows;
 

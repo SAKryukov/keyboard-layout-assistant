@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="WPF/Agnostic/Core/Agnostic.Core.csproj" />
-  <Project Path="WPF/Agnostic/Ui/Agnostic.UI.csproj" />
-  <Project Path="WPF/Application/KeyboardTest.WPF.csproj" />
-  <Project Path="System.Windows.Forms/KeyboardTest.csproj" />
+  <Project Path="KeyboardTest/Agnostic/Core/Agnostic.Core.csproj" />
+  <Project Path="KeyboardTest/Agnostic/Ui/Agnostic.UI.csproj" />
+  <Project Path="KeyboardTest/Application/KeyboardTest.csproj" />
+  <Project Path="Duplicates/Duplicates.csproj" />
 </Solution>
