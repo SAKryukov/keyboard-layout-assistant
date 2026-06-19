@@ -28,7 +28,7 @@
             <RadioButton x:Name="radioScanCodes" IsChecked="true">Scan Codes</RadioButton>
             <RadioButton x:Name="radioVirtualKeys">Windows Virtual Keys and System.Windows.Forms.Keys</RadioButton>
             <RadioButton x:Name="radioWpf">WPF System.Windows.Input.Key</RadioButton>
-            <CheckBox x:Name="checkBoxIgnore" Margin="0 12 0 0">Ignore prefix keys</CheckBox>
+            <CheckBox x:Name="checkBoxIgnore" Margin="0 12 0 0" IsChecked="true">Ignore Prefix Keys</CheckBox>
         </StackPanel>
         </Border>
         <ListBox x:Name="listBoxOutput" Grid.Row="2" />
